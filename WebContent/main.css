@@ -232,10 +232,21 @@ html, body
 {
 	position:absolute;
 	bottom:20px;
-	top:65px;
 	width:380px;
 	overflow:auto;
 	margin:5px;
+}
+.information-box-with-normal-header
+{
+	top:65px;
+}
+.information-box-with-large-header
+{
+	top:85px;
+}
+.information-box-with-larger-header
+{
+	top:100px;
 }
 #legal-notice
 {

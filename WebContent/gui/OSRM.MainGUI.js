@@ -79,6 +79,7 @@ setLabels: function() {
 
 // clear output area
 clearResults: function() {
+	document.getElementById('information-box').className = 'information-box-with-normal-header';
 	document.getElementById('information-box').innerHTML = "";
 	document.getElementById('information-box-header').innerHTML = "";	
 },
