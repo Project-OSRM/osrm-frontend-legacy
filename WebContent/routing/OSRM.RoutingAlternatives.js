@@ -77,9 +77,10 @@ show: function() {
 	for(var i=0, size=OSRM.G.alternative_count; i<size; i++) {
 		var distance = OSRM.Utils.toHumanDistance(OSRM.G.response.alternative_summaries[i].total_distance);
 		var time = OSRM.Utils.toHumanTime(OSRM.G.response.alternative_summaries[i].total_time);
-		var route_name = "";
+		var route_name = " &#10;(";
 		for(var j=0, sizej=OSRM.G.response.alternative_names[i].length; j<sizej; j++)
-			route_name += (j==0 ? " &#10;(" : "") + OSRM.G.response.alternative_names[i][j] + (j+1<sizej ? " - " : ")");
+			route_name += ( j>0 && OSRM.G.response.alternative_names[i][j] != "" && OSRM.G.response.alternative_names[i][j-1] != "" ? " - " : "") + OSRM.G.response.alternative_names[i][j];
+		route_name += ")";
 		var tooltip = OSRM.loc("DISTANCE")+": "+distance+" &#10;"+OSRM.loc("DURATION")+": "+time+route_name;
 		var buttonClass = (i == OSRM.G.active_alternative) ? "button-pressed" : "button";
 		data = '<a class="'+buttonClass+' top-right-button" id="'+buttons[i].id+'" title="'+tooltip+'">'+buttons[i].label+'</a>' + data;
