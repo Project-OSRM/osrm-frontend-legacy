@@ -63,8 +63,7 @@ resetRouting: function() {
 	OSRM.G.route.reset();
 	OSRM.G.markers.reset();
 	
-	document.getElementById('information-box').innerHTML = "";
-	document.getElementById('information-box-header').innerHTML = "";
+	OSRM.GUI.clearResults();
 	
 	OSRM.JSONP.reset();	
 },

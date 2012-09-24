@@ -78,8 +78,7 @@ setLanguage: function(language) {
 		} else {
 			OSRM.Geocoder.updateAddress(OSRM.C.SOURCE_LABEL, false);
 			OSRM.Geocoder.updateAddress(OSRM.C.TARGET_LABEL, false);
-			document.getElementById('information-box').innerHTML = "";
-			document.getElementById('information-box-header').innerHTML = "";			
+			OSRM.GUI.clearResults();
 		}
 	} else if(OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING==true) {
 		var supported_languages = OSRM.DEFAULTS.LANGUAGE_SUPPORTED;
