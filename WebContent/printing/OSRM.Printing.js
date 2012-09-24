@@ -61,6 +61,12 @@ deactivate: function() {	// use hide route as trigger
 
 // create UI in printwindow
 show: function(response) {
+	// create route name
+	var route_name = "(";
+	for(var j=0, sizej=response.route_name.length; j<sizej; j++)
+		route_name += ( j>0 && response.route_name[j] != "" && response.route_name[j-1] != "" ? " - " : "") + "<span style='white-space:nowrap;'>"+response.route_name[j]+ "</span>";
+	route_name += ")";
+	
 	// create header
 	var header;
 	if( OSRM.Browser.IE6_8 ) {	// tables used for compatibility with legacy IE (quirks mode)
@@ -73,11 +79,15 @@ show: function(response) {
 		'<td class="left stretch">' +
 		'<table class="full">' +
 		'<tr class="row">' +
-		'<td class="left description-header-label">' + OSRM.loc("GUI_START")+ ': </td>' +
+		'<td class="center description-header-label">' + OSRM.loc("GUI_START")+ ': </td>' +
 		'<td class="left description-header-content stretch">' + document.getElementById("gui-input-source").value + '</td>' +
 		'</tr>' +
 		'<tr class="row">' +
-		'<td class="left description-header-label">' + OSRM.loc("GUI_END")+ ': </td>' +
+		'<td class="center description-header-label">'  + '↓' + '</td>' +
+		'<td class="left description-header-label stretch">' + route_name + '</td>' +
+		'</tr>' +		
+		'<tr class="row">' +
+		'<td class="center description-header-label">' + OSRM.loc("GUI_END")+ ': </td>' +
 		'<td class="left description-header-content stretch">' + document.getElementById("gui-input-target").value + '</td>' +
 		'</tr>' +		
 		'</table>' +
@@ -111,13 +121,17 @@ show: function(response) {
 		'<div class="left stretch">' +
 		'<div class="full">' +
 		'<div class="row">' +
-		'<div class="left description-header-label">' + OSRM.loc("GUI_START")+ ': </div>' +
+		'<div class="center description-header-label">' + OSRM.loc("GUI_START")+ ': </div>' +
 		'<div class="left description-header-content stretch">' + document.getElementById("gui-input-source").value + '</div>' +
 		'</div>' +
 		'<div class="row">' +
-		'<div class="left description-header-label">' + OSRM.loc("GUI_END")+ ': </div>' +
-		'<div class="left description-header-content stretch">' + document.getElementById("gui-input-target").value + '</div>' +
+		'<div class="center description-header-label">' + '↓' + '</div>' +
+		'<div class="left description-header-label">' + route_name + '</div>' +
 		'</div>' +		
+		'<div class="row">' +
+		'<div class="center description-header-label">' + OSRM.loc("GUI_END")+ ': </div>' +
+		'<div class="left description-header-content stretch">' + document.getElementById("gui-input-target").value + '</div>' +
+		'</div>' +
 		'</div>' +
 		'</div>' +
 		
