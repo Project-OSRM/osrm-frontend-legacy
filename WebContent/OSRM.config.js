@@ -49,6 +49,7 @@ OSRM.DEFAULTS = {
 	ONLOAD_TARGET: "",
 	
 	LANGUAGE: "en",
+	LANGUAGE_USE_BROWSER_SETTING: true,
 	LANUGAGE_ONDEMAND_RELOADING: true,
 	LANGUAGE_SUPPORTED: [ 
 		{encoding:"en", name:"English"},

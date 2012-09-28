@@ -24,20 +24,31 @@ OSRM.Localization = {
 // default directory for localization files
 DIRECTORY: "localization/",
 
-// holds currently active language
+// currently active language and fallback language (used if a string is not available in the current language)
 current_language: OSRM.DEFAULTS.LANGUAGE,
+fallback_language: "en",
 
 //initialize localization
 init: function() {
+	var supported_languages = OSRM.DEFAULTS.LANGUAGE_SUPPORTED;
+	
+	// check browser language
+	if( OSRM.DEFAULTS.LANGUAGE_USE_BROWSER_SETTING == true ) {
+		var language_label = (navigator.language || navigator.userLanguage).substring(0,2);		
+		for(var i=0; i<supported_languages.length; ++i) {
+			if( supported_languages[i].encoding == language_label )
+				OSRM.Localization.current_language = language_label;
+		}
+	}
+		
 	// fill option list and find default entry
 	var options = [];
 	var options_2 = [];
 	var selected = 0;	
-	var supported_languages = OSRM.DEFAULTS.LANGUAGE_SUPPORTED;
 	for(var i=0, size=supported_languages.length; i<size; i++) {
 		options.push( {display:supported_languages[i].encoding, value:supported_languages[i].encoding} );
 		options_2.push( {display:supported_languages[i].name, value:supported_languages[i].encoding} );
-		if( supported_languages[i].encoding == OSRM.DEFAULTS.LANGUAGE )
+		if( supported_languages[i].encoding == OSRM.Localization.current_language )
 			selected=i;
 	}
 	
@@ -45,8 +56,9 @@ init: function() {
 	OSRM.GUI.selectorInit("gui-language-toggle", options, selected, OSRM.Localization.setLanguageWrapper);
 	OSRM.GUI.selectorInit("gui-language-2-toggle", options_2, selected, OSRM.Localization.setLanguageWrapper);
 	
-	// set default language
-	OSRM.Localization.setLanguage( OSRM.DEFAULTS.LANGUAGE );
+	// load language
+	OSRM.Localization.setLanguage( OSRM.Localization.fallback_language );	
+	OSRM.Localization.setLanguage( OSRM.Localization.current_language );
 },
 setLanguageWrapper: function(language) {		// wrapping required to correctly prevent localization tooltip from showing
 	OSRM.GUI.deactivateTooltip( "LOCALIZATION" );
@@ -98,8 +110,8 @@ setLanguage: function(language) {
 translate: function(text) {
 	if( OSRM.Localization[OSRM.Localization.current_language] && OSRM.Localization[OSRM.Localization.current_language][text] )
 		return OSRM.Localization[OSRM.Localization.current_language][text];
-	else if( OSRM.Localization[OSRM.DEFAULTS.LANGUAGE] && OSRM.Localization[OSRM.DEFAULTS.LANGUAGE][text] )
-		return OSRM.Localization[OSRM.DEFAULTS.LANGUAGE][text];
+	else if( OSRM.Localization[OSRM.Localization.fallback_language] && OSRM.Localization[OSRM.Localization.fallback_language][text] )
+		return OSRM.Localization[OSRM.Localization.fallback_language][text];
 	else
 		return text;
 }
