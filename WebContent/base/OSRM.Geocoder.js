@@ -228,15 +228,24 @@ updateAddress: function(marker_id, do_fallback_to_lat_lng) {
 	// build request for reverse geocoder
 	var lat = null;
 	var lng = null;
+	var description = null;
 	
 	if(marker_id == OSRM.C.SOURCE_LABEL && OSRM.G.markers.hasSource()) {
 		lat = OSRM.G.markers.route[0].getLat();
 		lng = OSRM.G.markers.route[0].getLng();
+		description = OSRM.G.markers.route[0].description;
 	} else if(marker_id == OSRM.C.TARGET_LABEL && OSRM.G.markers.hasTarget() ) {
 		lat = OSRM.G.markers.route[OSRM.G.markers.route.length-1].getLat();
 		lng = OSRM.G.markers.route[OSRM.G.markers.route.length-1].getLng();
+		description = OSRM.G.markers.route[OSRM.G.markers.route.length-1].description;
 	} else
 		return;
+
+	// if a description is given show this and not the reverse geocoding information
+	if( description != null ) {
+		OSRM.Geocoder._showReverseResults( {address:{road:description} }, {marker_id:marker_id} );
+		return;
+	}
 	
 	var call = OSRM.DEFAULTS.HOST_REVERSE_GEOCODER_URL + "?format=json&json_callback=%jsonp" + "&accept-language="+OSRM.Localization.current_language + "&lat=" + lat.toFixed(6) + "&lon=" + lng.toFixed(6);
 	OSRM.JSONP.call( call, OSRM.Geocoder._showReverseResults, OSRM.Geocoder._showReverseResults_Timeout, OSRM.DEFAULTS.JSONP_TIMEOUT, "reverse_geocoder_"+marker_id, {marker_id:marker_id, do_fallback: do_fallback_to_lat_lng} );

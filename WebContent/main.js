@@ -292,11 +292,11 @@ OSRM.parseParameters = function(){
 	if( params.destination ) {
 		var index = OSRM.G.markers.setTarget( params.destination );
 		if( params.destination_name )
-			document.getElementById("gui-input-target").value = params.destination_name;
+			OSRM.G.markers.route[index].description = params.destination_name;
 		else 
 			OSRM.Geocoder.updateAddress( OSRM.C.TARGET_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
 		OSRM.G.markers.route[index].show();
-		OSRM.G.markers.route[index].centerView();
+		OSRM.G.markers.route[index].centerView( params.zoom );
 		OSRM.G.initial_position_override = true;
 		return;
 	}

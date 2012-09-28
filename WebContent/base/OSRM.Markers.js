@@ -89,6 +89,17 @@ removeMarker: function(id) {
 	this.route[id].hide();
 	this.route.splice(id, 1);
 },
+reverseDescriptions: function() {
+	var size = this.route.length;
+	var description = [];
+	
+	// store descriptions
+	for(var i=0; i<size; ++i)
+		description[i] = this.route[i].description;
+	// distribute descriptions
+	for(var i=0; i<size; ++i)
+		this.route[size-1-i].description = description[i];
+},
 reverseMarkers: function() {
 	var size = this.route.length;
 	

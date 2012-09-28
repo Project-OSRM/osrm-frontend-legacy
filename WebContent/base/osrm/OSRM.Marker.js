@@ -23,6 +23,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 OSRM.Marker = function( label, style, position ) {
 	this.label = label ? label : "marker";
 	this.position = position ? position : new L.LatLng(0,0);
+	this.description = null;
 
 	this.marker = new L.LabelMarker( this.position, style );
 	this.marker.parent = this;
@@ -110,6 +111,7 @@ onDragStart: function(e) {
 	OSRM.GUI.deactivateTooltip( "DRAGGING" );	
 	OSRM.G.dragging = true;
 	this.changeIcon(this.options.dragicon);
+	this.parent.description = null;
 	
 	// store id of dragged marker
 	for( var i=0; i<OSRM.G.markers.route.length; i++)
