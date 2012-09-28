@@ -19,7 +19,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // [Danish language support]
 
 
-OSRM.Localization["dk"] = {
+OSRM.Localization["da"] = {
 // own language
 "CULTURE": "da-DK",
 "LANGUAGE": "Dansk",
@@ -108,4 +108,4 @@ OSRM.Localization["dk"] = {
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("dk");
+	OSRM.Localization.setLanguage("da");
