@@ -75,7 +75,6 @@ reverseRouting: function() {
 	document.getElementById("gui-input-source").value = document.getElementById("gui-input-target").value;
 	document.getElementById("gui-input-target").value = tmp;
 	
-	OSRM.G.markers.reverseDescriptions();
 	// recompute route if needed
 	if( OSRM.G.route.isShown() ) {
 		OSRM.G.markers.route.reverse();
@@ -88,6 +87,9 @@ reverseRouting: function() {
 	} else {
 		OSRM.G.markers.reverseMarkers();		
 	}
+	
+	// reverse description labels
+	OSRM.G.markers.reverseDescriptions();
 },
 
 // click: button "show"

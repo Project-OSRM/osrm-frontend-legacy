@@ -90,15 +90,14 @@ removeMarker: function(id) {
 	this.route.splice(id, 1);
 },
 reverseDescriptions: function() {
-	var size = this.route.length;
-	var description = [];
+	var last = this.route.length-1;
+	var size = this.route.length / 2;
 	
-	// store descriptions
-	for(var i=0; i<size; ++i)
-		description[i] = this.route[i].description;
-	// distribute descriptions
-	for(var i=0; i<size; ++i)
-		this.route[size-1-i].description = description[i];
+	for(var i=0; i<size; ++i) {
+		var temp = this.route[i].description;
+		this.route[i].description = this.route[last-i].description; 
+		this.route[last-i].description =  temp;
+	}
 },
 reverseMarkers: function() {
 	var size = this.route.length;
