@@ -31,6 +31,7 @@ html, body
 {
 	height: 100%;
 	z-index: 0;
+	display: none;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -49,6 +50,28 @@ html, body
 	text-align:center;
 	vertical-align:middle;	
 	font-size:9px;
+	display:none;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* styles for error messages (browser too old / no javascript) */
+.error-header
+{
+	font-weight:bold;
+	margin: 20px 20px 10px 20px;
+}
+.error-body
+{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+#old-browser-warning
+{
+	display:none;
+}
+#gui
+{
 	display:none;
 }
 

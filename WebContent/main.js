@@ -21,6 +21,11 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 // onload initialization routine
 OSRM.init = function() {
+	if( OSRM.checkOldBrowser() == true )
+		return;
+	OSRM.showHTML();
+	
+	
 	OSRM.prefetchImages();
 	OSRM.prefetchIcons();
 	OSRM.prefetchCSSIcons();
@@ -216,7 +221,24 @@ OSRM.prefetchCSSIcons = function() {
 };
 
 
-//parse URL GET parameters
+// check if an old browser was used and show the error message
+OSRM.checkOldBrowser = function() {
+	if( OSRM.Browser.IE6_7 == -1 )
+		return false;
+	
+	document.getElementById("old-browser-warning").style.display = "block";
+	return true;
+};
+
+
+// only show html content of website, if javascript is active 
+OSRM.showHTML = function() {
+	document.getElementById("map").style.display = "block";
+	document.getElementById("gui").style.display = "block";
+};
+
+
+// parse URL GET parameters
 OSRM.parseParameters = function(){
 	var called_url = document.location.search.substr(1,document.location.search.length);
 	
@@ -292,7 +314,7 @@ OSRM.parseParameters = function(){
 	if( params.destination ) {
 		var index = OSRM.G.markers.setTarget( params.destination );
 		if( params.destination_name )
-			OSRM.G.markers.route[index].description = params.destination_name;
+			OSRM.G.markers.route[index].description = params.destination_name;	// name in GUI will be set when languages are loaded
 		else 
 			OSRM.Geocoder.updateAddress( OSRM.C.TARGET_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
 		OSRM.G.markers.route[index].show();

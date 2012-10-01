@@ -87,9 +87,27 @@ or see http://www.gnu.org/licenses/agpl.txt.
 <!-- body -->
 <body class="base-font">
 
+
+<!-- no javascript warning -->
+<noscript id="no-js-warning">
+<div class="error-header">No Javascript</div>
+<div class="error-body">Javascript is required for the OSRM website to work. Please enable Javascript and reload the page.</div>
+</noscript>
+
+
+<!-- old browser warning -->
+<div id="old-browser-warning">
+<div class="error-header">Unsupported browser</div>
+<div class="error-body">You are using a browser that is not supported by the OSRM website. Please switch or upgrade to a more recent browser.</div>
+</div>
+
+
 <!-- map -->
 <div id="map"></div>
 
+
+<!-- gui -->
+<div id="gui">
 <!-- exclusive notification -->
 <div id="exclusive-notification-blanket">
 <div id="exclusive-notification-wrapper" class="box-wrapper not-selectable">
@@ -227,6 +245,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	<div id="legal-notice" class="small-font">GUI2 - OSRM hosting by <a href='http://algo2.iti.kit.edu/'>KIT</a> - Geocoder by <a href='http://www.osm.org/'>OSM</a></div>
 </div>
 
+</div>
 </div>
 
 </body>
