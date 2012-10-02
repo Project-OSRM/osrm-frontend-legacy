@@ -46,7 +46,7 @@ call: function(marker_id, query) {
 	var call = OSRM.DEFAULTS.HOST_GEOCODER_URL + "?format=json&json_callback=%jsonp" + OSRM.DEFAULTS.GEOCODER_BOUNDS + "&accept-language="+OSRM.Localization.current_language+"&limit=30&q=" + query;
 	// prioritize results in currently shown mapview
 	var bounds = OSRM.G.map.getBounds();
-	call += "&viewbox=" + bounds._southWest.lat + "," + bounds._northEast.lng + "," + bounds._northEast.lat + "," + bounds._southWest.lng;
+	call += "&viewbox=" + bounds._southWest.lng + "," + bounds._northEast.lat + "," + bounds._northEast.lng + "," + bounds._southWest.lat;
 	OSRM.JSONP.call( call, OSRM.Geocoder._showResults, OSRM.Geocoder._showResults_Timeout, OSRM.DEFAULTS.JSONP_TIMEOUT, "geocoder_"+marker_id, {marker_id:marker_id,query:query} );
 },
 
