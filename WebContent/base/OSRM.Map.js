@@ -38,14 +38,24 @@ init: function() {
 	var base_maps = {};
 	for(var i=0, size=tile_servers.length; i<size; i++) {
 		if( tile_servers[i].bing == true ) {
+			tile_servers[i].options.attribution = tile_servers[i].attribution;
 			base_maps[ tile_servers[i].display_name ] = new L.BingLayer( tile_servers[i].apikey, tile_servers[i].options );
 			OSRM.G.localizable_maps.push( base_maps[ tile_servers[i].display_name ] );
 		} else {
-			tile_servers[i].options.attribution = tile_servers[i].attribution; 
+			tile_servers[i].options.attribution = tile_servers[i].attribution;
 			base_maps[ tile_servers[i].display_name ] = new L.TileLayer( tile_servers[i].url, tile_servers[i].options );
 		}
 		L.Util.stamp( base_maps[ tile_servers[i].display_name ] );			// stamp tile servers so that their order is correct in layers control
 	}
+	
+	// setup overlay servers
+	var overlay_servers = OSRM.DEFAULTS.OVERLAY_SERVERS;
+	var overlay_maps = {};
+	for(var i=0, size=overlay_servers.length; i<size; i++) {
+		overlay_servers[i].options.attribution = overlay_servers[i].attribution;
+		overlay_maps[ overlay_servers[i].display_name ] = new L.TileLayer( overlay_servers[i].url, overlay_servers[i].options );
+		L.Util.stamp( overlay_maps[ overlay_servers[i].display_name ] );			// stamp tile servers so that their order is correct in layers control
+	}	
 
 	// setup map
 	OSRM.G.map = new OSRM.Control.Map('map', {
@@ -56,13 +66,13 @@ init: function() {
 	    fadeAnimation: false,
 	    zoomControl: false									// use OSRM zoom buttons
 	});
-
+	
 	// add locations control
 	OSRM.G.map.locationsControl = new OSRM.Control.Locations();
 	OSRM.G.map.locationsControl.addTo(OSRM.G.map);
 	
 	// add layer control
-	OSRM.G.map.layerControl = new OSRM.Control.Layers(base_maps, {});
+	OSRM.G.map.layerControl = new OSRM.Control.Layers(base_maps, overlay_maps);
 	OSRM.G.map.layerControl.addTo(OSRM.G.map);	
 
 	// add zoom control

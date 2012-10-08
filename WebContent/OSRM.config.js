@@ -74,35 +74,45 @@ OSRM.DEFAULTS = {
 	TILE_SERVERS: [
 		{	display_name: 'osm.org',
 			url:'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-			attribution:'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 Mapnik',
+			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (CC-BY-SA)',
 			options:{maxZoom: 18}
 		},
 		{	display_name: 'osm.de',
 			url:'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
-			attribution:'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 Mapnik',
+			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (CC-BY-SA)',
 			options:{maxZoom: 18}
 		},
 		{	display_name: 'MapQuest',
 			url:'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-			attribution:'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 MapQuest',
+			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.mapquest.de/">MapQuest</a>',
 			options:{maxZoom: 18, subdomains: '1234'}
 		},
 		{	display_name: 'CloudMade',
 			url:'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
-			attribution:'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://cloudmade.com/">CloudMade</a>',
 			options:{maxZoom: 18}
 		},
 		{
 			display_name: 'Bing Road',
 			apikey:'AjCb2f6Azv_xt9c6pl_xok96bgAYrXQNctnG4o07sTj4iS9N68Za4B3pRJyeCjGr',	// please use your own apikey (http://msdn.microsoft.com/en-us/library/ff428642.aspx) 
 			options:{type:"Road", minZoom: 1},
+			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL)',
 			bing:true,
 		},
 		{
 			display_name: 'Bing Aerial',
 			apikey:'AjCb2f6Azv_xt9c6pl_xok96bgAYrXQNctnG4o07sTj4iS9N68Za4B3pRJyeCjGr',	// please use your own apikey (http://msdn.microsoft.com/en-us/library/ff428642.aspx)
 			options:{type:"Aerial", minZoom: 1},
+			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL)',
 			bing:true,
+		}
+	],
+	
+	OVERLAY_SERVERS: [
+  		{	display_name: 'Small Components',
+			url:'http://tools.geofabrik.de/osmi/tiles/routing_i/{z}/{x}/{y}.png',
+			attribution:'',
+			options:{}
 		}
 	],
 
