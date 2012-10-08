@@ -63,6 +63,32 @@ OSRM.Control.Layers = L.Control.Layers.extend({
 	},
 	_collapse: function () {
 		this._container.className = this._container.className.replace(' gui-layers-expanded', '');
-	}
+	},
+	
+	// overwrite Control.Layers method so that first all layers are removed before new layers are added again
+	_onInputClick: function () {
+		var i, input, obj,
+			inputs = this._form.getElementsByTagName('input'),
+			inputsLen = inputs.length;
 
+		// hide layers
+		for (i = 0; i < inputsLen; i++) {
+			input = inputs[i];
+			obj = this._layers[input.layerId];
+
+			if (!input.checked) {
+				this._map.removeLayer(obj.layer);
+			}
+		}
+		
+		// show layers
+		for (i = 0; i < inputsLen; i++) {
+			input = inputs[i];
+			obj = this._layers[input.layerId];
+
+			if (input.checked) {
+				this._map.addLayer(obj.layer, !obj.overlay);
+			}
+		}		
+	}
 });

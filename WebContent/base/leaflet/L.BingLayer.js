@@ -30,7 +30,7 @@ L.BingLayer = L.TileLayer.extend({
 	options: {
 		subdomains: [0, 1, 2, 3],
 		type: 'Aerial',					// supported: 'Road', 'Aerial', 'AerialWithLabels' 
-		attribution: 'Bing',
+		attribution: '',				// Bing maps has dynamic attributions
 		culture: 'en-US'
 	},
 
@@ -132,15 +132,23 @@ L.BingLayer = L.TileLayer.extend({
 			}
 		}
 	},
+	
+	onAdd: function(map) {
+       	L.TileLayer.prototype.onAdd.apply(this, [map]);		
+		if(this._map.attributionControl)	// check if attributionControl is activ
+			this._map.attributionControl.setPostfix( this.options.postfix );
+	},	
 
 	onRemove: function(map) {
-		if(this._map.attributionControl)	// check if attributionControl is activ
-		for (var i = 0; i < this._providers.length; i++) {
-			var p = this._providers[i];
-			if (p.active) {
-				this._map.attributionControl.removeAttribution(p.attrib);
-				p.active = false;
+		if(this._map.attributionControl) {	// check if attributionControl is activ
+			for (var i = 0; i < this._providers.length; i++) {
+				var p = this._providers[i];
+				if (p.active) {
+					this._map.attributionControl.removeAttribution(p.attrib);
+					p.active = false;
+				}
 			}
+			this._map.attributionControl.setPostfix( "" );
 		}
        	L.TileLayer.prototype.onRemove.apply(this, [map]);
 	}

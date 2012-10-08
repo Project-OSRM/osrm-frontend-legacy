@@ -38,7 +38,7 @@ init: function() {
 	var base_maps = {};
 	for(var i=0, size=tile_servers.length; i<size; i++) {
 		if( tile_servers[i].bing == true ) {
-			tile_servers[i].options.attribution = tile_servers[i].attribution;
+			tile_servers[i].options.postfix = tile_servers[i].attribution;
 			base_maps[ tile_servers[i].display_name ] = new L.BingLayer( tile_servers[i].apikey, tile_servers[i].options );
 			OSRM.G.localizable_maps.push( base_maps[ tile_servers[i].display_name ] );
 		} else {
@@ -61,20 +61,26 @@ init: function() {
 	OSRM.G.map = new OSRM.Control.Map('map', {
     	center: new L.LatLng(OSRM.DEFAULTS.ONLOAD_LATITUDE, OSRM.DEFAULTS.ONLOAD_LONGITUDE),
 	    zoom: OSRM.DEFAULTS.ONLOAD_ZOOM_LEVEL,
-	    layers: [base_maps[tile_servers[0].display_name]],	    
+	    layers: [],											// add active layer later
 	    zoomAnimation: false,								// animations have to be inactive during initialization (leaflet issue #918)
 	    fadeAnimation: false,
-	    zoomControl: false									// use OSRM zoom buttons
+	    zoomControl: false,									// use OSRM zoom buttons
+	    attributionControl: false							// use OSRM attribution control
 	});
+	
+	// add attribution control
+	OSRM.G.map.attributionControl = new OSRM.Control.Attribution();
+	OSRM.G.map.attributionControl.addTo(OSRM.G.map);	
 	
 	// add locations control
 	OSRM.G.map.locationsControl = new OSRM.Control.Locations();
-	OSRM.G.map.locationsControl.addTo(OSRM.G.map);
+	OSRM.G.map.locationsControl.addTo(OSRM.G.map);	
 	
-	// add layer control
+	// add active layer and layer control
+	OSRM.G.map.addLayer( base_maps[tile_servers[0].display_name] );
 	OSRM.G.map.layerControl = new OSRM.Control.Layers(base_maps, overlay_maps);
-	OSRM.G.map.layerControl.addTo(OSRM.G.map);	
-
+	OSRM.G.map.layerControl.addTo(OSRM.G.map);
+	
 	// add zoom control
 	OSRM.G.map.zoomControl = new OSRM.Control.Zoom();
 	OSRM.G.map.zoomControl.addTo(OSRM.G.map);
@@ -85,7 +91,7 @@ init: function() {
 	OSRM.G.map.scaleControl.options.metric = (OSRM.G.DISTANCE_FORMAT != 1);
 	OSRM.G.map.scaleControl.options.imperial = (OSRM.G.DISTANCE_FORMAT == 1);	
 	OSRM.G.map.scaleControl.addTo(OSRM.G.map);
-
+	
 	// map events
 	OSRM.G.map.on('zoomend', OSRM.Map.zoomed );
 	OSRM.G.map.on('click', OSRM.Map.click );
