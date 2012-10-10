@@ -148,6 +148,8 @@ show: function(response) {
 	var route_name = "(";
 	for(var j=0, sizej=response.route_name.length; j<sizej; j++)
 		route_name += ( j>0 && response.route_name[j] != "" && response.route_name[j-1] != "" ? " - " : "") + "<span style='white-space:nowrap;'>"+response.route_name[j]+ "</span>";
+	if( route_name == "(" )
+		route_name += " - ";
 	route_name += ")";
 	
 	// build header
