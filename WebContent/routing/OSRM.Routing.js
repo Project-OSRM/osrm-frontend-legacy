@@ -66,17 +66,16 @@ showRoute: function(response, parameters) {
 		OSRM.G.active_alternative = 0;
 	
 	OSRM.G.response = response;	// needed for printing & history routes!
+	OSRM.Routing._snapRoute();
 	if(response.status == 207) {
 		OSRM.RoutingGeometry.showNA();
 		OSRM.RoutingNoNames.showNA();
 		OSRM.RoutingDescription.showNA( OSRM.loc("NO_ROUTE_FOUND") );
-		OSRM.Routing._snapRoute();		
 	} else {
 		OSRM.RoutingAlternatives.prepare(OSRM.G.response);
 		OSRM.RoutingGeometry.show(OSRM.G.response);
 		OSRM.RoutingNoNames.show(OSRM.G.response);
 		OSRM.RoutingDescription.show(OSRM.G.response);
-		OSRM.Routing._snapRoute();
 	}
 	OSRM.Routing._updateHints(response);
 	if( parameters.recenter == true ) {		// allow recentering when the route is first shown
