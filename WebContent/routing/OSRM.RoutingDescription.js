@@ -48,7 +48,9 @@ onClickRouteDescription: function(lat, lng, desc) {
 	OSRM.G.markers.highlight.show();
 	OSRM.G.markers.highlight.centerView(OSRM.DEFAULTS.HIGHLIGHT_ZOOM_LEVEL);	
 	
-	OSRM.G.markers.highlight.description = desc;	
+	if( OSRM.G.markers.highlight.description && document.getElementById("description-"+OSRM.G.markers.highlight.description) )
+		document.getElementById("description-"+OSRM.G.markers.highlight.description).className = "description-body-item";
+	OSRM.G.markers.highlight.description = desc;
 	document.getElementById("description-"+desc).className = "description-body-item description-body-item-selected";
 },
 onClickCreateShortcut: function(src){
