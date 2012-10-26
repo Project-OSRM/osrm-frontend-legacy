@@ -57,6 +57,7 @@ OSRM.DEFAULTS = {
 		{encoding:"cs", name:"Česky"},
 		{encoding:"de", name:"Deutsch"},
 		{encoding:"da", name:"Dansk"},
+		{encoding:"el", name:"Ελληνικά"},
 		{encoding:"es", name:"Español"},
 		{encoding:"fi", name:"Suomi"},
 		{encoding:"fr", name:"Français"},

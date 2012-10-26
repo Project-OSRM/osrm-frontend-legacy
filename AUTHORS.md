@@ -23,3 +23,4 @@ Madalina Ionescu (OSM-Comenius Project)
 Luis Costa (OSM-Comenius Project)
 Tobias Johansson
 Madeco
+Yannis Gyftomitros
