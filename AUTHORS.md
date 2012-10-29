@@ -24,3 +24,5 @@ Luis Costa (OSM-Comenius Project)
 Tobias Johansson
 Madeco
 Yannis Gyftomitros
+Nodari Sitchinava
+Gia Jgarkava
