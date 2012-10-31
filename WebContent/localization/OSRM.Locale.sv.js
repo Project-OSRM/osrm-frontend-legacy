@@ -133,4 +133,4 @@ OSRM.Localization["sv"] = {
 
 // set GUI language on load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("sv");
+	OSRM.Localization.setLanguage("sv", true);

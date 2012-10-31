@@ -28,6 +28,9 @@ DIRECTORY: "localization/",
 current_language: OSRM.DEFAULTS.LANGUAGE,
 fallback_language: "en",
 
+// language that is currently being loaded on demand  
+load_on_demand_language: null,
+
 //initialize localization
 init: function() {
 	var supported_languages = OSRM.DEFAULTS.LANGUAGE_SUPPORTED;
@@ -64,13 +67,20 @@ setLanguageWrapper: function(language) {		// wrapping required to correctly prev
 	OSRM.GUI.deactivateTooltip( "LOCALIZATION" );
 	OSRM.Localization.setLanguage(language);
 },
-setLanguage: function(language) {
+setLanguage: function(language, loaded_on_demand) {
+	// check if loaded-on-demand language is still wanted as current language
+	if( loaded_on_demand ) {
+		if( language != OSRM.Localization.load_on_demand_language )
+			return;
+	}
+	
 	// change value of both language selectors
 	OSRM.GUI.selectorChange( 'gui-language-toggle', language );
 	OSRM.GUI.selectorChange( 'gui-language-2-toggle', language );
 	
 	if( OSRM.Localization[language]) {
 		OSRM.Localization.current_language = language;
+		OSRM.Localization.load_on_demand_language = null;
 		// change gui language		
 		OSRM.GUI.setLabels();
 		// change abbreviations
@@ -100,6 +110,7 @@ setLanguage: function(language) {
 		var supported_languages = OSRM.DEFAULTS.LANGUAGE_SUPPORTED;
 		for(var i=0, size=supported_languages.length; i<size; i++) {
 			if( supported_languages[i].encoding == language) {
+				OSRM.Localization.load_on_demand_language = language;
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
 				script.src = OSRM.Localization.DIRECTORY+"OSRM.Locale."+language+".js";

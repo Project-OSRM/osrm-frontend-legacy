@@ -133,4 +133,4 @@ OSRM.Localization["fi"] = {
 
 // set GUI language tielle load
 if( OSRM.DEFAULTS.LANUGAGE_ONDEMAND_RELOADING == true )
-	OSRM.Localization.setLanguage("fi");
+	OSRM.Localization.setLanguage("fi", true);
