@@ -81,6 +81,8 @@ setLanguage: function(language) {
 		}
 		if(OSRM.G.map.layerControl.getActiveLayer().redraw)
 			OSRM.G.map.layerControl.getActiveLayer().redraw();
+		// change map layer languages
+		OSRM.G.map.layerControl.setLayerLabels();
 		// requery data
 		if( OSRM.G.markers == null )
 			return;

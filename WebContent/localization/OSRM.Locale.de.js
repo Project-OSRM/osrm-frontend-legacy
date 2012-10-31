@@ -70,6 +70,17 @@ OSRM.Localization["de"] = {
 "NO_ROUTE_SELECTED": "Keine Route ausgewählt",
 // routing engines
 "ENGINE_0": "Auto (schnellste)",
+// tile server names
+// (only required if names are different to OSRM.config)
+//"TILE_SERVER_0": "osm.org",
+//"TILE_SERVER_1": "osm.de",
+//"TILE_SERVER_2": "MapQuest",
+//"TILE_SERVER_3": "CloudMade",
+"TILE_SERVER_4": "Bing Straßenkarte",
+"TILE_SERVER_5": "Bing Luftbilder",
+// overlay server names
+// (only required if names are different to OSRM.config)
+"OVERLAY_SERVER_0": "Kleine Komponenten",
 // directions
 "N": "Norden",
 "E": "Ost",

@@ -47,6 +47,32 @@ OSRM.Control.Layers = L.Control.Layers.extend({
 		}
 	},
 	
+	// sets labels of all layers to the current language
+	setLayerLabels: function () {
+		var i, input,
+		inputs = this._form.getElementsByTagName('input'),
+		inputsLen = inputs.length;
+		tileServers = OSRM.DEFAULTS.TILE_SERVERS.length;
+	
+		for (i = 0; i < inputsLen; i++) {
+			// renaming assumes that tile servers/overlay servers are in the same order as they were defined
+			// [if this cannot be guaranteed: need to check names!]
+			input = inputs[i];			
+			if(i<tileServers) {
+				if( OSRM.loc("TILE_SERVER_"+i) == "TILE_SERVER_"+i )
+					input.parentNode.lastChild.textContent = " " + OSRM.DEFAULTS.TILE_SERVERS[i].display_name;
+				else
+					input.parentNode.lastChild.textContent = " " + OSRM.loc("TILE_SERVER_"+i);
+			} else {
+				var j = i-tileServers;
+				if( OSRM.loc("OVERLAY_SERVER_"+j) == "OVERLAY_SERVER_"+j )
+					input.parentNode.lastChild.textContent = " " + OSRM.DEFAULTS.OVERLAY_SERVERS[j].display_name;
+				else
+					input.parentNode.lastChild.textContent = " " + OSRM.loc("OVERLAY_SERVER_"+j);
+			}
+		}
+	},	
+	
 	// overwrite Control.Layers methods to get OSRM styling
 	_initLayout: function () {
 		L.Control.Layers.prototype._initLayout.apply(this);
@@ -90,5 +116,5 @@ OSRM.Control.Layers = L.Control.Layers.extend({
 				this._map.addLayer(obj.layer, !obj.overlay);
 			}
 		}		
-	}
+	}	
 });
