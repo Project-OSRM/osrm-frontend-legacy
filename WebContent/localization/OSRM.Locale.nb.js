@@ -83,15 +83,15 @@ OSRM.Localization["nb"] = {
 // %s: road name
 // %d: direction
 // [*]: will only be printed when there actually is a road name
-"DIRECTION_0":"Unknown instruction[ onto <b>%s</b>]",
+"DIRECTION_0":"Ukjent instruksjon[ inn på <b>%s</b>]",
 "DIRECTION_1":"Fortsett[ inn på <b>%s</b>]",
-"DIRECTION_2":"Turn slight right[ onto <b>%s</b>]",
+"DIRECTION_2":"Hold svakt mot høyre[ inn på <b>%s</b>]",
 "DIRECTION_3":"Ta til høyre[ inn på <b>%s</b>]",
-"DIRECTION_4":"Turn sharp right[ onto <b>%s</b>]",
+"DIRECTION_4":"Ta skarpt til høyre[ inn på <b>%s</b>]",
 "DIRECTION_5":"U-sving[ inn på <b>%s</b>]",
-"DIRECTION_6":"Turn sharp left[ onto <b>%s</b>]",
+"DIRECTION_6":"Ta skarpt til venstre[ inn på <b>%s</b>]",
 "DIRECTION_7":"Ta til venstre[ inn på <b>%s</b>]",
-"DIRECTION_8":"Turn slight left[ onto <b>%s</b>]",
+"DIRECTION_8":"Hold svakt mot venstre[ inn på <b>%s</b>]",
 "DIRECTION_10":"Kjør <b>%dover</b>[ inn på <b>%s</b>]",
 "DIRECTION_11-1":"Ta første avkjøring i rundkjøringen[ inn på <b>%s</b>]",
 "DIRECTION_11-2":"Ta andre avkjøring i rundkjøringen[ inn på <b>%s</b>]",

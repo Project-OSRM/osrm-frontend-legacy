@@ -27,8 +27,8 @@ OSRM.Localization["fi"] = {
 "GUI_START": "Lähtöpaikka",
 "GUI_END": "Määränpää",
 "GUI_RESET": "Tyhjennä",
-"GUI_ZOOM_ON_ROUTE": "Zoom reitillä",
-"GUI_ZOOM_ON_USER": "Zoom käyttäjä",
+"GUI_ZOOM_ON_ROUTE": "Näytä reitti",
+"GUI_ZOOM_ON_USER": "Näytä oma sijainti",
 "GUI_SEARCH": "Etsi",
 "GUI_REVERSE": "Käänteinen&nbsp;reitti",
 "GUI_START_TOOLTIP": "Syötä lähtöpaikka",
@@ -37,11 +37,11 @@ OSRM.Localization["fi"] = {
 "GUI_ZOOM_IN": "Lähennä",
 "GUI_ZOOM_OUT": "Loitonna",
 // config
-"GUI_CONFIGURATION": "Kokoonpano",
+"GUI_CONFIGURATION": "Asetukset",
 "GUI_LANGUAGE": "Kieli",
 "GUI_UNITS": "Yksiköt",
 "GUI_KILOMETERS": "Kilometri",
-"GUI_MILES": "Miles",
+"GUI_MILES": "Maili",
 // mapping
 "GUI_MAPPING_TOOLS": "Kartoitustyökalut",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Korosta nimettömät tiet",
@@ -53,7 +53,7 @@ OSRM.Localization["fi"] = {
 "FOUND_X_RESULTS": "Löytyi %i vaihtoehtoa",
 "TIMED_OUT": "Aikakatkaisu",
 "NO_RESULTS_FOUND": "Ei hakutuloksia",
-"NO_RESULTS_FOUND_SOURCE": "Ei hakutuloksia lähtöpaikka",
+"NO_RESULTS_FOUND_SOURCE": "Ei hakutuloksia lähtöpaikalle",
 "NO_RESULTS_FOUND_TARGET": "Ei hakutuloksia määränpäälle",
 // routing
 "ROUTE_DESCRIPTION": "Reittiohjeet",
@@ -67,9 +67,9 @@ OSRM.Localization["fi"] = {
 "NO_ROUTE_FOUND": "Reittiä ei löytynyt",
 // printing
 "OVERVIEW_MAP": "Yleiskuvakartta",
-"NO_ROUTE_SELECTED": "Ei reitti valittu",
+"NO_ROUTE_SELECTED": "Ei reittiä valittu",
 // routing engines
-"ENGINE_0": "Auton (nopein)",
+"ENGINE_0": "Auto (nopein)",
 // directions
 "N": "pohjoiseen",
 "E": "itään",
@@ -103,7 +103,32 @@ OSRM.Localization["fi"] = {
 "DIRECTION_11-8":"Aja liikenneympyrään ja poistu kahdeksannesta haarasta[ tielle <b>%s</b>]",
 "DIRECTION_11-9":"Aja liikenneympyrään ja poistu yhdeksännestä haarasta[ tielle <b>%s</b>]",
 "DIRECTION_11-x":"Aja liikenneympyrään ja poistu monen haaran jälkeen[ tielle <b>%s</b>]",
-"DIRECTION_15":"Saavuit määränpäähän"
+"DIRECTION_15":"Saavuit määränpäähän",
+// notifications
+"NOTIFICATION_MAINTENANCE_HEADER":	"Huoltotauko",
+"NOTIFICATION_MAINTENANCE_BODY":	"OSRM-sivusto on väliaikaisesti pois käytöstä huoltotauon takia. " + 
+									"Ole hyvä ja odota kunnes huoltotoimet ovat valmistuneet. " +
+									"Sivusto tulee takaisin käyttöön pian." +
+									"<br/><br/>" + 
+									"Sillä välin voit halutessasi mennä ulos kartoittamaan naapurustoasi..." + 
+									"<br/><br/><br/>[OSRM]",
+"NOTIFICATION_LOCALIZATION_HEADER":	"Tiesitkö että voit vaihtaa käyttöliittymän kieltä?",
+"NOTIFICATION_LOCALIZATION_BODY":	"Voit valita kielen ruudun vasemmasta yläkulmasta löytyvästä pudotusvalikosta." +
+									"<br/><br/>" +
+									"Älä huolestu jos et löydä kieltäsi valikosta. " +
+									"Jos haluat, voit auttaa tekemään lisää käännöksiä! " +
+									"Lisää tietoa <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>täällä</a>.",
+"NOTIFICATION_CLICKING_HEADER":		"Tiesitkö että voit klikata karttaa lisätäksesi reittipisteen?",
+"NOTIFICATION_CLICKING_BODY":		"Voit klikatat karttaa hiiren vasemmalla painikkeella asettaaksesi lähtöpaikan (vihreä) tai määränpään (punainen), " +
+									"jos lähtpöpaikka on jo asetettu. " +
+									"Valittujen paikkojen osoiteet näytetään vasemmassa reunassa olevissa laatikoissa.. " + 
+									"<br/><br/>" +
+									"Voit poistaa paikat kartalta klikkaamalla niitä uudestaan.",
+"NOTIFICATION_DRAGGING_HEADER":		"Tiesitkö että voit raahata jokaista reittipistettä kartalla?",
+"NOTIFICATION_DRAGGING_BODY":		"Voit raahata reittipistettä klikkaamalla sitä, ja pitämällä hiiren painikkeen painettuna. " +
+									"Sitten voit siirtää pistettä kartalla, ja reitti päivittyy heti. " +
+									"<br/><br/>" +
+									"Voit jopa lisätä välipisteitä raahamalla reittiä keskeltä! "
 };
 
 // set GUI language tielle load
