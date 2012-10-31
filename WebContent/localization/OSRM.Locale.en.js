@@ -42,6 +42,14 @@ OSRM.Localization["en"] = {
 "GUI_UNITS": "Units",
 "GUI_KILOMETERS": "Kilometers",
 "GUI_MILES": "Miles",
+// abbreviations
+"GUI_M": "m",
+"GUI_KM": "km",
+"GUI_MI": "mi",
+"GUI_FT": "ft",
+"GUI_H": "h",
+"GUI_MIN": "min",
+"GUI_S": "s",
 // mapping
 "GUI_MAPPING_TOOLS": "Mapping Tools",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Highlight unnamed streets",

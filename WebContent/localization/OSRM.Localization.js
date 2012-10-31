@@ -73,6 +73,8 @@ setLanguage: function(language) {
 		OSRM.Localization.current_language = language;
 		// change gui language		
 		OSRM.GUI.setLabels();
+		// change abbreviations
+		OSRM.Utils.updateAbbreviationCache();
 		// change map language
 		for(var i=0, size=OSRM.G.localizable_maps.length; i<size; i++) {
 			OSRM.G.localizable_maps[i].options.culture = OSRM.loc("CULTURE");

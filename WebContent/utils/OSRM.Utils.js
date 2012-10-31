@@ -21,7 +21,27 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.Utils = {
 		
-// [human readabilty functions]
+// [human readabilty sizes]
+		
+// abbreviations cache
+seconds: 's',
+minutes: 'min',
+hours: 'h',
+miles: 'mi',
+feet: 'ft',
+kilometers: 'km',
+meters: 'm',
+
+// update abbreviation cache
+updateAbbreviationCache: function() {
+	OSRM.Utils.seconds = OSRM.loc("GUI_S");
+	OSRM.Utils.minutes = OSRM.loc("GUI_MIN");
+	OSRM.Utils.hours = OSRM.loc("GUI_H");
+	OSRM.Utils.miles = OSRM.loc("GUI_MI");
+	OSRM.Utils.feet = OSRM.loc("GUI_FT");
+	OSRM.Utils.kilometers = OSRM.loc("GUI_KM");
+	OSRM.Utils.meters = OSRM.loc("GUI_M");
+},
 
 // human readable time
 toHumanTime: function(seconds){
@@ -39,19 +59,19 @@ toHumanDistanceMeters: function(meters){
 	var distance = parseInt(meters);
 	
 	distance = distance / 1000;
-	if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + 'km'; }
-	else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + 'km'; }
-	else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + 'km'; }
-	else{ return (distance*1000).toFixed(0)+'&nbsp;' + 'm'; }		
+	if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.kilometers; }
+	else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.kilometers; }
+	else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.kilometers; }
+	else{ return (distance*1000).toFixed(0)+'&nbsp;' + OSRM.Utils.meters; }		
 },
 toHumanDistanceMiles: function(meters){
 	var distance = parseInt(meters);
 	
 	distance = distance / 1609.344;
-	if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + 'mi'; }
-	else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + 'mi'; }
-	else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + 'mi'; }
-	else{ return (distance*5280).toFixed(0)+'&nbsp;' + 'ft'; }
+	if(distance >= 100){ return (distance).toFixed(0)+'&nbsp;' + OSRM.Utils.miles; }
+	else if(distance >= 10){ return (distance).toFixed(1)+'&nbsp;' + OSRM.Utils.miles; }
+	else if(distance >= 0.1){ return (distance).toFixed(2)+'&nbsp;' + OSRM.Utils.miles; }
+	else{ return (distance*5280).toFixed(0)+'&nbsp;' + OSRM.Utils.feet; }
 },
 toHumanDistance: null,
 
