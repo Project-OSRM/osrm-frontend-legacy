@@ -71,7 +71,8 @@ OSRM.DEFAULTS = {
 		{encoding:"ro", name:"Română"},
 		{encoding:"ru", name:"Русский"},
 		{encoding:"sv", name:"Svenska"},
-		{encoding:"tr", name:"Türkçe"}
+		{encoding:"tr", name:"Türkçe"},
+		{encoding:"uk", name:"Українська"}
 	],
 		
 	TILE_SERVERS: [
