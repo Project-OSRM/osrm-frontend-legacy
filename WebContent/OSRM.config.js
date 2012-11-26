@@ -71,6 +71,7 @@ OSRM.DEFAULTS = {
 		{encoding:"ro", name:"Română"},
 		{encoding:"ru", name:"Русский"},
 		{encoding:"sv", name:"Svenska"},
+		{encoding:"ta", name:"தமிழ்"},
 		{encoding:"tr", name:"Türkçe"},
 		{encoding:"uk", name:"Українська"}
 	],
