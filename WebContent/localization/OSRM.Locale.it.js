@@ -101,7 +101,7 @@ OSRM.Localization["it"] = {
 "DIRECTION_11-7":"Immettersi nella rotonda e prendere la settima uscita[ su <b>%s</b>]",
 "DIRECTION_11-8":"Immettersi nella rotonda e prendere la ottava uscita[ su <b>%s</b>]",
 "DIRECTION_11-9":"Immettersi nella rotonda e prendere la nona uscita[ su <b>%s</b>]",
-"DIRECTION_11-x":"Immettersi nella rotonda e prendere una delle tante uscite[ su <b>%s</b>]",
+"DIRECTION_11-x":"Immettersi nella rotonda e prendere una delle troppe uscite[ su <b>%s</b>]",
 "DIRECTION_15":"Hai raggiunto la tua destinazione"
 };
 
