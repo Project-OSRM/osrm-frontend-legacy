@@ -24,7 +24,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // TileLayer using BingMaps
-// [modified to support multiple cultures]
+// [modified to support correct attributions, and changed default values]
 
 L.BingLayer = L.TileLayer.extend({
 	options: {
@@ -58,7 +58,7 @@ L.BingLayer = L.TileLayer.extend({
 	getTileUrl: function(p, z) {
 		var z = this._getZoomForUrl();
 		var subdomains = this.options.subdomains,
-			s = this.options.subdomains[(p.x + p.y) % subdomains.length];
+			s = this.options.subdomains[Math.abs((p.x + p.y) % subdomains.length)];
 		return this._url.replace('{subdomain}', s)
 				.replace('{quadkey}', this.tile2quad(p.x, p.y, z))
 				.replace('{culture}', this.options.culture);
