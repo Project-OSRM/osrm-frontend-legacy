@@ -190,8 +190,19 @@ showSimple: function(response) {
 
 // no description
 showNA: function( display_text ) {
+	// activate GUI features that need a route
+	OSRM.GUI.activateRouteFeatures();
+	
+	// compute query string
+	var query_string = '?hl=' + OSRM.Localization.current_language;
+	for(var i=0; i<OSRM.G.markers.route.length; i++)
+		query_string += '&loc=' + OSRM.G.markers.route[i].getLat().toFixed(6) + ',' + OSRM.G.markers.route[i].getLng().toFixed(6); 
+ 						
+	// create link to the route
+	var route_link ='[<a class="route-link" onclick="OSRM.RoutingDescription.onClickCreateShortcut(\'' + OSRM.DEFAULTS.WEBSITE_URL + query_string + '\')">'+OSRM.loc("GET_LINK_TO_ROUTE")+'</a>]';
+	
 	// build header
-	header = OSRM.RoutingDescription._buildHeader("N/A", "N/A", "", "");
+	header = OSRM.RoutingDescription._buildHeader("N/A", "N/A", route_link, "");
 
 	// update DOM
 	document.getElementById('information-box').className = 'information-box-with-normal-header';	
