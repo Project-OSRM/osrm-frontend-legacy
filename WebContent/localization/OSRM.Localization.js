@@ -83,6 +83,8 @@ setLanguage: function(language, loaded_on_demand) {
 		OSRM.Localization.load_on_demand_language = null;
 		// change gui language		
 		OSRM.GUI.setLabels();
+		// change notifications
+		OSRM.GUI.updateNotifications();
 		// change abbreviations
 		OSRM.Utils.updateAbbreviationCache();
 		// change map language

@@ -37,12 +37,12 @@ OSRM.init = function() {
 	OSRM.RoutingAlternatives.init();
 	OSRM.Localization.init();	
 	
-	// stop if in maintenance mode
-	if( OSRM.GUI.inMaintenance() == true )
-		return;
-	
  	// check if the URL contains some GET parameter, e.g. for showing a route
  	OSRM.parseParameters();
+ 	
+	// stop if in maintenance mode (after parsing parameters to catch language settings)
+	if( OSRM.GUI.inMaintenance() == true )
+		return; 	
  
  	// only init default position / geolocation position if GET parameters do not specify a different one
  	if( OSRM.G.initial_position_override == false )
@@ -309,6 +309,10 @@ OSRM.parseParameters = function(){
 			params.active_routing_engine = active_routing_engine;
 		}
 	}
+	
+	// stop if in maintenance mode
+	if( OSRM.GUI.inMaintenance() == true )
+		return;	
 		
 	// case 1: destination given
 	if( params.destination ) {
