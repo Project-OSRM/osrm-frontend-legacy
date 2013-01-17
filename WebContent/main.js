@@ -250,7 +250,7 @@ OSRM.parseParameters = function(){
 		return;
 	
 	// storage for parameter values
-	var params = {};
+	var params = { active_routing_engine : OSRM.DEFAULTS.ROUTING_ENGINE };
 
 	// parse input
 	var splitted_url = called_url.split('&');
@@ -355,7 +355,7 @@ OSRM.parseParameters = function(){
 		OSRM.G.active_alternative = params.active_alternative || 0;
 		
 		// set routing server
-		OSRM.GUI.setRoutingEngine( params.active_routing_engine || OSRM.DEFAULTS.ROUTING_ENGINE );
+		OSRM.GUI.setRoutingEngine( params.active_routing_engine );
 			
 		// compute route
 		OSRM.Routing.getRoute({keepAlternative:true});
