@@ -29,3 +29,4 @@ Gia Jgarkava
 Knut Arne Bjørndal
 Serhij Dubyk
 naveenkumar
+Michal Palenik

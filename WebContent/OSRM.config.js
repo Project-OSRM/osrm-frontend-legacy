@@ -70,6 +70,7 @@ OSRM.DEFAULTS = {
 		{encoding:"pt", name:"Portugues"},
 		{encoding:"ro", name:"Română"},
 		{encoding:"ru", name:"Русский"},
+		{encoding:"sk", name:"Slovensky"},
 		{encoding:"sv", name:"Svenska"},
 		{encoding:"ta", name:"தமிழ்"},
 		{encoding:"tr", name:"Türkçe"},
