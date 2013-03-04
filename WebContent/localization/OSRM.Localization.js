@@ -37,11 +37,12 @@ init: function() {
 	
 	// check browser language
 	if( OSRM.DEFAULTS.LANGUAGE_USE_BROWSER_SETTING == true ) {
-		var language_label = (navigator.language || navigator.userLanguage).substring(0,2);		
-		for(var i=0; i<supported_languages.length; ++i) {
-			if( supported_languages[i].encoding == language_label )
-				OSRM.Localization.current_language = language_label;
-		}
+		
+			var language_label = (navigator.language || navigator.userLanguage || "").substring(0,2);		
+			for(var i=0; i<supported_languages.length; ++i) {
+				if( supported_languages[i].encoding == language_label )
+					OSRM.Localization.current_language = language_label;
+			}
 	}
 		
 	// fill option list and find default entry
