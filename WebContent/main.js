@@ -250,7 +250,10 @@ OSRM.parseParameters = function(){
 		return;
 	
 	// storage for parameter values
-	var params = { active_routing_engine : OSRM.DEFAULTS.ROUTING_ENGINE };
+	var params = {};
+	
+	// default values for parameters for which using PARAMS_VALUE || DEFAULT_VALUE is not an option (as they can evaluate to 0)
+	params.active_routing_engine = OSRM.DEFAULTS.ROUTING_ENGINE;
 
 	// parse input
 	var splitted_url = called_url.split('&');
@@ -351,7 +354,7 @@ OSRM.parseParameters = function(){
 			OSRM.G.map.setView(params.center, params.zoom);
 		}
 		
-		// set active alternative (if via points are set or alternative does not exists: automatic fallback to shortest route)
+		// set active alternative (if via points are set or alternative does not exists, fallback to shortest route)
 		OSRM.G.active_alternative = params.active_alternative || 0;
 		
 		// set routing server
