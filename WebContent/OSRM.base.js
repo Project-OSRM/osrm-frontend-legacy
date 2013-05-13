@@ -19,8 +19,8 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // [has to be loaded before all other OSRM classes]
 
 var OSRM = {};
-OSRM.VERSION = '0.1.8.2';
-OSRM.DATE = '130410';
+OSRM.VERSION = '0.1.8.3';
+OSRM.DATE = '130513';
 OSRM.CONSTANTS = {};
 OSRM.DEFAULTS = {};
 OSRM.GLOBALS = {};
