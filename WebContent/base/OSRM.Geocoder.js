@@ -79,30 +79,32 @@ _showResults: function(response, parameters) {
 		return;
 	}	
 	
-	// filter/sort inputs
-	var filtered_response_temp = [];									// filter results
-	for(var i=0, iEnd=response.length; i < iEnd; i++){
-		var result = response[i];
-		if( OSRM.Geocoder._filterResult( result ) )
-			continue;
-		filtered_response_temp.push( result );
-	}
-	if(filtered_response_temp.length == 0) {							// stop if no results remain
-		OSRM.Geocoder._showResults_Empty(parameters);
-		return;
-	}
-	filtered_response_temp.sort( OSRM.Geocoder._compareResults );		// rank results
-	filtered_response_temp.sort( OSRM.Geocoder._compareLocations );		// remove duplicate locations (stable sort -> retain highest ranked)
-	var filtered_response = [];
-	filtered_response.push( filtered_response_temp[0] );
-	for(var i=1, iEnd = filtered_response_temp.length; i<iEnd; i++) {
-		var prev_result = filtered_response_temp[i-1];
-		var result = filtered_response_temp[i];
-		if( result.lat != prev_result.lat || result.lon != prev_result.lon ) {
-			filtered_response.push( result );
-		}
-	}
-	filtered_response.sort( OSRM.Geocoder._compareResults );			// rank results again
+//	// filter/sort inputs
+//	var filtered_response_temp = [];									// filter results
+//	for(var i=0, iEnd=response.length; i < iEnd; i++){
+//		var result = response[i];
+//		if( OSRM.Geocoder._filterResult( result ) )
+//			continue;
+//		filtered_response_temp.push( result );
+//	}
+//	if(filtered_response_temp.length == 0) {							// stop if no results remain
+//		OSRM.Geocoder._showResults_Empty(parameters);
+//		return;
+//	}
+//	filtered_response_temp.sort( OSRM.Geocoder._compareResults );		// rank results
+//	filtered_response_temp.sort( OSRM.Geocoder._compareLocations );		// remove duplicate locations (stable sort -> retain highest ranked; but sorts all results of one category by location -> bad)
+//	var filtered_response = [];
+//	filtered_response.push( filtered_response_temp[0] );
+//	for(var i=1, iEnd = filtered_response_temp.length; i<iEnd; i++) {
+//		var prev_result = filtered_response_temp[i-1];
+//		var result = filtered_response_temp[i];
+//		if( result.lat != prev_result.lat || result.lon != prev_result.lon ) {
+//			filtered_response.push( result );
+//		}
+//	}
+//	filtered_response.sort( OSRM.Geocoder._compareResults );			// rank results again
+	
+	var filtered_response = response;
 	
 	// show first result
 	OSRM.Geocoder._onclickResult(parameters.marker_id, filtered_response[0].lat, filtered_response[0].lon);
@@ -163,52 +165,52 @@ _showResults_Timeout: function() {
 },
 
 
-// filter search results [true: result will not be displayed]
-_filterResult: function(result) {
-//	if( result.osm_type == "relation")
-//		return true;
-	if( result.type == "aerial_views")
-		return true;	
-	return false;
-},
-
-
-// comparator for sorting results [higher weight: result will appear first]
-_compare_class_weights: {
-	boundary: 9000,	
-	place: 8000,
-	highway: 7000,
-}, 
-_compare_type_weights: {
-	country: 13,
-	state: 12,
-	county: 11,
-	city: 10, 
-	town: 9,
-	village: 8,
-	hamlet: 7,
-	suburb: 6,
-	locality: 5,
-	farm: 4
-},
-_compareResults: function(lhs, rhs) {
-	var class_values = OSRM.Geocoder._compare_class_weights;
-	var type_values = OSRM.Geocoder._compare_type_weights;
-	
-	var lhs_value = (-class_values[ lhs["class"] ] || 0) + (-type_values[ lhs.type ] || 0);
-	var rhs_value = (-class_values[ rhs["class"] ] || 0) + (-type_values[ rhs.type ] || 0);
-
-	return (lhs_value - rhs_value);
-},
-
-
-// comparator for sorting objects according to their locations
-_compareLocations: function(lhs, rhs) {
-	if( lhs.lat != rhs.lat )
-		return lhs.lat < rhs.lat;
-	else
-		return lhs.lon < rhs.lon;
-},
+//// filter search results [true: result will not be displayed]
+//_filterResult: function(result) {
+////	if( result.osm_type == "relation")
+////		return true;
+//	if( result.type == "aerial_views")
+//		return true;	
+//	return false;
+//},
+//
+//
+//// comparator for sorting results [higher weight: result will appear first]
+//_compare_class_weights: {
+//	boundary: 9000,	
+//	place: 8000,
+//	highway: 7000,
+//}, 
+//_compare_type_weights: {
+//	country: 13,
+//	state: 12,
+//	county: 11,
+//	city: 10, 
+//	town: 9,
+//	village: 8,
+//	hamlet: 7,
+//	suburb: 6,
+//	locality: 5,
+//	farm: 4
+//},
+//_compareResults: function(lhs, rhs) {
+//	var class_values = OSRM.Geocoder._compare_class_weights;
+//	var type_values = OSRM.Geocoder._compare_type_weights;
+//	
+//	var lhs_value = (-class_values[ lhs["class"] ] || 0) + (-type_values[ lhs.type ] || 0);
+//	var rhs_value = (-class_values[ rhs["class"] ] || 0) + (-type_values[ rhs.type ] || 0);
+//
+//	return (lhs_value - rhs_value);
+//},
+//
+//
+//// comparator for sorting objects according to their locations
+//_compareLocations: function(lhs, rhs) {
+//	if( lhs.lat != rhs.lat )
+//		return lhs.lat < rhs.lat;
+//	else
+//		return lhs.lon < rhs.lon;
+//},
 
 
 // [reverse geocoding]
