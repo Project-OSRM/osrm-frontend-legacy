@@ -83,9 +83,9 @@ OSRM.Localization["en"] = {
 //"TILE_SERVER_0": "osm.org",
 //"TILE_SERVER_1": "osm.de",
 //"TILE_SERVER_2": "MapQuest",
-//"TILE_SERVER_3": "CloudMade",
-//"TILE_SERVER_4": "Bing Road",
-//"TILE_SERVER_5": "Bing Aerial",
+//"TILE_SERVER_3": "MapBox Terrain",
+//"TILE_SERVER_4": "MapBox Labelled Satellite",
+//"TILE_SERVER_5": "MapBox Satellite",
 // overlay server names
 //(only required if names are different to OSRM.config)
 //"OVERLAY_SERVER_0": "Small Components",

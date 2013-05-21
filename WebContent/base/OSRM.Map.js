@@ -37,14 +37,8 @@ init: function() {
 	var tile_servers = OSRM.DEFAULTS.TILE_SERVERS;
 	var base_maps = {};
 	for(var i=0, size=tile_servers.length; i<size; i++) {
-		if( tile_servers[i].bing == true ) {
-			tile_servers[i].options.postfix = tile_servers[i].attribution;
-			base_maps[ tile_servers[i].display_name ] = new L.BingLayer( tile_servers[i].apikey, tile_servers[i].options );
-			OSRM.G.localizable_maps.push( base_maps[ tile_servers[i].display_name ] );
-		} else {
-			tile_servers[i].options.attribution = tile_servers[i].attribution;
-			base_maps[ tile_servers[i].display_name ] = new L.TileLayer( tile_servers[i].url, tile_servers[i].options );
-		}
+		tile_servers[i].options.attribution = tile_servers[i].attribution;
+		base_maps[ tile_servers[i].display_name ] = new L.TileLayer( tile_servers[i].url, tile_servers[i].options );
 		L.Util.stamp( base_maps[ tile_servers[i].display_name ] );			// stamp tile servers so that their order is correct in layers control
 	}
 	
