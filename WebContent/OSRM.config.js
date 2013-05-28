@@ -54,6 +54,7 @@ OSRM.DEFAULTS = {
 	LANGUAGE_SUPPORTED: [ 
 		{encoding:"en", name:"English"},
 		{encoding:"bg", name:"Български"},
+		{encoding:"ca", name:"Català"},
 		{encoding:"cs", name:"Česky"},
 		{encoding:"de", name:"Deutsch"},
 		{encoding:"da", name:"Dansk"},

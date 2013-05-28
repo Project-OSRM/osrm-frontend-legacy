@@ -31,3 +31,4 @@ Serhij Dubyk
 naveenkumar
 Michal Palenik
 Sarah Hoffmann
+Joan Montané
