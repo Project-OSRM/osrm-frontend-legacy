@@ -93,6 +93,14 @@ isLongitude: function(value) {
 },
 isNumber: function(n) {
 	  return !isNaN(parseFloat(n)) && isFinite(n);
+},
+
+
+//[other routines]
+
+//hashing as in JAVA (thanks to lordvlad @ stackoverflow)
+getHash: function(s) {
+	return s.split("").reduce( function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a;}, 0);              
 }
 
 };

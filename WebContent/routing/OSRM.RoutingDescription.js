@@ -59,6 +59,7 @@ onClickCreateShortcut: function(src){
 	src += '&alt='+OSRM.G.active_alternative;
 	src += '&df=' + OSRM.G.active_distance_format;
 	src += '&re=' + OSRM.G.active_routing_engine;
+	src += '&ly=' + OSRM.Utils.getHash( OSRM.G.map.layerControl.getActiveLayerName() );
 	
 	var source = OSRM.DEFAULTS.HOST_SHORTENER_URL + OSRM.DEFAULTS.SHORTENER_PARAMETERS.replace(/%url/, src);
 	// encodeURIComponent(src) instead of src might be required for some URL shortener services, but it won't work with others (e.g. ours)
