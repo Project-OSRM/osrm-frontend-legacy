@@ -313,13 +313,13 @@ OSRM.parseParameters = function(){
 		}
 		else if(name_val[0] == 'ly') {
 			var active_tile_layer_hash = Number(name_val[1]);
-			for(var i=0; i<OSRM.DEFAULTS.TILE_SERVERS.length;i++) {
-				if( OSRM.Utils.getHash( OSRM.DEFAULTS.TILE_SERVERS[i].display_name ) == active_tile_layer_hash ) {
-					OSRM.G.map.layerControl.setActiveLayerByName( OSRM.DEFAULTS.TILE_SERVERS[i].display_name );
+			for(var j=0; j<OSRM.DEFAULTS.TILE_SERVERS.length;j++) {
+				if( OSRM.Utils.getHash( OSRM.DEFAULTS.TILE_SERVERS[j].display_name ) == active_tile_layer_hash ) {
+					OSRM.G.map.layerControl.setActiveLayerByName( OSRM.DEFAULTS.TILE_SERVERS[j].display_name );
 					break;
 				}
 			}
-		}		
+		}
 	}
 	
 	// stop if in maintenance mode
