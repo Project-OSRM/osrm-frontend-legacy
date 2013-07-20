@@ -42,6 +42,14 @@ OSRM.Localization["it"] = {
 "GUI_UNITS": "Unità",
 "GUI_KILOMETERS": "Chilometri",
 "GUI_MILES": "Miglia",
+// abbreviations
+"GUI_M": "m",
+"GUI_KM": "km",
+"GUI_MI": "mi",
+"GUI_FT": "ft",
+"GUI_H": "h",
+"GUI_MIN": "min",
+"GUI_S": "s",
 // mapping
 "GUI_MAPPING_TOOLS": "Strumenti per la Mappatura",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Evidenzia strade senza nome",
@@ -70,6 +78,17 @@ OSRM.Localization["it"] = {
 "NO_ROUTE_SELECTED": "Nessun percorso selezionato",
 // routing engines
 "ENGINE_0": "Macchina (più veloce)",
+// tile server names
+// (only required if names are different to OSRM.config)
+//"TILE_SERVER_0": "osm.org",
+//"TILE_SERVER_1": "osm.de",
+//"TILE_SERVER_2": "MapQuest",
+//"TILE_SERVER_3": "MapBox Terrain",
+//"TILE_SERVER_4": "MapBox Labelled Satellite",
+//"TILE_SERVER_5": "MapBox Satellite",
+// overlay server names
+//(only required if names are different to OSRM.config)
+//"OVERLAY_SERVER_0": "Small Components",
 // directions
 "N": "nord",
 "E": "est",
@@ -129,6 +148,11 @@ OSRM.Localization["it"] = {
 									"Successivamente puoi muovere il marcatore per la mappa ed il percorso sarà aggiornato istantaneamente. " +
 									"<br/><br/>" +
 									"Puoi perfino creare marcatori intermedi trascinandoli al di fuori del percorso principale! ",
+// do not translate below this line
+"GUI_LEGAL_NOTICE": "Routing by <a href='http://project-osrm.org/'>Project OSRM</a> - Geocoder by <a href='http://wiki.openstreetmap.org/wiki/Nominatim'>Nominatim</a> - OSRM hosting by <a href='http://algo2.iti.kit.edu/'>KIT</a>",
+"GUI_DATA_TIMESTAMP": "data: ",
+"GUI_VERSION": "gui: ",
+"QR": "QR"
 };
 
 // set GUI language on load
