@@ -37,6 +37,10 @@ html, body
 /* ------------------------------------------------------------------------ */
 
 /* changes/additions to leaflet styles */
+.leaflet-container {
+	cursor: default;
+}
+	
 .via-counter
 {
 	position:absolute;
