@@ -117,7 +117,9 @@ zoomed: function(e) {
 contextmenu: function(e) {;},
 mousemove: function(e) { OSRM.Via.drawDragMarker(e); },
 click: function(e) {
-	OSRM.GUI.deactivateTooltip( "CLICKING" );	
+	OSRM.GUI.deactivateTooltip( "CLICKING" );
+	if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )	// only create markes on simple clicks
+		return;
 	if( !OSRM.G.markers.hasSource() ) {
 		var index = OSRM.G.markers.setSource( e.latlng );
 		OSRM.Geocoder.updateAddress( OSRM.C.SOURCE_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
