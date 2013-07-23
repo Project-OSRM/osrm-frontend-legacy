@@ -301,15 +301,21 @@ html, body
 {
 	font-weight:normal;
 }
-.route-link
+.text-link
 {
 	color:#0000ff;
 	text-decoration:none;
 	cursor:pointer;
+	white-space: nowrap;
 }
-.route-link:hover
+.text-link:hover
 {
 	color:#ff0000;
+}
+.text-link-inactive
+{
+	text-decoration:none;
+	white-space: nowrap;
 }
 
 
@@ -681,7 +687,7 @@ html, body
 
 /* ------------------------------------------------------------------------ */
 
-/* buttons */
+/* text buttons */
 .button
 {
 	cursor:pointer;
@@ -695,7 +701,8 @@ html, body
 	text-decoration:none;
 	font-size:9px;
 	outline-style:none;
-	vertical-align:1px;  
+	vertical-align:1px;
+	white-space: nowrap;  
 }
 .button:hover
 {
@@ -721,6 +728,7 @@ html, body
 	font-size:9px;
 	outline-style:none;
 	vertical-align:1px;	
+	white-space: nowrap;
 }
 .button-pressed
 {
@@ -736,6 +744,7 @@ html, body
 	font-size:9px;
 	outline-style:none;
 	vertical-align:1px;  
+	white-space: nowrap;
 }
 
 

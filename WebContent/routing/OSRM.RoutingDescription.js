@@ -48,7 +48,6 @@ onClickRouteDescription: function(lat, lng, desc) {
 	OSRM.G.markers.highlight.show();
 	OSRM.G.markers.highlight.centerView(OSRM.DEFAULTS.HIGHLIGHT_ZOOM_LEVEL);	
 
-	console.log( OSRM.G.markers.highlight.description );
 	if( OSRM.G.markers.highlight.description != null && document.getElementById("description-"+OSRM.G.markers.highlight.description) )
 		document.getElementById("description-"+OSRM.G.markers.highlight.description).className = "description-body-item";
 	OSRM.G.markers.highlight.description = desc;
@@ -62,10 +61,10 @@ onClickCreateShortcut: function(src){
 	src += '&ly=' + OSRM.Utils.getHash( OSRM.G.map.layerControl.getActiveLayerName() );
 	
 	var source = OSRM.DEFAULTS.HOST_SHORTENER_URL + OSRM.DEFAULTS.SHORTENER_PARAMETERS.replace(/%url/, src);
-	// encodeURIComponent(src) instead of src might be required for some URL shortener services, but it won't work with others (e.g. ours)
+	// using encodeURIComponent(src) instead of just src might be required for some URL shortener services, but it does not work with others (e.g. ours)
 	
 	OSRM.JSONP.call(source, OSRM.RoutingDescription.showRouteLink, OSRM.RoutingDescription.showRouteLink_TimeOut, OSRM.DEFAULTS.JSONP_TIMEOUT, 'shortener');
-	document.getElementById('route-link').innerHTML = '['+OSRM.loc("GENERATE_LINK_TO_ROUTE")+']';
+	document.getElementById('route-link').innerHTML = '[<a class="text-link-inactive">'+OSRM.loc("GENERATE_LINK_TO_ROUTE")+'</a>]';
 },
 showRouteLink: function(response){
 	if(!response || !response[OSRM.DEFAULTS.SHORTENER_REPLY_PARAMETER]) {
@@ -75,11 +74,11 @@ showRouteLink: function(response){
 	
 	OSRM.G.active_shortlink = response[OSRM.DEFAULTS.SHORTENER_REPLY_PARAMETER];
 	document.getElementById('route-link').innerHTML =
-		'[<a class="route-link" onClick="OSRM.RoutingDescription.showQRCode();">'+OSRM.loc("QR")+'</a>]' + ' ' +
-		'[<a class="route-link" href="' +OSRM.G.active_shortlink+ '">'+OSRM.G.active_shortlink.substring(7)+'</a>]';
+		'[<a class="text-link" onClick="OSRM.RoutingDescription.showQRCode();">'+OSRM.loc("QR")+'</a>]' + ' ' +
+		'[<a class="text-link" href="' +OSRM.G.active_shortlink+ '">'+OSRM.G.active_shortlink.substring(7)+'</a>]';
 },
 showRouteLink_TimeOut: function(){
-	document.getElementById('route-link').innerHTML = '['+OSRM.loc("LINK_TO_ROUTE_TIMEOUT")+']';
+	document.getElementById('route-link').innerHTML = '[<a class="text-link-inactive">'+OSRM.loc("LINK_TO_ROUTE_TIMEOUT")+'</a>]';
 },
 showQRCode: function(response){
 	if( OSRM.G.qrcodewindow )
@@ -98,10 +97,10 @@ show: function(response) {
 		query_string += '&loc=' + OSRM.G.markers.route[i].getLat().toFixed(6) + ',' + OSRM.G.markers.route[i].getLng().toFixed(6); 
  						
 	// create link to the route
-	var route_link ='[<a class="route-link" onclick="OSRM.RoutingDescription.onClickCreateShortcut(\'' + OSRM.DEFAULTS.WEBSITE_URL + query_string + '\')">'+OSRM.loc("GET_LINK_TO_ROUTE")+'</a>]';
+	var route_link ='[<a class="text-link" onclick="OSRM.RoutingDescription.onClickCreateShortcut(\'' + OSRM.DEFAULTS.WEBSITE_URL + query_string + '\')">'+OSRM.loc("GET_LINK_TO_ROUTE")+'</a>]';
 
 	// create GPX link
-	var gpx_link = '[<a class="route-link" onClick="document.location.href=\'' + OSRM.G.active_routing_server_url + query_string + '&output=gpx\';">'+OSRM.loc("GPX_FILE")+'</a>]';
+	var gpx_link = '[<a class="text-link" onClick="document.location.href=\'' + OSRM.G.active_routing_server_url + query_string + '&output=gpx\';">'+OSRM.loc("GPX_FILE")+'</a>]';
 	
 	// check highlight marker to get id of corresponding description
 	// [works as changing language or metric does not remove the highlight marker!]	
@@ -200,7 +199,7 @@ showNA: function( display_text ) {
 		query_string += '&loc=' + OSRM.G.markers.route[i].getLat().toFixed(6) + ',' + OSRM.G.markers.route[i].getLng().toFixed(6); 
  						
 	// create link to the route
-	var route_link ='[<a class="route-link" onclick="OSRM.RoutingDescription.onClickCreateShortcut(\'' + OSRM.DEFAULTS.WEBSITE_URL + query_string + '\')">'+OSRM.loc("GET_LINK_TO_ROUTE")+'</a>]';
+	var route_link ='[<a class="text-link" onclick="OSRM.RoutingDescription.onClickCreateShortcut(\'' + OSRM.DEFAULTS.WEBSITE_URL + query_string + '\')">'+OSRM.loc("GET_LINK_TO_ROUTE")+'</a>]';
 	
 	// build header
 	header = OSRM.RoutingDescription._buildHeader("N/A", "N/A", route_link, "");
