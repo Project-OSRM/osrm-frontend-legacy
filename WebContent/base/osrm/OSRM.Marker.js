@@ -90,6 +90,8 @@ OSRM.RouteMarker = function ( label, style, position ) {
 OSRM.inheritFrom( OSRM.RouteMarker, OSRM.Marker );
 OSRM.extend( OSRM.RouteMarker, {
 onClick: function(e) {
+	if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )	// only remove markers on simple clicks
+		return;	
 	for( var i=0; i<OSRM.G.markers.route.length; i++) {
 		if( OSRM.G.markers.route[i].marker === this ) {
 			OSRM.G.markers.removeMarker( i );

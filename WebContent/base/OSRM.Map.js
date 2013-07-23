@@ -118,7 +118,7 @@ contextmenu: function(e) {;},
 mousemove: function(e) { OSRM.Via.drawDragMarker(e); },
 click: function(e) {
 	OSRM.GUI.deactivateTooltip( "CLICKING" );
-	if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )	// only create markes on simple clicks
+	if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )	// only create/remove markers on simple clicks
 		return;
 	if( !OSRM.G.markers.hasSource() ) {
 		var index = OSRM.G.markers.setSource( e.latlng );

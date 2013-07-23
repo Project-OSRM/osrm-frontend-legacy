@@ -56,6 +56,8 @@ centerView: function() {
 	OSRM.g.map.fitBoundsUI( bounds );
 },
 onClick: function(e) {
+	if( e.originalEvent.shiftKey==true || e.originalEvent.metaKey==true || e.originalEvent.altKey==true )	// only create markers on simple clicks
+		return;	
 	var new_via_index = Math.max( 0, OSRM.Via.findViaIndex( e.latlng ) );
 	var index = OSRM.G.markers.setVia( new_via_index, e.latlng );
 	OSRM.G.markers.route[index].show();
