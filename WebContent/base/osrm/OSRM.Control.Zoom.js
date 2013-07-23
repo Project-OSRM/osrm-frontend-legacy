@@ -16,45 +16,88 @@ or see http://www.gnu.org/licenses/agpl.txt.
 */
 
 // zoom control
-// [modified zoom control with ids, prevention of click propagation, show/hide with respect to main OSRM window]
+// [modified zoom control with ids, prevention of click propagation, show/hide with respect to main OSRM window; added comments to all changes]
 OSRM.Control.Zoom = L.Control.extend({
 	options: {
 		position: 'topleft'
 	},
 
 	onAdd: function (map) {
-		// create wrapper
-		var container = L.DomUtil.create('div', 'box-wrapper gui-control-wrapper');
-		L.DomEvent.disableClickPropagation(container);
-		
-		// create buttons
-		this._zoomIn = this._createButton('gui-zoom-in', container, map.zoomIn, map, true);
-		this._zoomOut = this._createButton('gui-zoom-out', container, map.zoomOut, map, true);
-		
-		this._container = container;
+		var zoomName = 'gui-zoom',
+			container = L.DomUtil.create('div', 'box-wrapper gui-control-wrapper');			// changed classes
+		L.DomEvent.disableClickPropagation(container);										// made grey container unclickable
+
+		this._map = map;
+		this._zoomInButton  = this._createButton('', 'Zoom in',  zoomName + '-in',  container, this._zoomIn,  this);	// removed html
+		this._zoomOutButton = this._createButton('', 'Zoom out', zoomName + '-out', container, this._zoomOut, this);	// removed html
+		this._container = container;														// stored container reference	
+
+		map.on('zoomend zoomlevelschange', this._updateDisabled, this);
+
 		return container;
 	},
 
-	_createButton: function (id, container, fn, context, isActive) {
-		var inactive = (isActive == false) ? "-inactive" : "";
-		var classNames = "box-content" + " " + "gui-control"+inactive + " " + id+inactive;		
+	onRemove: function (map) {
+		map.off('zoomend zoomlevelschange', this._updateDisabled, this);
+	},
+
+	_zoomIn: function (e) {
+		this._map.zoomIn(e.shiftKey ? 3 : 1);
+	},
+
+	_zoomOut: function (e) {
+		this._map.zoomOut(e.shiftKey ? 3 : 1);
+	},
+
+	_createButton: function (html, title, className, container, fn, context) {
+		var classNames = "box-content" + " " + "gui-control" + " " + className;
 		var link = L.DomUtil.create('a', classNames, container);
-		link.title = id;
+		link.innerHTML = html;
+//		link.href = '#';																	// commented to remove link borders
+		link.title = title;
+
+		var stop = L.DomEvent.stopPropagation;
 
 		L.DomEvent
-			.on(link, 'click', L.DomEvent.stopPropagation)
-			.on(link, 'click', L.DomEvent.preventDefault)
-			.on(link, 'click', fn, context)
-			.on(link, 'dblclick', L.DomEvent.stopPropagation);
+		    .on(link, 'click', stop)
+		    .on(link, 'mousedown', stop)
+		    .on(link, 'dblclick', stop)
+		    .on(link, 'click', L.DomEvent.preventDefault)
+		    .on(link, 'click', fn, context);
 
 		return link;
 	},
+
+	_updateDisabled: function () {															// changed in large parts
+		var map = this._map,
+			className = 'gui-control',
+			zoomName = 'gui-zoom'; 
+
+		if (map._zoom === map.getMinZoom()) {
+			L.DomUtil.changeClass(this._zoomOutButton, className, className+'-inactive');
+			L.DomUtil.changeClass(this._zoomOutButton, zoomName+'-out', zoomName+'-out-inactive');
+		} else {
+			L.DomUtil.changeClass(this._zoomOutButton, className+'-inactive', className);
+			L.DomUtil.changeClass(this._zoomOutButton, zoomName+'-out-inactive', zoomName+'-out');
+		}
+		if (map._zoom === map.getMaxZoom()) {
+			L.DomUtil.changeClass(this._zoomInButton, className, className+'-inactive');
+			L.DomUtil.changeClass(this._zoomInButton, zoomName+'-in', zoomName+'-in-inactive');
+		} else {
+			L.DomUtil.changeClass(this._zoomInButton, className+'-inactive', className);
+			L.DomUtil.changeClass(this._zoomInButton, zoomName+'-in-inactive', zoomName+'-in');			
+		}
+	},
 	
+	// new functionality
 	hide: function() {
 		if( this._container )
 			this._container.style.visibility="hidden";		
 	},
-	
+	hide: function() {
+		if( this._container )
+			this._container.style.visibility="hidden";		
+	},
 	show: function() {
 		if( this._container ) {
 			this._container.style.top = "5px";
@@ -63,7 +106,7 @@ OSRM.Control.Zoom = L.Control.extend({
 		}		
 	},
 	setTooltips: function( zoomIn, zoomOut) {
-		this._zoomIn.title = zoomIn;
-		this._zoomOut.title = zoomOut;
-	}
+		this._zoomInButton.title = zoomIn;
+		this._zoomOutButton.title = zoomOut;
+	}	
 });

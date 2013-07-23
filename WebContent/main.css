@@ -596,13 +596,17 @@ html, body
 
 /* zoom buttons */
 .gui-zoom-in,
-.gui-zoom-out
+.gui-zoom-out,
+.gui-zoom-in-inactive,
+.gui-zoom-out-inactive
 {
 	width: 15px;
 	height: 15px;	
 }
 .leaflet-touch .gui-zoom-in,
-.leaflet-touch .gui-zoom-out
+.leaflet-touch .gui-zoom-out,
+.leaflet-touch .gui-zoom-in-inactive,
+.leaflet-touch .gui-zoom-out-inactive
 {
 	width: 23px;
 	height: 23px;

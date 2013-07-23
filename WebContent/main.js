@@ -91,9 +91,11 @@ OSRM.prefetchImages = function() {
 		              	{id:'zoom_in',							url:'images/zoom_in.png'},
 		              	{id:'zoom_in_active',					url:'images/zoom_in_active.png'},
 		              	{id:'zoom_in_hover',					url:'images/zoom_in_hover.png'},
+		              	{id:'zoom_in_inactive',					url:'images/zoom_in_inactive.png'},
 		              	{id:'zoom_out',							url:'images/zoom_out.png'},
 		              	{id:'zoom_out_active',					url:'images/zoom_out_active.png'},
-		              	{id:'zoom_out_hover',					url:'images/zoom_out_hover.png'},		              	
+		              	{id:'zoom_out_hover',					url:'images/zoom_out_hover.png'},
+		              	{id:'zoom_out_inactive',				url:'images/zoom_out_inactive.png'},
 		              	{id:'locations_user',					url:'images/locations_user.png'},
 		              	{id:'locations_user_active',			url:'images/locations_user_active.png'},
 		              	{id:'locations_user_hover',				url:'images/locations_user_hover.png'},
@@ -165,11 +167,13 @@ OSRM.prefetchCSSIcons = function() {
 	                	{ id:'#gui-printer',					image_id:'printer'},
 	                	{ id:'#gui-printer:hover',				image_id:'printer_hover'},
 	                	{ id:'#gui-printer:active',				image_id:'printer_active'},
-                	
+
+	                	{ id:'.gui-zoom-in-inactive',			image_id:'zoom_in_inactive'},	                	
 	                	{ id:'.gui-zoom-in',					image_id:'zoom_in'},
 	                	{ id:'.gui-zoom-in:hover',				image_id:'zoom_in_hover'},
 	                	{ id:'.gui-zoom-in:active',				image_id:'zoom_in_active'},
-	                	
+
+	                	{ id:'.gui-zoom-out-inactive',			image_id:'zoom_out_inactive'},	                	
 	                	{ id:'.gui-zoom-out',					image_id:'zoom_out'},
 	                	{ id:'.gui-zoom-out:hover',				image_id:'zoom_out_hover'},
 	                	{ id:'.gui-zoom-out:active',			image_id:'zoom_out_active'},
