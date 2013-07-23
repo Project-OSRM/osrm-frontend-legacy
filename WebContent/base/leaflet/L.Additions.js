@@ -15,8 +15,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 or see http://www.gnu.org/licenses/agpl.txt.
 */
 
-// Leaflet bugfixes
-// [assorted bugfixes to Leaflet functions we use]
+// Leaflet additions
+// [minor additions to Leaflet functionality]
 
 
-// none required at the moment :)
+// method to modify css classes
+L.DomUtil.changeClass = function (el, name, newName) {
+	el.className = L.Util.trim((' ' + el.className + ' ').replace(' ' + name + ' ', ' ' + newName + ' '));
+};
