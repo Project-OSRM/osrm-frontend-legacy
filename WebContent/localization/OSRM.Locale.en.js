@@ -66,6 +66,7 @@ OSRM.Localization["en"] = {
 // routing
 "ROUTE_DESCRIPTION": "Route Description",
 "GET_LINK_TO_ROUTE": "Generate Link",
+"ROUTE_LINK": "Route Link",
 "GENERATE_LINK_TO_ROUTE": "waiting for link",
 "LINK_TO_ROUTE_TIMEOUT": "not available",
 "GPX_FILE": "GPX File",

@@ -60,11 +60,20 @@ onClickCreateShortcut: function(src){
 	src += '&re=' + OSRM.G.active_routing_engine;
 	src += '&ly=' + OSRM.Utils.getHash( OSRM.G.map.layerControl.getActiveLayerName() );
 	
-	var source = OSRM.DEFAULTS.HOST_SHORTENER_URL + OSRM.DEFAULTS.SHORTENER_PARAMETERS.replace(/%url/, src);
-	// using encodeURIComponent(src) instead of just src might be required for some URL shortener services, but it does not work with others (e.g. ours)
+	// uncomment to not use link shorteners
+	if( OSRM.DEFAULTS.HOST_SHORTENER_URL == '' ) {
+		var response = {};
+		response.label = OSRM.loc("ROUTE_LINK");	
+		response[OSRM.DEFAULTS.SHORTENER_REPLY_PARAMETER] = src;
+		OSRM.RoutingDescription.showRouteLink( response );
+		return;	
+	} else {
+		var source = OSRM.DEFAULTS.HOST_SHORTENER_URL + OSRM.DEFAULTS.SHORTENER_PARAMETERS.replace(/%url/, src);
+		// using "encodeURIComponent(src)" instead of "src" required for some URL shortener services, but not functional for others (e.g. ours)
 	
-	OSRM.JSONP.call(source, OSRM.RoutingDescription.showRouteLink, OSRM.RoutingDescription.showRouteLink_TimeOut, OSRM.DEFAULTS.JSONP_TIMEOUT, 'shortener');
-	document.getElementById('route-link').innerHTML = '[<a class="text-link-inactive">'+OSRM.loc("GENERATE_LINK_TO_ROUTE")+'</a>]';
+		OSRM.JSONP.call(source, OSRM.RoutingDescription.showRouteLink, OSRM.RoutingDescription.showRouteLink_TimeOut, OSRM.DEFAULTS.JSONP_TIMEOUT, 'shortener');
+		document.getElementById('route-link').innerHTML = '[<a class="text-link-inactive">'+OSRM.loc("GENERATE_LINK_TO_ROUTE")+'</a>]';
+	}
 },
 showRouteLink: function(response){
 	if(!response || !response[OSRM.DEFAULTS.SHORTENER_REPLY_PARAMETER]) {
@@ -73,9 +82,12 @@ showRouteLink: function(response){
 	}
 	
 	OSRM.G.active_shortlink = response[OSRM.DEFAULTS.SHORTENER_REPLY_PARAMETER];
+	var shortlink_label = response.label;
+	if( !shortlink_label )
+		shortlink_label = OSRM.G.active_shortlink.substring(7);
 	document.getElementById('route-link').innerHTML =
-		'[<a class="text-link" onClick="OSRM.RoutingDescription.showQRCode();">'+OSRM.loc("QR")+'</a>]' + ' ' +
-		'[<a class="text-link" href="' +OSRM.G.active_shortlink+ '">'+OSRM.G.active_shortlink.substring(7)+'</a>]';
+		'[<a class="text-link" onClick="OSRM.RoutingDescription.showQRCode();">'+OSRM.loc("QR")+'</a>]' + '&nbsp;' +
+		'[<a class="text-link" href="' +OSRM.G.active_shortlink+ '">'+shortlink_label+'</a>]';
 },
 showRouteLink_TimeOut: function(){
 	document.getElementById('route-link').innerHTML = '[<a class="text-link-inactive">'+OSRM.loc("LINK_TO_ROUTE_TIMEOUT")+'</a>]';

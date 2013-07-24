@@ -33,58 +33,79 @@ function createQRCode(text) {
 	// settings
 	var QRCodeVersion = 4;
 	var dotsize = 6;
-		
-	// create qrcode
-	// [when storing longer strings, verify if QRCodeVersion is still sufficient -> catch errors]
-	var qrcode = new QRCode(QRCodeVersion, QRErrorCorrectLevel.H);
-	qrcode.addData(text);
-	qrcode.make();
-	var qrsize = qrcode.getModuleCount();
-		
-	// HTML5 capable browsers
-	if( window.opener.OSRM.Browser.IE6_8 == -1 ) {
-		// fill canvas		
-		var canvas = document.createElement("canvas");
-		canvas.setAttribute('height', dotsize*qrsize );
-		canvas.setAttribute('width', dotsize*qrsize );
 
-		var context = canvas.getContext('2d');
-		for (var x = 0; x < qrsize; x++)
-		for (var y = 0; y < qrsize; y++)  {
-			if (qrcode.isDark(y, x))
-				context.fillStyle = "rgb(0,0,0)";  
-			else
-				context.fillStyle = "rgb(255,255,255)";
-			context.fillRect ( x*dotsize, y*dotsize, dotsize, dotsize);
+	// find minimum QR version >=4 for encoding text
+	while(QRCodeVersion <= 40) {
+		try {
+			var qrcode = new QRCode(QRCodeVersion, QRErrorCorrectLevel.H);
+			qrcode.addData(text);
+			qrcode.make();
+			break;
+		} catch(err) {
+			QRCodeVersion++;
 		}
-	
-		// create png
-		var image = document.createElement("img");
-		image.id = "qrcode";	
-		image.src = canvas.toDataURL("image/png");
-		document.getElementById("qrcode-container").appendChild(image);
-
-	// IE8...
-	} else {
-		// fill table
-		var html = "";
-		html += "<table class='qrcode'>";
-		for (var y = 0; y < qrsize; y++) {
-			html += "<tr>";
-			for (var x = 0; x < qrsize; x++)  {
-				if (qrcode.isDark(y, x))
-					html += "<td class='black'/>";
-				else
-					html += "<td class='white'/>";
-			}
-			html += "</tr>";
-		}
-		html += "</table>";
-		
-		// add html to window
-		document.getElementById("qrcode-container").innerHTML = html;
 	}
+	
+	// create qrcode
+	var qrsize = 33;
+	if( QRCodeVersion <= 40 ) {
+		var qrcode = new QRCode(QRCodeVersion, QRErrorCorrectLevel.H);
+		qrcode.addData(text);
+		qrcode.make();
+		qrsize = qrcode.getModuleCount();
+			
+		// HTML5 capable browsers
+		if( window.opener.OSRM.Browser.IE6_8 == -1 ) {
+			// fill canvas		
+			var canvas = document.createElement("canvas");
+			canvas.setAttribute('height', dotsize*qrsize );
+			canvas.setAttribute('width', dotsize*qrsize );
+	
+			var context = canvas.getContext('2d');
+			for (var x = 0; x < qrsize; x++)
+			for (var y = 0; y < qrsize; y++)  {
+				if (qrcode.isDark(y, x))
+					context.fillStyle = "rgb(0,0,0)";  
+				else
+					context.fillStyle = "rgb(255,255,255)";
+				context.fillRect ( x*dotsize, y*dotsize, dotsize, dotsize);
+			}
+		
+			// create png
+			var image = document.createElement("img");
+			image.id = "qrcode";	
+			image.src = canvas.toDataURL("image/png");
+			document.getElementById("qrcode-container").appendChild(image);
+	
+		// IE8...
+		} else {
+			// fill table
+			var html = "";
+			html += "<table class='qrcode'>";
+			for (var y = 0; y < qrsize; y++) {
+				html += "<tr>";
+				for (var x = 0; x < qrsize; x++)  {
+					if (qrcode.isDark(y, x))
+						html += "<td class='black'/>";
+					else
+						html += "<td class='white'/>";
+				}
+				html += "</tr>";
+			}
+			html += "</table>";
+			
+			// add html to window
+			document.getElementById("qrcode-container").innerHTML = html;
+		}
+	}
+	
+	// add url and fit popup window to content
+	var width = Math.max( 250, 30 + qrsize*6 );
+	var height = Math.max( 250, 90 + qrsize*6 );
+	window.resizeTo(width, height );
+	
 	document.getElementById("qrcode-link").innerHTML = text;
+    window.resizeTo(width, height + document.getElementById("qrcode-link").offsetHeight);
 }
 
 
