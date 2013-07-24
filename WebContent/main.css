@@ -229,7 +229,8 @@ html, body
 }
 .input-label 
 {
-	margin:0px 2px 0px 0px;	
+	margin:0px 2px 0px 0px;
+	white-space:nowrap;	
 }
 .input-delete 
 {
@@ -300,6 +301,7 @@ html, body
 {
 	font-weight:normal;
 	padding:0px 5px 0px 0px;
+	white-space:nowrap;
 }
 .header-content
 {
@@ -542,6 +544,7 @@ html, body
 .config-label
 {
 	margin: 0px 0px 0px 5px;
+	white-space: nowrap;
 }
 .config-select
 {

@@ -30,7 +30,7 @@ OSRM.Localization["lv"] = {
 "GUI_ZOOM_ON_ROUTE": "Padidinti ant Route",
 "GUI_ZOOM_ON_USER": "Padidinti ant Lietotājs",
 "GUI_SEARCH": "&nbsp;&nbsp;Rādīt&nbsp;&nbsp;",
-"GUI_REVERSE": "Pretējā&nbsp;virzienā",
+"GUI_REVERSE": "Pretējā virzienā",
 "GUI_START_TOOLTIP": "Izvēlieties sākumu",
 "GUI_END_TOOLTIP": "Izvēlieties galamērķi",
 "GUI_MAIN_WINDOW": "Galvenais logs",
