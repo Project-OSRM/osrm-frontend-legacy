@@ -73,7 +73,7 @@ OSRM.GUIBoxHandle = function( box_name, side, css, transitionStartFct, transitio
 		box_wrapper.addEventListener("oTransitionEnd", fct, false);
 		box_wrapper.addEventListener("MSTransitionEnd", fct, false);
 	} else {
-		this._legacyTransitionEndFct = fct;			// legacy browser support
+		this._legacyTransitionEndFct = OSRM.bind( this, function(){fct({target:this._box});} );	// legacy browser support
 	}
 };
 
@@ -118,9 +118,11 @@ _toggle: function() {
 	}
 	// legacy browser support
 	if( OSRM.Browser.FF3!=-1 || OSRM.Browser.IE6_9!=-1 )
-		setTimeout(this._legacyTransitionEndFct, 0);
+		setTimeout( this._legacyTransitionEndFct, 0);
 },
-_onTransitionEnd: function() {
+_onTransitionEnd: function(e) {
+	if(e.target != this._box)
+		return;
 	this._box.className = this._class;
 	if( this._box_visible == true ) {
 		this._box_group.$show();
