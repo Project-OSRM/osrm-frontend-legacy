@@ -23,6 +23,7 @@ OSRM.Markers = function() {
 	this.highlight = new OSRM.DragMarker("highlight", {zIndexOffset:-1,draggable:true,icon:OSRM.G.icons['marker-highlight'],dragicon:OSRM.G.icons['marker-highlight-drag']});;
 	this.hover = new OSRM.Marker("hover", {zIndexOffset:-1,draggable:false,icon:OSRM.G.icons['marker-highlight']});;
 	this.dragger = new OSRM.DragMarker("drag", {draggable:true,icon:OSRM.G.icons['marker-drag'],dragicon:OSRM.G.icons['marker-drag']});;
+	this.initial_vias = new Array();
 };
 OSRM.extend( OSRM.Markers,{
 reset: function() {
@@ -35,6 +36,8 @@ reset: function() {
 	// remove special markers
 	this.highlight.hide();
 	this.dragger.hide();
+	// remove initial vias
+	this.initial_vias.length=0;
 },
 removeVias: function() {
 	// assert correct route array s - v - t
@@ -49,6 +52,15 @@ setSource: function(position) {
 	else
 		this.route.splice(0,0, new OSRM.RouteMarker(OSRM.C.SOURCE_LABEL, {draggable:true,icon:OSRM.G.icons['marker-source'],dragicon:OSRM.G.icons['marker-source-drag']}, position));
 	document.getElementById('gui-delete-source').style.visibility = "visible";
+	
+	// setting initial vias (not so nice, as showing is done here too)
+	if(this.initial_vias.length>0) {
+		for(var i=0; i<this.initial_vias.length;i++)
+			OSRM.G.markers.setVia( i, this.initial_vias[i] );
+		for(var i=1; i<OSRM.G.markers.route.length-1;i++)
+			OSRM.G.markers.route[i].show();
+	}
+	
 	return 0;	
 },
 setTarget: function(position) {
@@ -58,6 +70,15 @@ setTarget: function(position) {
 	else
 		this.route.splice( this.route.length,0, new OSRM.RouteMarker(OSRM.C.TARGET_LABEL, {draggable:true,icon:OSRM.G.icons['marker-target'],dragicon:OSRM.G.icons['marker-target-drag']}, position));
 	document.getElementById('gui-delete-target').style.visibility = "visible";
+
+	// setting initial vias (not so nice, as showing is done here too)	
+	if(this.initial_vias.length>0) {
+		for(var i=0; i<this.initial_vias.length;i++)
+			OSRM.G.markers.setVia( i, this.initial_vias[i] );
+		for(var i=1; i<OSRM.G.markers.route.length-1;i++)
+			OSRM.G.markers.route[i].show();
+	}
+	
 	return this.route.length-1;
 },
 setVia: function(id, position) {
@@ -88,6 +109,8 @@ removeMarker: function(id) {
 	
 	this.route[id].hide();
 	this.route.splice(id, 1);
+	// remove initial vias
+	this.initial_vias.length=0;
 },
 reverseDescriptions: function() {
 	var last = this.route.length-1;
@@ -102,33 +125,21 @@ reverseDescriptions: function() {
 reverseMarkers: function() {
 	var size = this.route.length;
 	
-	// invert route, if a route is shown	
-	if( size > 1 ) {
-		// switch positions in nodes
-		var temp_position = this.route[0].getPosition();
-		this.route[0].setPosition( this.route[size-1].getPosition() );
-		this.route[size-1].setPosition( temp_position );
-		// switch nodes in array
-		var temp_node = this.route[0];
-		this.route[0] = this.route[size-1];
-		this.route[size-1] = temp_node;
-		// reverse route
-		this.route.reverse();
-		// clear information (both delete markers stay visible)
-		OSRM.GUI.clearResults();
-		
-	// invert marker, if only one marker is shown (implicit clear of information / delete markers)
-	} else if( size > 0 ) {
-		var position = this.route[0].getPosition();
-		var label = this.route[0].label;
-		this.removeMarker(0);
-		if( label == OSRM.C.TARGET_LABEL )			
-			this.setSource( position );
-		else if( label == OSRM.C.SOURCE_LABEL )
-			this.setTarget( position );
-		this.route[0].show();
-	}
+	// switch positions in nodes
+	var temp_position = this.route[0].getPosition();
+	this.route[0].setPosition( this.route[size-1].getPosition() );
+	this.route[size-1].setPosition( temp_position );
+	// switch nodes in array
+	var temp_node = this.route[0];
+	this.route[0] = this.route[size-1];
+	this.route[size-1] = temp_node;
+	// reverse route
+	this.route.reverse();
+	// clear information (both delete markers stay visible)
+	OSRM.GUI.clearResults();
 
+	// remove initial vias	
+	this.reverseInitialVias();
 },
 hasSource: function() {
 	if( this.route[0] && this.route[0].label == OSRM.C.SOURCE_LABEL )
@@ -139,6 +150,13 @@ hasTarget: function() {
 	if( this.route[this.route.length-1] && this.route[this.route.length-1].label == OSRM.C.TARGET_LABEL )
 		return true;
 	return false;
+},
+
+addInitialVia: function(position) {
+	this.initial_vias.push(position);
+},
+reverseInitialVias: function() {
+	this.initial_vias.reverse();
 },
 
 //relabel all via markers

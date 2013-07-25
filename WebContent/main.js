@@ -285,8 +285,9 @@ OSRM.parseParameters = function(){
 		else if(name_val[0] == 'dest') {
 			var coordinates = unescape(name_val[1]).split(',');
 			if(coordinates.length!=2 || !OSRM.Utils.isLatitude(coordinates[0]) || !OSRM.Utils.isLongitude(coordinates[1]) )
-				return;				
-			params.destination = new L.LatLng( coordinates[0], coordinates[1] );
+				return;
+			params.destinations = params.destinations || [];
+			params.destinations.push ( new L.LatLng( coordinates[0], coordinates[1]) );
 		}
 		else if(name_val[0] == 'destname') {
 			params.destination_name = decodeURI(name_val[1]).replace(/<\/?[^>]+(>|$)/g ,"");	// discard tags	
@@ -331,8 +332,8 @@ OSRM.parseParameters = function(){
 		return;	
 		
 	// case 1: destination given
-	if( params.destination ) {
-		var index = OSRM.G.markers.setTarget( params.destination );
+	if( params.destinations ) {
+		var index = OSRM.G.markers.setTarget( params.destinations[params.destinations.length-1] );
 		if( params.destination_name )
 			OSRM.G.markers.route[index].description = params.destination_name;	// name in GUI will be set when languages are loaded
 		else 
@@ -340,6 +341,9 @@ OSRM.parseParameters = function(){
 		OSRM.G.markers.route[index].show();
 		OSRM.G.markers.route[index].centerView( params.zoom );
 		OSRM.G.initial_position_override = true;
+		OSRM.G.initial_positions = [];
+		for(var i=0; i<params.destinations.length-1;i++)
+			OSRM.G.markers.addInitialVia( params.destinations[i] );
 		return;
 	}
 
