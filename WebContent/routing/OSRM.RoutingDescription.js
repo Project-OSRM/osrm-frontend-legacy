@@ -233,11 +233,11 @@ _buildHeader: function(distance, duration, route_link, gpx_link, route_name) {
 		'<div class="left">' +
 		'<div class="full">' +
 		'<div class="row">' +
-		'<div class="left header-label">' + OSRM.loc("DISTANCE")+":" + '</div>' +
+		'<div class="left header-label nowrap">' + OSRM.loc("DISTANCE")+":" + '</div>' +
 		'<div class="left header-content stretch">' + distance + '</div>' +
 		'</div>' +
 		'<div class="row">' +
-		'<div class="left header-label">' + OSRM.loc("DURATION")+":" + '</div>' +
+		'<div class="left header-label nowrap">' + OSRM.loc("DURATION")+":" + '</div>' +
 		'<div class="left header-content stretch">' + duration + '</div>' +
 		'</div>' +
 		'</div>' +
