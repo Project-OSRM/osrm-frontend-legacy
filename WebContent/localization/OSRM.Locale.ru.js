@@ -46,8 +46,8 @@ OSRM.Localization["ru"] = {
 "GUI_MAPPING_TOOLS": "Настройки карты",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Выделить безымянные улицы",
 "GUI_SHOW_PREVIOUS_ROUTES": "Отображать предыдущий маршрут",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Результаты поиска",
 "FOUND_X_RESULTS": "найдено %i результатов",

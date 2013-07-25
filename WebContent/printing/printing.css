@@ -96,7 +96,6 @@ div.label
 .description-header-label
 {
 	padding:0px 5px 0px 0px;
-	white-space:nowrap;
 }
 .description-header-content
 {
@@ -183,6 +182,10 @@ div.label
 {
 	display:none;
 }
+}
+.nowrap
+{
+	white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------------ */

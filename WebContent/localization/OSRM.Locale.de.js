@@ -46,8 +46,11 @@ OSRM.Localization["de"] = {
 "GUI_MAPPING_TOOLS": "Kartenwerkzeuge",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Unbenannte Straßen hervorheben",
 "GUI_SHOW_PREVIOUS_ROUTES": "Frühere Routen zeigen",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"GUI_EXTERNAL_TOOLS": "Externe Programme:",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
+"OPEN_JOSM_FAILED": "Zoomen Sie näher heran, um den Editor zu öffnen.",
+"OPEN_OSMBUGS_FAILED": "Zoomen Sie näher heran, um Notes zu setzen.",
 // geocoder
 "SEARCH_RESULTS": "Suchergebnisse",
 "FOUND_X_RESULTS": "%i Ergebnisse gefunden",

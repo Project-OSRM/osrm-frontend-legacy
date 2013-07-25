@@ -113,28 +113,24 @@ inputChanged: function(marker_id) {
 
 // click: button "open JOSM"
 openJOSM: function() {
-	var center = OSRM.G.map.getCenterUI();
-	var bounds = OSRM.G.map.getBoundsUI();
-	
-	var xdelta = Math.min(0.02, Math.abs(bounds.getSouthWest().lng - center.lng) );
-	var ydelta = Math.min(0.01, Math.abs(bounds.getSouthWest().lat - center.lat) );
-	
-	var p = [ 'left='  + (center.lng - xdelta).toFixed(6), 'bottom=' + (center.lat - ydelta).toFixed(6), 'right=' + (center.lng + xdelta).toFixed(6), 'top=' + (center.lat + ydelta).toFixed(6)];
-	var url = 'http://127.0.0.1:8111/load_and_zoom?' + p.join('&');
- 
-	var frame = document.getElementById('josm-frame');
-	if(!frame) {
-		frame = L.DomUtil.create('iframe', null, document.body);
-		frame.style.display = "none";
-		frame.id = 'josm-frame';
-	}
-	frame.src = url;
+	var zoom = OSRM.G.map.getZoom();
+	if( zoom < OSRM.DEFAULTS.EDITOR_MIN_ZOOM_LEVEL ) {
+		window.alert( OSRM.loc("OPEN_JOSM_FAILED") );
+	} else {
+		var position = OSRM.G.map.getCenterUI();
+		window.open( "http://www.openstreetmap.org/edit?lat="+position.lat.toFixed(6)+"&lon="+position.lng.toFixed(6)+"&zoom="+zoom );
+	}	
 },
 
 //click: button "open OSM Bugs"
 openOSMBugs: function() {
-	var position = OSRM.G.map.getCenterUI();
-	window.open( "http://osmbugs.org/?lat="+position.lat.toFixed(6)+"&lon="+position.lng.toFixed(6)+"&zoom="+OSRM.G.map.getZoom() );
+	var zoom = OSRM.G.map.getZoom();
+	if( zoom < OSRM.DEFAULTS.NOTES_MIN_ZOOM_LEVEL ) {
+		window.alert( OSRM.loc("OPEN_OSMBUGS_FAILED") );
+	} else {
+		var position = OSRM.G.map.getCenterUI();
+		window.open( "http://www.openstreetmap.org/?lat="+position.lat.toFixed(6)+"&lon="+position.lng.toFixed(6)+"&zoom="+zoom+"&notes=yes" );
+	}
 },
 
 //click: button "delete marker"

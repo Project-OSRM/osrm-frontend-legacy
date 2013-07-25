@@ -54,8 +54,8 @@ OSRM.Localization["ca"] = {
 "GUI_MAPPING_TOOLS": "Eines de mapatge",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Realça les vies sense nom",
 "GUI_SHOW_PREVIOUS_ROUTES": "Mostra les rutes anteriors",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Cerca resultats",
 "FOUND_X_RESULTS": "trobat %i resultats",

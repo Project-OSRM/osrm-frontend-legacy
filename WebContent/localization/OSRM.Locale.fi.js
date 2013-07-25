@@ -46,8 +46,8 @@ OSRM.Localization["fi"] = {
 "GUI_MAPPING_TOOLS": "Kartoitustyökalut",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Korosta nimettömät tiet",
 "GUI_SHOW_PREVIOUS_ROUTES": "Näytä edelliset reitit",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Haun tulokset",
 "FOUND_X_RESULTS": "Löytyi %i vaihtoehtoa",

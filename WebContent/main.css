@@ -227,10 +227,9 @@ html, body
 {
 	padding-bottom:4px;
 }
-.input-label 
+.input-label
 {
 	margin:0px 2px 0px 0px;
-	white-space:nowrap;	
 }
 .input-delete 
 {
@@ -301,7 +300,6 @@ html, body
 {
 	font-weight:normal;
 	padding:0px 5px 0px 0px;
-	white-space:nowrap;
 }
 .header-content
 {
@@ -544,7 +542,6 @@ html, body
 .config-label
 {
 	margin: 0px 0px 0px 5px;
-	white-space: nowrap;
 }
 .config-select
 {
@@ -576,6 +573,12 @@ html, body
 }
 .mapping-button
 {
+	float: right;
+}
+.mapping-label
+{
+	padding:3px 10px 2px 10px;
+	font-size:9px;
 	float: right;
 }
 #notification-box
@@ -805,6 +808,10 @@ html, body
 	position:absolute;
 	top:-1000px;
 	left:-1000px;
+}
+.nowrap
+{
+	white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------------ */

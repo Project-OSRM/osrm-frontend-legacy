@@ -46,8 +46,8 @@ OSRM.Localization["sk"] = {
 "GUI_MAPPING_TOOLS": "Mapovacie nástroje",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Zvýrazniť nepomenované ulice",
 "GUI_SHOW_PREVIOUS_ROUTES": "Zobraziť predchádzajúce trasy",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Výsledky hľadania",
 "FOUND_X_RESULTS": "našlo sa %i výsledkov",

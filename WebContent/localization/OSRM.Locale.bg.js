@@ -46,8 +46,8 @@ OSRM.Localization["bg"] = {
 "GUI_MAPPING_TOOLS": "Инструменти за карта",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Подчертай неименувани улици",
 "GUI_SHOW_PREVIOUS_ROUTES": "Покажи преднишни маршрути",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Грешки",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Резултати от търсене",
 "FOUND_X_RESULTS": "намерени %i резултати",

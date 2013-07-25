@@ -46,8 +46,8 @@ OSRM.Localization["es"] = {
 "GUI_MAPPING_TOOLS": "Herramientas del mapa",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Resaltar calles sin nombre",
 "GUI_SHOW_PREVIOUS_ROUTES": "Mostrar rutas anteriores",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Resultados de la búsqueda",
 "FOUND_X_RESULTS": "%i resultado(s)",

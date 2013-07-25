@@ -46,8 +46,8 @@ OSRM.Localization["da"] = {
 "GUI_MAPPING_TOOLS": "Kortlægnings værktøjer",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Fremhæv unavngivne veje",
 "GUI_SHOW_PREVIOUS_ROUTES": "Vis tidligere ruter",
-"OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_JOSM": "Editor",
+"OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Søgeresultater",
 "FOUND_X_RESULTS": "fandt %i resultater",

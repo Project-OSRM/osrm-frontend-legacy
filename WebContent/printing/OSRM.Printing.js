@@ -79,15 +79,15 @@ show: function(response) {
 		'<td class="left stretch">' +
 		'<table class="full">' +
 		'<tr class="row">' +
-		'<td class="center description-header-label">' + OSRM.loc("GUI_START")+ ': </td>' +
+		'<td class="center description-header-label nowrap">' + OSRM.loc("GUI_START")+ ': </td>' +
 		'<td class="left description-header-content stretch">' + document.getElementById("gui-input-source").value + '</td>' +
 		'</tr>' +
 		'<tr class="row">' +
-		'<td class="center description-header-label">'  + '↓' + '</td>' +
+		'<td class="center description-header-label nowrap">'  + '↓' + '</td>' +
 		'<td class="left description-header-label stretch">' + route_name + '</td>' +
 		'</tr>' +		
 		'<tr class="row">' +
-		'<td class="center description-header-label">' + OSRM.loc("GUI_END")+ ': </td>' +
+		'<td class="center description-header-label nowrap">' + OSRM.loc("GUI_END")+ ': </td>' +
 		'<td class="left description-header-content stretch">' + document.getElementById("gui-input-target").value + '</td>' +
 		'</tr>' +		
 		'</table>' +
@@ -96,12 +96,12 @@ show: function(response) {
 		'<td class="left">' +
 		'<table class="full">' +
 		'<tr class="row">' +
-		'<td class="left description-header-label">' +  OSRM.loc("DISTANCE")+': </td>' +
-		'<td class="left description-header-content">' + OSRM.Utils.toHumanDistance(response.route_summary.total_distance) + '</td>' +
+		'<td class="left description-header-label nowrap">' +  OSRM.loc("DISTANCE")+': </td>' +
+		'<td class="left description-header-content stretch">' + OSRM.Utils.toHumanDistance(response.route_summary.total_distance) + '</td>' +
 		'</tr>' +
 		'<tr class="row">' +
-		'<td class="left description-header-label">' +  OSRM.loc("DURATION")+': </td>' +
-		'<td class="left description-header-content">' + OSRM.Utils.toHumanTime(response.route_summary.total_time) + '</td>' +
+		'<td class="left description-header-label nowrap">' +  OSRM.loc("DURATION")+': </td>' +
+		'<td class="left description-header-content stretch">' + OSRM.Utils.toHumanTime(response.route_summary.total_time) + '</td>' +
 		'</tr>' +
 		'</table>' +
 		'</td>' +
@@ -121,15 +121,15 @@ show: function(response) {
 		'<div class="left stretch">' +
 		'<div class="full">' +
 		'<div class="row">' +
-		'<div class="center description-header-label">' + OSRM.loc("GUI_START")+ ': </div>' +
+		'<div class="center description-header-label nowrap">' + OSRM.loc("GUI_START")+ ': </div>' +
 		'<div class="left description-header-content stretch">' + document.getElementById("gui-input-source").value + '</div>' +
 		'</div>' +
 		'<div class="row">' +
-		'<div class="center description-header-label">' + '↓' + '</div>' +
-		'<div class="left description-header-label">' + route_name + '</div>' +
+		'<div class="center description-header-label nowrap">' + '↓' + '</div>' +
+		'<div class="left description-header-label stretch">' + route_name + '</div>' +
 		'</div>' +		
 		'<div class="row">' +
-		'<div class="center description-header-label">' + OSRM.loc("GUI_END")+ ': </div>' +
+		'<div class="center description-header-label nowrap">' + OSRM.loc("GUI_END")+ ': </div>' +
 		'<div class="left description-header-content stretch">' + document.getElementById("gui-input-target").value + '</div>' +
 		'</div>' +
 		'</div>' +
@@ -138,12 +138,12 @@ show: function(response) {
 		'<div class="left">' +
 		'<div class="full">' +
 		'<div class="row">' +
-		'<div class="left description-header-label">' +  OSRM.loc("DISTANCE")+': </div>' +
-		'<div class="left description-header-content">' + OSRM.Utils.toHumanDistance(response.route_summary.total_distance) + '</div>' +
+		'<div class="left description-header-label nowrap">' +  OSRM.loc("DISTANCE")+': </div>' +
+		'<div class="left description-header-content stretch">' + OSRM.Utils.toHumanDistance(response.route_summary.total_distance) + '</div>' +
 		'</div>' +
 		'<div class="row">' +
-		'<div class="left description-header-label">' +  OSRM.loc("DURATION")+': </div>' +
-		'<div class="left description-header-content">' + OSRM.Utils.toHumanTime(response.route_summary.total_time) + '</div>' +
+		'<div class="left description-header-label nowrap">' +  OSRM.loc("DURATION")+': </div>' +
+		'<div class="left description-header-content stretch">' + OSRM.Utils.toHumanTime(response.route_summary.total_time) + '</div>' +
 		'</div>' +
 		'</div>' +
 		'</div>' +

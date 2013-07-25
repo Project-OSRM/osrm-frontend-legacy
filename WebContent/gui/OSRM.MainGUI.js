@@ -61,6 +61,7 @@ setLabels: function() {
 	document.getElementById("gui-input-target").title = OSRM.loc("GUI_END_TOOLTIP");
 	document.getElementById("legal-notice").innerHTML = OSRM.loc("GUI_LEGAL_NOTICE");
 	document.getElementById("gui-mapping-label").innerHTML = OSRM.loc("GUI_MAPPING_TOOLS");
+	document.getElementById('gui-external-tools-label').innerHTML = OSRM.loc("GUI_EXTERNAL_TOOLS");	
 	document.getElementById("gui-config-label").innerHTML = OSRM.loc("GUI_CONFIGURATION");
 	document.getElementById("gui-language-2-label").innerHTML = OSRM.loc("GUI_LANGUAGE")+":";
 	document.getElementById("gui-units-label").innerHTML = OSRM.loc("GUI_UNITS")+":";
