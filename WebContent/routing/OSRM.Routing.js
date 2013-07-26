@@ -46,6 +46,7 @@ init: function() {
 
 // process JSONP response of routing server
 timeoutRoute: function() {
+	OSRM.G.response = { via_points:[] }; 
 	OSRM.RoutingGeometry.showNA();
 	OSRM.RoutingNoNames.showNA();
 	OSRM.RoutingDescription.showNA( OSRM.loc("TIMED_OUT") );
