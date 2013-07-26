@@ -109,6 +109,11 @@ initPosition: function() {
 
 // map event handlers
 zoomed: function(e) {
+	// prevent redraw when zooming out less than 4 levels (no need to reduce route geometry data)
+	var delta_zoom = OSRM.G.route.getZoomLevel() - OSRM.G.map.getZoom(); 
+	if( delta_zoom >= 0 && delta_zoom <= 3 ) 
+		return;
+	// redraw routes
 	if(OSRM.G.dragging)
 		OSRM.Routing.getRoute_Dragging();
 	else

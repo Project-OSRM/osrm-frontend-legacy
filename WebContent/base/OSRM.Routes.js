@@ -35,6 +35,7 @@ OSRM.Route = function() {
 	
 	this._noroute = OSRM.Route.ROUTE;
 	this._history = new OSRM.HistoryRoute();
+	this._zoomlevel = 0;
 };
 OSRM.Route.NOROUTE = true;
 OSRM.Route.ROUTE = false;
@@ -53,14 +54,16 @@ OSRM.extend( OSRM.Route,{
 
 		this._history.fetchHistoryRoute();
 		this._history.showHistoryRoutes();		
-		this._history.storeHistoryRoute();		
+		this._history.storeHistoryRoute();
+		this._zoomlevel = OSRM.G.map.getZoom();
 	},
 	hideRoute: function() {
 		this._current_route.hide();
 		this._unnamed_route.hide();
 		
 		this._history.fetchHistoryRoute();
-		this._history.showHistoryRoutes();		
+		this._history.showHistoryRoutes();
+		this._zoomlevel = 0;
 		// deactivate GUI features that need a route
 		OSRM.GUI.deactivateRouteFeatures();
 	},
@@ -123,6 +126,9 @@ OSRM.extend( OSRM.Route,{
 	},
 	getPoints: function() {
 		return this._current_route.getPoints();
+	},
+	getZoomLevel: function() {
+		return this._zoomlevel;
 	},
 	
 	// helper routines
