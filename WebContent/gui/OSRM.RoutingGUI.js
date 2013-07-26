@@ -118,7 +118,8 @@ openJOSM: function() {
 		window.alert( OSRM.loc("OPEN_JOSM_FAILED") );
 	} else {
 		var position = OSRM.G.map.getCenterUI();
-		window.open( "http://www.openstreetmap.org/edit?lat="+position.lat.toFixed(6)+"&lon="+position.lng.toFixed(6)+"&zoom="+zoom );
+		var pr = OSRM.C.PRECISION;
+		window.open( "http://www.openstreetmap.org/edit?lat="+position.lat.toFixed(pr)+"&lon="+position.lng.toFixed(pr)+"&zoom="+zoom );
 	}	
 },
 
@@ -129,7 +130,8 @@ openOSMBugs: function() {
 		window.alert( OSRM.loc("OPEN_OSMBUGS_FAILED") );
 	} else {
 		var position = OSRM.G.map.getCenterUI();
-		window.open( "http://www.openstreetmap.org/?lat="+position.lat.toFixed(6)+"&lon="+position.lng.toFixed(6)+"&zoom="+zoom+"&notes=yes" );
+		var pr = OSRM.C.PRECISION;
+		window.open( "http://www.openstreetmap.org/?lat="+position.lat.toFixed(pr)+"&lon="+position.lng.toFixed(pr)+"&zoom="+zoom+"&notes=yes" );
 	}
 },
 

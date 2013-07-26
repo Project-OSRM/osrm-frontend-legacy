@@ -145,8 +145,9 @@ OSRM.extend( OSRM.HistoryRoute,{
 	_equalMarkers: function(lhs, rhs) {
 		if(lhs.length != rhs.length)
 			return false;
+		var pr = OSRM.C.PRECISION;
 		for(var i=0,size=lhs.length; i<size; i++) {
-			if( lhs[i].lat.toFixed(5) != rhs[i].lat.toFixed(5) || lhs[i].lng.toFixed(5) != rhs[i].lng.toFixed(5) )
+			if( lhs[i].lat.toFixed(pr) != rhs[i].lat.toFixed(pr) || lhs[i].lng.toFixed(pr) != rhs[i].lng.toFixed(pr) )
 				return false;
 		}
 		return true;
@@ -157,7 +158,7 @@ OSRM.extend( OSRM.HistoryRoute,{
 		if(!response)
 			return;
 		
-		var positions = OSRM.RoutingGeometry._decode(response.route_geometry, 5);
+		var positions = OSRM.RoutingGeometry._decode(response.route_geometry, OSRM.C.PRECISION);
 		this._history[history_id].route.setPositions(positions);
 		this._updateHints(response, history_id);
 	},
@@ -175,9 +176,10 @@ OSRM.extend( OSRM.HistoryRoute,{
 		if(this._history[history_id].checksum)
 			source += '&checksum=' + this._history[history_id].checksum;
 		
-		var history_markers = this._history[history_id].markers; 
+		var history_markers = this._history[history_id].markers;
+		var pr = OSRM.C.PRECISION;
 		for(var i=0,size=history_markers.length; i<size; i++) {
-			source += '&loc='  + history_markers[i].lat.toFixed(6) + ',' + history_markers[i].lng.toFixed(6);
+			source += '&loc='  + history_markers[i].lat.toFixed(pr) + ',' + history_markers[i].lng.toFixed(pr);
 			if( history_markers[i].hint )
 				source += '&hint=' + history_markers[i].hint;
 		}
