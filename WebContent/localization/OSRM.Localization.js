@@ -71,6 +71,14 @@ setLanguageWrapper: function(language) {		// wrapping required to correctly prev
 setLanguage: function(language, loaded_on_demand) {
 	// check if loaded-on-demand language is still wanted as current language
 	if( loaded_on_demand ) {
+		// fix for racing condition when fallback language gets loaded after current language
+		var fb_localization = OSRM.Localization[OSRM.Localization.fallback_language];
+		if( fb_localization == null || fb_localization.loading )	// fallback language still loading
+			return;
+		var od_localization = OSRM.Localization[OSRM.Localization.load_on_demand_language];
+		if( od_localization != null && od_localization.loading )	// on demand language has loaded
+			language = OSRM.Localization.load_on_demand_language;
+		
 		if( language != OSRM.Localization.load_on_demand_language )
 			return;
 	}
@@ -79,7 +87,9 @@ setLanguage: function(language, loaded_on_demand) {
 	OSRM.GUI.selectorChange( 'gui-language-toggle', language );
 	OSRM.GUI.selectorChange( 'gui-language-2-toggle', language );
 	
-	if( OSRM.Localization[language]) {
+	if( OSRM.Localization[language] ) {
+		if( OSRM.Localization[language].loading )	// check if localization is currently being loaded
+			return;
 		OSRM.Localization.current_language = language;
 		OSRM.Localization.load_on_demand_language = null;
 		// change gui language		
@@ -114,6 +124,7 @@ setLanguage: function(language, loaded_on_demand) {
 		for(var i=0, size=supported_languages.length; i<size; i++) {
 			if( supported_languages[i].encoding == language) {
 				OSRM.Localization.load_on_demand_language = language;
+				OSRM.Localization[language] = {loading:true};	// add dummy localization until localization is loaded
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
 				script.src = OSRM.Localization.DIRECTORY+"OSRM.Locale."+language+".js";
