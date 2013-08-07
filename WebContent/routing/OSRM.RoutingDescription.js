@@ -147,7 +147,7 @@ show: function(response) {
 
 		// build route description
 		if( response.route_instructions[i][1] != "" )
-			body += OSRM.loc(OSRM.RoutingDescription._getDrivingInstruction(response.route_instructions[i][0])).replace(/\[(.*)\]/,"$1").replace(/%s/, response.route_instructions[i][1]).replace(/%d/, OSRM.loc(response.route_instructions[i][6]));
+			body += OSRM.loc(OSRM.RoutingDescription._getDrivingInstruction(response.route_instructions[i][0])).replace(/\[(.*)\]/,"$1").replace(/%s/, OSRM.RoutingDescription._getStreetName(response.route_instructions[i][1]) ).replace(/%d/, OSRM.loc(response.route_instructions[i][6]));
 		else
 			body += OSRM.loc(OSRM.RoutingDescription._getDrivingInstruction(response.route_instructions[i][0])).replace(/\[(.*)\]/,"").replace(/%d/, OSRM.loc(response.route_instructions[i][6]));
 
@@ -166,7 +166,7 @@ show: function(response) {
 	// create route name
 	var route_name = "(";
 	for(var j=0, sizej=response.route_name.length; j<sizej; j++)
-		route_name += ( j>0 && response.route_name[j] != "" && response.route_name[j-1] != "" ? " - " : "") + "<span style='white-space:nowrap;'>"+response.route_name[j]+ "</span>";
+		route_name += ( j>0 && response.route_name[j] != "" && response.route_name[j-1] != "" ? " - " : "") + "<span style='white-space:nowrap;'>" + OSRM.RoutingDescription._getStreetName(response.route_name[j]) + "</span>";
 	if( route_name == "(" )
 		route_name += " - ";
 	route_name += ")";
@@ -287,6 +287,16 @@ _getDrivingInstruction: function(server_instruction_id) {
 	if( description == local_instruction_id)
 		return OSRM.loc("DIRECTION_0");
 	return description;
+},
+
+// retrieve street name
+_getStreetName: function(street) {
+	var name = street.match(/\{highway:(.*)\}/);
+	if( name )
+		name = OSRM.loc('HIGHWAY_'+name[1].toUpperCase(), 'HIGHWAY_DEFAULT');
+	else
+		name = street;
+	return name;
 }
 
 };
