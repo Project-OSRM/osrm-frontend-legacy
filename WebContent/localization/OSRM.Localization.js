@@ -136,12 +136,15 @@ setLanguage: function(language, loaded_on_demand) {
 },
 		
 // if existing, return localized string -> English string -> input string
-translate: function(text) {
+// [if fallback given and localized, English strings not existent, localize and return fallback string]
+translate: function(text, fallback) {
 	if( OSRM.Localization[OSRM.Localization.current_language] && OSRM.Localization[OSRM.Localization.current_language][text] )
 		return OSRM.Localization[OSRM.Localization.current_language][text];
 	else if( OSRM.Localization[OSRM.Localization.fallback_language] && OSRM.Localization[OSRM.Localization.fallback_language][text] )
 		return OSRM.Localization[OSRM.Localization.fallback_language][text];
-	else
+	else if( fallback )
+		return OSRM.loc( fallback );
+	else	
 		return text;
 }
 };
