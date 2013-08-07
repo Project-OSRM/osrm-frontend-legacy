@@ -109,10 +109,12 @@ exclusiveNotify: function( header, text, closable ){
 	document.getElementById('exclusive-notification-blanket').style.display = "block";
 	document.getElementById('exclusive-notification-label').innerHTML = header;
 	document.getElementById('exclusive-notification-box').innerHTML = text;
-	if( closable )
+	if( closable ) {
+		document.getElementById('exclusive-notification-toggle').style.display = "block";
 		document.getElementById('exclusive-notification-toggle').onclick = OSRM.GUI.exclusiveDenotify;
-	else
+	} else {
 		document.getElementById('exclusive-notification-toggle').style.display = "none";
+	}
 	OSRM.GUI.exclusiveResize();
 },
 exclusiveDenotify: function() {
