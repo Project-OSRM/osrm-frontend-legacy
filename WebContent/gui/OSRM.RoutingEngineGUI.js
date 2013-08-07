@@ -44,7 +44,6 @@ setRoutingEngine: function(engine) {
 	
 	// requery data timestamp
 	OSRM.GUI.queryDataTimestamp();
-	OSRM.JSONP.call( OSRM.DEFAULTS.ROUTING_ENGINES[ OSRM.G.active_routing_engine ].timestamp+"?jsonp=%jsonp", OSRM.GUI.setDataTimestamp, OSRM.GUI.setDataTimestampTimeout, OSRM.DEFAULTS.JSONP_TIMEOUT, 'data_timestamp');	
 },
 _onRoutingEngineChanged: function(engine) {
 	if( engine == OSRM.G.active_routing_engine )
