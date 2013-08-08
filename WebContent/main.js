@@ -363,9 +363,9 @@ OSRM.parseParameters = function(){
 				var coord = query.split(/[,;]/);
 				OSRM.Geocoder._showInitResults( [{lat:coord[0],lon:coord[1]} ], {id:id,callback:callback} );
 			} else {
+				OSRM.GUI.exclusiveNotify( OSRM.loc("NOTIFICATION_GEOCODERWAIT_HEADER"), OSRM.loc("NOTIFICATION_GEOCODERWAIT_BODY"), false );				
 				var call = OSRM.DEFAULTS.HOST_GEOCODER_URL + "?format=json&json_callback=%jsonp" + OSRM.DEFAULTS.GEOCODER_BOUNDS + "&accept-language="+OSRM.Localization.current_language+"&limit=1&q=" + query;
 				OSRM.JSONP.call( call, OSRM.Geocoder._showInitResults, OSRM.Geocoder._showInitResults, OSRM.DEFAULTS.JSONP_TIMEOUT, "init_geocoder_"+id, {id:id,callback:callback} );
-				OSRM.GUI.exclusiveNotify( OSRM.loc("NOTIFICATION_GEOCODERWAIT_HEADER"), OSRM.loc("NOTIFICATION_GEOCODERWAIT_BODY"), false );
 			}
 		}
 		return;
