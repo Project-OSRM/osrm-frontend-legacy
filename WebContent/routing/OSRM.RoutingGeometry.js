@@ -18,7 +18,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // OSRM routing geometry
 // [renders routing geometry]
 
-OSRM.CONSTANTS.PRECISION = 5;
+OSRM.CONSTANTS.PRECISION = 6;
 
 OSRM.RoutingGeometry = {
 
