@@ -9,9 +9,34 @@ A deployed version of the the web frontend can be seen at [(3)].
 
 Setup
 -----
-The frontend should work directly as provided.
-Settings - including URLs of the routing server, geocoder server and tile servers - are specified in `OSRM.config.js`.
-Note that the URL shortener used for generating route links only works with URLs pointing to the official Project-OSRM website.
+The frontend for OSRM is a pure javascript application and needs no additional server support other than servering files via HTTP.
+Folllowing are the steps for an example installation on an Ubuntu server running Apache:
+
+Download repository from GitHub (as root):
+```
+  cd /usr/local
+  git clone https://github.com/DennisSchiefer/Project-OSRM-Web
+  chmod 755 -R Project-OSRM-Web
+  cd Project-OSRM-Web/WebContent
+```
+  
+Link content for Apache to serve (as root):
+```
+  cd /var/www
+  ln -s /usr/local/Project-OSRM-Web/WebContent osrm
+```
+  
+The frontend should be available on your server at:
+```
+  http://<your-server>/osrm/main.html
+```
+  
+If required, edit `OSRM.config.js` to change multiple settings.
+By default the frontend uses the project-osrm infrastructure (routing server, data timestamps, url shortener).
+This should be changed to your locations.
+
+Note that our url shortener only accepts urls pointing to the official project-osrm website.
+Though, it is possible to either switch to another shortening service or disable the url shortener entirely if required.
 
 
 Branches
@@ -29,32 +54,18 @@ Please use the OSRM-Project bug tracker [(4)] for submitting any bug reports or 
 Contribute
 ----------
 If you like to contribute, simply fork the project and start coding.
-It is best practice to create a new branch (from the current master) with a descriptive name for your contributions.
+It is best practice to create a new branch (from the current develop branch!) with a descriptive name for your contributions.
 When you are done, send a pull request from that branch.
 With this workflow, each pull request is isolated and can be easily merged.
 
 
-Integration into Project-OSRM repository
-----------------------------------------
-The Project-OSRM repository already contains the frontend repository as a submodule.
-It will always point to the latest deployed version.
-To successfully work a repository that contains submodules, use the following git commands (available in git 1.7.1+):
-
-* `git clone --recursive`  
-	to clone a repository and the contained submodules
-
-* `git pull && git submodule update`  
-	to pull the latest version of the repository and update its submodules if required
-
-Note that the frontend can also be checked out independently of the Project-OSRM repository.
-
-
 Compatibility
 -------------
-The frontend has been tested with Firefox 3.0+, Internet Explorer 8+ and Chrome 18+.
-Certain visuals like rounded corners or moving boxes will only show in newer browser versions.
-But no actual functionality is affected by this.
-Note that the frontend will not work with Internet Explorer 6 or 7.
+The frontend has been tested with Firefox 2.0+, Internet Explorer 8+ and Chrome 18+.
+Certain visuals like rounded corners or moving boxes only show up in more recent browser versions.
+The frontend will not work with Internet Explorer 6 or 7.
+As of Leaflet 0.6.x, dragging the map is no longer fully functional in very old browsers, such as Firefox 2.x. 
+This will not be fixed.
 
 
 References
