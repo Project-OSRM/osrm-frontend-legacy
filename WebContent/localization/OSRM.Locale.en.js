@@ -55,9 +55,11 @@ OSRM.Localization["en"] = {
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Highlight unnamed streets",
 "GUI_SHOW_PREVIOUS_ROUTES": "Show previous routes",
 "GUI_EXTERNAL_TOOLS": "External Tools:",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
+"OPEN_JOSM": "JOSM",
 "OPEN_OSMBUGS": "Notes",
-"OPEN_JOSM_FAILED": "Zoom closer to open osm editor.",
+"OPEN_EDITOR_FAILED": "Zoom closer to open osm editor.",
+"OPEN_JOSM_FAILED": "Zoom closer to open josm.",
 "OPEN_OSMBUGS_FAILED": "Zoom closer to place a note.",
 // geocoder
 "SEARCH_RESULTS": "Search Results",

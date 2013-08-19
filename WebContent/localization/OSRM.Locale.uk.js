@@ -46,7 +46,7 @@ OSRM.Localization["uk"] = {
 "GUI_MAPPING_TOOLS": "Інструменти мапи",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Підсвічувати безіменні вулиці",
 "GUI_SHOW_PREVIOUS_ROUTES": "Показувати попередній маршрут",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Результати пошуку",

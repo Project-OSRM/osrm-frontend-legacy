@@ -46,7 +46,7 @@ OSRM.Localization["ro"] = {
 "GUI_MAPPING_TOOLS": "Instrumente de cartografiere",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Evidentiaza strazile fara nume",
 "GUI_SHOW_PREVIOUS_ROUTES": "Arata trasee anterioare",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Rezultatele cautarii",

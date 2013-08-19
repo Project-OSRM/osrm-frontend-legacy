@@ -54,7 +54,7 @@ OSRM.Localization["it"] = {
 "GUI_MAPPING_TOOLS": "Strumenti per la Mappatura",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Evidenzia strade senza nome",
 "GUI_SHOW_PREVIOUS_ROUTES": "Mostra i percorsi precedenti",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Risultati della ricerca",

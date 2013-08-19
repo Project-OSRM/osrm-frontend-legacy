@@ -46,7 +46,7 @@ OSRM.Localization["sv"] = {
 "GUI_MAPPING_TOOLS": "Kortläggnings verktyg",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Framhäv icke namngedda vägar",
 "GUI_SHOW_PREVIOUS_ROUTES": "Visa tidigare rutter",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Sökresultat",

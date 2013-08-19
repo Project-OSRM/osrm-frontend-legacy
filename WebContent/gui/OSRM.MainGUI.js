@@ -47,6 +47,7 @@ init: function() {
 
 // set language dependent labels
 setLabels: function() {
+	document.getElementById("open-editor").innerHTML = OSRM.loc("OPEN_EDITOR");
 	document.getElementById("open-josm").innerHTML = OSRM.loc("OPEN_JOSM");
 	document.getElementById("open-osmbugs").innerHTML = OSRM.loc("OPEN_OSMBUGS");
 	document.getElementById("gui-reset").innerHTML = OSRM.loc("GUI_RESET");

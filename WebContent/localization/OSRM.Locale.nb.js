@@ -46,7 +46,7 @@ OSRM.Localization["nb"] = {
 "GUI_MAPPING_TOOLS": "Kartleggingsverktøy",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Uthev veier uten navn",
 "GUI_SHOW_PREVIOUS_ROUTES": "Vis tidligere ruter",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Søkeresultater",

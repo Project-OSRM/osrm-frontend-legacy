@@ -46,7 +46,7 @@ OSRM.Localization["lv"] = {
 "GUI_MAPPING_TOOLS": "Kartēšanas rīki",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Izcelt ielas bez nosaukumiem",
 "GUI_SHOW_PREVIOUS_ROUTES": "Rādīt vēsturiskos maršrutus",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Meklēšanas rezultāti",

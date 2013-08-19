@@ -46,7 +46,7 @@ OSRM.Localization["ka"] = {
 "GUI_MAPPING_TOOLS": "რუკის ხელსაწყოები",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "გამოაჩინე უცნობი ქუჩები",
 "GUI_SHOW_PREVIOUS_ROUTES": "წინა მარშრუტების ჩვენება",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "ძიების შედეგები",

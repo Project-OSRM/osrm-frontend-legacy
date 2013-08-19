@@ -37,6 +37,7 @@ init: function() {
 	
 	document.getElementById("gui-reset").onclick = OSRM.GUI.resetRouting;
 	document.getElementById("gui-reverse").onclick = OSRM.GUI.reverseRouting;
+	document.getElementById("open-editor").onclick = OSRM.GUI.openEditor;
 	document.getElementById("open-josm").onclick = OSRM.GUI.openJOSM;
 	document.getElementById("open-osmbugs").onclick = OSRM.GUI.openOSMBugs;
 	document.getElementById("option-highlight-nonames").onclick = OSRM.GUI.hightlightNonames;
@@ -111,11 +112,36 @@ inputChanged: function(marker_id) {
 		OSRM.Geocoder.call(OSRM.C.TARGET_LABEL, document.getElementById('gui-input-target').value);
 },
 
-// click: button "open JOSM"
+//click: button "open JOSM"
 openJOSM: function() {
 	var zoom = OSRM.G.map.getZoom();
-	if( zoom < OSRM.DEFAULTS.EDITOR_MIN_ZOOM_LEVEL ) {
+	if( zoom < OSRM.DEFAULTS.JOSM_MIN_ZOOM_LEVEL ) {
 		window.alert( OSRM.loc("OPEN_JOSM_FAILED") );
+	} else {	
+		var center = OSRM.G.map.getCenterUI();
+		var bounds = OSRM.G.map.getBoundsUI();
+		
+		var xdelta = Math.min(0.02, Math.abs(bounds.getSouthWest().lng - center.lng) );
+		var ydelta = Math.min(0.01, Math.abs(bounds.getSouthWest().lat - center.lat) );
+		
+		var p = [ 'left='  + (center.lng - xdelta).toFixed(6), 'bottom=' + (center.lat - ydelta).toFixed(6), 'right=' + (center.lng + xdelta).toFixed(6), 'top=' + (center.lat + ydelta).toFixed(6)];
+		var url = 'http://127.0.0.1:8111/load_and_zoom?' + p.join('&');
+	 
+		var frame = document.getElementById('josm-frame');
+		if(!frame) {
+			frame = L.DomUtil.create('iframe', null, document.body);
+			frame.style.display = "none";
+			frame.id = 'josm-frame';
+		}
+		frame.src = url;
+	}
+},
+
+// click: button "Editor"
+openEditor: function() {
+	var zoom = OSRM.G.map.getZoom();
+	if( zoom < OSRM.DEFAULTS.EDITOR_MIN_ZOOM_LEVEL ) {
+		window.alert( OSRM.loc("OPEN_EDITOR_FAILED") );
 	} else {
 		var position = OSRM.G.map.getCenterUI();
 		var pr = OSRM.C.PRECISION;

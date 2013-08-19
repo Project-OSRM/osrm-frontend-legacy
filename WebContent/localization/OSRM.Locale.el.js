@@ -46,7 +46,7 @@ OSRM.Localization["el"] = {
 "GUI_MAPPING_TOOLS": "Εργαλεία Χαρτογράφησης",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Τονισμός ανώνυμων οδών",
 "GUI_SHOW_PREVIOUS_ROUTES": "Εμφάνιση προηγούμενων δρομολογίων",
-"OPEN_JOSM": "Επεξεργαστής",
+"OPEN_EDITOR": "Επεξεργαστής",
 "OPEN_OSMBUGS": "Σημειώσεις",
 // geocoder
 "SEARCH_RESULTS": "Αποτελέσματα Αναζήτησης",

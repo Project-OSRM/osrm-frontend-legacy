@@ -46,7 +46,7 @@ OSRM.Localization["tr"] = {
 "GUI_MAPPING_TOOLS": "Harita Araçları",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Önemli İsimlendirilmemiş Sokaklar",
 "GUI_SHOW_PREVIOUS_ROUTES": "Önceki Rotaları Göster",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "Sonuçları Göster",

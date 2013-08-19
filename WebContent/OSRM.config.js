@@ -19,13 +19,14 @@ or see http://www.gnu.org/licenses/agpl.txt.
 // [has to be loaded directly after OSRM.base]
 
 OSRM.DEFAULTS = {
-	ROUTING_ENGINES: [
-		{	url: 'http://router.project-osrm.org/viaroute',
-			timestamp: 'http://router.project-osrm.org/timestamp',
-			metric: 0,
-			label: 'ENGINE_0',
-		}
-	],
+		ROUTING_ENGINES: [
+			{	url: 'http://router.project-osrm.org/viaroute',
+				timestamp: 'http://router.project-osrm.org/timestamp',
+				metric: 0,
+				label: 'ENGINE_0',
+			}
+		],
+
 	
 	WEBSITE_URL: document.URL.replace(/#*(\?.*|$)/i,""),					// truncates URL before first ?, and removes tailing #
 	HOST_GEOCODER_URL: 'http://nominatim.openstreetmap.org/search',
@@ -42,6 +43,7 @@ OSRM.DEFAULTS = {
 	HIGHLIGHT_ZOOM_LEVEL: 16,
 	JSONP_TIMEOUT: 10000,
 	EDITOR_MIN_ZOOM_LEVEL: 16,
+	JOSM_MIN_ZOOM_LEVEL: 16,	
 	NOTES_MIN_ZOOM_LEVEL: 8,
 	
 	ONLOAD_ZOOM_LEVEL: 5,

@@ -46,7 +46,7 @@ OSRM.Localization["ta"] = {
 "GUI_MAPPING_TOOLS": "வரைபடக் கருவிகள்",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "பெயரிடப்படாத தெருக்களை சுட்டிக்காட்டு",
 "GUI_SHOW_PREVIOUS_ROUTES": "முந்தைய வழித்தடங்களைக் காட்டு",
-"OPEN_JOSM": "Editor",
+"OPEN_EDITOR": "Editor",
 "OPEN_OSMBUGS": "Notes",
 // geocoder
 "SEARCH_RESULTS": "தேடல் முடிவுகள்",
