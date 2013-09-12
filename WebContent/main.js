@@ -333,7 +333,7 @@ OSRM.parseParameters = function(){
 				}
 			}
 		}
-		else if(name_val[0] == 'tooltips') {
+		else if(name_val[0] == 'notifications') {
 			if(name_val[1] == 'hide') {
 				OSRM.GUI.deactivateTooltips();
 			}
