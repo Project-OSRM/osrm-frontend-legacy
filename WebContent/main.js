@@ -338,6 +338,12 @@ OSRM.parseParameters = function(){
 				OSRM.GUI.deactivateTooltips();
 			}
 		}
+		else if(name_val[0] == 'mainbox') {
+			if(name_val[1] == 'hide') {
+				OSRM.G.main_handle.$hideBox();
+				OSRM.G.map.zoomControl.show();
+			}
+		}		
 	}
 	
 	// stop if in maintenance mode
