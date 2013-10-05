@@ -366,8 +366,11 @@ OSRM.parseParameters = function(){
 		data.engine = params.active_routing_engine;
 		data.name = params.destination_name;
 		for(var id=0; id<locations.length; id++) {
+			// prepare placeholder positions for coordinates
+			// (have to prepared before starting geocoder!)
 			data.positions.push( new L.LatLng(0,0) );
-			
+		}		
+		for(var id=0; id<locations.length; id++) {
 			// geo coordinates given -> directly incorporate results
 			var query = locations[id]; 
 			if(query.match(/^\s*[-+]?[0-9]*\.?[0-9]+\s*[,;]\s*[-+]?[0-9]*\.?[0-9]+\s*$/)){
