@@ -358,7 +358,9 @@ _showInitResults_Destinations: function() {
 	for(var i=0; i<destinations.length-1;i++)
 		OSRM.G.markers.addInitialVia( destinations[i] );
 	
+	// finish
 	OSRM.G.initial_position_override = true;
+	return;
 },
 _showInitResults_Locations: function() {
 	var data = OSRM.G.initial_positions;
@@ -389,9 +391,6 @@ _showInitResults_Locations: function() {
 	// set active alternative (if via points are set or alternative does not exists, fallback to shortest route)
 	OSRM.G.active_alternative = data.active_alternative || 0;
 	
-	// set routing server
-	OSRM.GUI.setRoutingEngine( data.engine );
-		
 	// compute route
 	OSRM.Routing.getRoute({keepAlternative:true});
 	OSRM.G.initial_position_override = true;

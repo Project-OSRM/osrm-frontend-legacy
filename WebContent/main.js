@@ -350,6 +350,9 @@ OSRM.parseParameters = function(){
 	if( OSRM.GUI.inMaintenance() == true )
 		return;
 	
+	// set routing engine
+	OSRM.GUI.setRoutingEngine( params.active_routing_engine );
+	
 	// case 1: locations/destinations given (as strings)
 	if( params.locations || params.destinations ) {
 		var locations = params.destinations ? params.destinations : params.locations;
@@ -363,7 +366,7 @@ OSRM.parseParameters = function(){
 		data.zoom = params.zoom;
 		data.center = params.center;
 		data.active_alternative = params.active_alternative;		
-		data.engine = params.active_routing_engine;
+		//data.engine = params.active_routing_engine;
 		data.name = params.destination_name;
 		for(var id=0; id<locations.length; id++) {
 			data.positions.push( new L.LatLng(0,0) );
