@@ -60,7 +60,8 @@ getLat: function() {
 	return this.position.lat;
 },
 getLng: function() {
-	return this.position.lng;
+	var l = this.position.lng-360*Math.floor(this.position.lng/360+0.5);	// keep values in [-180,180]
+	return l;
 },
 isShown: function() {
 	return this.shown;

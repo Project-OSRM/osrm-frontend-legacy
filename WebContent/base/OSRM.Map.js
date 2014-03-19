@@ -59,7 +59,8 @@ init: function() {
 	    zoomAnimation: false,								// animations have to be inactive during initialization (leaflet issue #918)
 	    fadeAnimation: false,
 	    zoomControl: false,									// use OSRM zoom buttons
-	    attributionControl: false							// use OSRM attribution control
+	    attributionControl: false,							// use OSRM attribution control
+	    worldCopyJump: true									// keep in same world
 	});
 	
 	// add attribution control
