@@ -42,12 +42,25 @@ OSRM.Localization["pt"] = {
 "GUI_UNITS": "Unidades",
 "GUI_KILOMETERS": "Quilômetros",
 "GUI_MILES": "Milhas",
+// abbreviations
+"GUI_M": "m",
+"GUI_KM": "km",
+"GUI_MI": "mi",
+"GUI_FT": "ft",
+"GUI_H": "h",
+"GUI_MIN": "min",
+"GUI_S": "s",
 // mapping
 "GUI_MAPPING_TOOLS": "Ferramentas de mapeamento",
 "GUI_HIGHLIGHT_UNNAMED_ROADS": "Destacar ruas sem nome",
 "GUI_SHOW_PREVIOUS_ROUTES": "Mostrar rotas anteriores",
+"GUI_EXTERNAL_TOOLS": "Ferramentas externas",
+"OPEN_EDITOR": "Editor OSM",
 "OPEN_JOSM": "JOSM",
-"OPEN_OSMBUGS": "OSM Bugs",
+"OPEN_OSMBUGS": "Notas",
+"OPEN_EDITOR_FAILED": "Reduza o zoom para abrir o editor do OSM",
+"OPEN_JOSM_FAILED": "Reduza o zoom para abrir o editor JOSM",
+"OPEN_OSMBUGS_FAILED": "Reduza o zoom para colocar uma nota",
 // geocoder
 "SEARCH_RESULTS": "Resultados da pesquisa",
 "FOUND_X_RESULTS": "foram encontrados %i resultados",
@@ -57,8 +70,9 @@ OSRM.Localization["pt"] = {
 "NO_RESULTS_FOUND_TARGET": "Não foram encontrados resultados para o destino",
 // routing
 "ROUTE_DESCRIPTION": "Descrição da rota",
-"GET_LINK_TO_ROUTE": "gerar ligação",
-"GENERATE_LINK_TO_ROUTE": "à espera de ligação",
+"GET_LINK_TO_ROUTE": "Gerar link para a rota",
+"ROUTE_LINK": "Link para a rota",
+"GENERATE_LINK_TO_ROUTE": "esperando pelo link",
 "LINK_TO_ROUTE_TIMEOUT": "não disponível",
 "GPX_FILE": "Ficheiro GPX",
 "DISTANCE": "Distância",
@@ -67,9 +81,21 @@ OSRM.Localization["pt"] = {
 "NO_ROUTE_FOUND": "A rota não é possivel",
 // printing
 "OVERVIEW_MAP": "Mapa de visão global",
-"NO_ROUTE_SELECTED": "Sem rota selecionada",
+"NO_ROUTE_SELECTED": "Nenhuma rota foi selecionada",
 // routing engines
 "ENGINE_0": "Carro (mais rápido)",
+"ENGINE_1": "Bicicleta (mais rápido)",
+// tile server names
+// (only required if names are different to OSRM.config)
+//"TILE_SERVER_0": "osm.org",
+//"TILE_SERVER_1": "osm.de",
+//"TILE_SERVER_2": "MapQuest",
+//"TILE_SERVER_3": "MapBox Terrain",
+//"TILE_SERVER_4": "MapBox Labelled Satellite",
+//"TILE_SERVER_5": "MapBox Satellite",
+// overlay server names
+//(only required if names are different to OSRM.config)
+//"OVERLAY_SERVER_0": "Small Components",
 // directions
 "N": "norte",
 "E": "este",
@@ -104,9 +130,34 @@ OSRM.Localization["pt"] = {
 "DIRECTION_11-9":"Entrar na rotunda e sair na nona saída[ para <b>%s</b>]",
 "DIRECTION_11-x":"Entrar na rotunda e sair numa das saídas[ para <b>%s</b>]",
 "DIRECTION_15":"Você chegou ao seu destino",
+// street types
+"HIGHWAY_DEFAULT": "via terreste",
+"HIGHWAY_PATH": "caminho",
+"HIGHWAY_FOOTWAY": "pista de caminhada",
+"HIGHWAY_CYCLEWAY": "ciclovia",
+"HIGHWAY_BRIDLEWAY": "hipovia",
+"HIGHWAY_STEPS": "via com degras",
+"HIGHWAY_MOTORWAY": "autoestrada",
+"HIGHWAY_MOTORWAY_LINK": "ligação de autoestrada",
+"HIGHWAY_TRUNK": "via expressa",
+"HIGHWAY_TRUNK_LINK": "ligação de via expressa",
+"HIGHWAY_PRIMARY": "via primária",
+"HIGHWAY_PRIMARY_LINK": "ligação primária",
+"HIGHWAY_SECONDARY": "via secundária",
+"HIGHWAY_SECONDARY_LINK": "ligação secundária",
+"HIGHWAY_TERTIARY": "via terciária",
+"HIGHWAY_TERTIARY_LINK": "ligação terciária",
+"HIGHWAY_LIVING_STREET": "via de espaço compartilhado",
+"HIGHWAY_PEDESTRIAN": "calçadão",
+"HIGHWAY_RESIDENTAL": "via residencial",
+"HIGHWAY_unclassified": "via não classificada",
+"HIGHWAY_service": "via de serviço",
+"HIGHWAY_track": "estrada rústica",
+"HIGHWAY_raceway": "pista de corrida",
+"HIGHWAY_road": "estrada",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Manutenção Programada",
-"NOTIFICATION_MAINTENANCE_BODY":	"O Site do OSRM é desligado devido a uma manutenção programada. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"O site do OSRM está desligado devido a uma manutenção programada. " + 
 									"Por favor, seja paciente enquanto as atualizações necessárias são realizadas. " +
 									"O site estará de volta online em breve." +
 									"<br/><br/>" + 
@@ -128,7 +179,11 @@ OSRM.Localization["pt"] = {
 "NOTIFICATION_DRAGGING_BODY":		"Pode arrastar um ponto com um clique sobre ele com o botão esquerdo do rato e mantendo o botão pressionado. " +
 									"Então pode mover o ponto ao redor do mapa e a rota será atualizada instantaneamente. " +
 									"<br/><br/>" +
-									"Até pode criar pontos intermediários, arrastando-os para fora da rota principal! "
+									"You can even create intermediate markers by dragging them off of the main route! ",
+"NOTIFICATION_GEOCODERWAIT_HEADER":	"Esperando pelo Geocoder",
+"NOTIFICATION_GEOCODERWAIT_BODY":	"Esperando por resultados do  geocoder.",
+"NOTIFICATION_GEOCODERFAIL_HEADER":	"Falha do Geocoder",
+"NOTIFICATION_GEOCODERFAIL_BODY":	"Falha recuperando coordenadas do geocoder.",
 };
 
 // set GUI language on load
