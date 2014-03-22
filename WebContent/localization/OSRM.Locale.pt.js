@@ -16,23 +16,23 @@ or see http://www.gnu.org/licenses/agpl.txt.
 */
 
 // OSRM localization
-// [Portugese language support]
+// [Portuguese language support]
 
 
 OSRM.Localization["pt"] = {
 // own language
 "CULTURE": "pt-PT",
-"LANGUAGE": "Portugues",
+"LANGUAGE": "Português",
 // gui
-"GUI_START": "Iniciar",
-"GUI_END": "Terminar",
+"GUI_START": "Origem",
+"GUI_END": "Destino",
 "GUI_RESET": "Restabelecer",
-"GUI_ZOOM_ON_ROUTE": "Ampliar para Rota",
-"GUI_ZOOM_ON_USER": "Ampliar para Utilizador",
+"GUI_ZOOM_ON_ROUTE": "Focar na rota",
+"GUI_ZOOM_ON_USER": "Focar no utilizador",
 "GUI_SEARCH": "Mostrar",
-"GUI_REVERSE": "Inverso",
-"GUI_START_TOOLTIP": "Indique início",
-"GUI_END_TOOLTIP": "Indique destino",
+"GUI_REVERSE": "Inverter",
+"GUI_START_TOOLTIP": "Indique a origem",
+"GUI_END_TOOLTIP": "Indique o destino",
 "GUI_MAIN_WINDOW": "Janela principal",
 "GUI_ZOOM_IN": "Aumentar",
 "GUI_ZOOM_OUT": "Reduzir",
@@ -40,21 +40,21 @@ OSRM.Localization["pt"] = {
 "GUI_CONFIGURATION": "Configuração",
 "GUI_LANGUAGE": "Idioma",
 "GUI_UNITS": "Unidades",
-"GUI_KILOMETERS": "Quilometros",
+"GUI_KILOMETERS": "Quilômetros",
 "GUI_MILES": "Milhas",
 // mapping
-"GUI_MAPPING_TOOLS": "Ferramentas de Mapear",
-"GUI_HIGHLIGHT_UNNAMED_ROADS": "Destaque ruas sem nome",
+"GUI_MAPPING_TOOLS": "Ferramentas de mapeamento",
+"GUI_HIGHLIGHT_UNNAMED_ROADS": "Destacar ruas sem nome",
 "GUI_SHOW_PREVIOUS_ROUTES": "Mostrar rotas anteriores",
-"OPEN_EDITOR": "Editor",
-"OPEN_OSMBUGS": "Notes",
+"OPEN_JOSM": "JOSM",
+"OPEN_OSMBUGS": "OSM Bugs",
 // geocoder
-"SEARCH_RESULTS": "Pesquisar resultados",
-"FOUND_X_RESULTS": "encontrados %i resultados",
-"TIMED_OUT": "Esgotado o tempo limite",
-"NO_RESULTS_FOUND": "Não foram encontrados resultados",
-"NO_RESULTS_FOUND_SOURCE": "Não foram encontrados resultados para o início",
-"NO_RESULTS_FOUND_TARGET": "Não foram encontrados resultados para o final",
+"SEARCH_RESULTS": "Resultados da pesquisa",
+"FOUND_X_RESULTS": "foram encontrados %i resultados",
+"TIMED_OUT": "Tempo limite esgotado",
+"NO_RESULTS_FOUND": "Nenhum resultado foi encontrado",
+"NO_RESULTS_FOUND_SOURCE": "Não foram encontrados resultados para a origem",
+"NO_RESULTS_FOUND_TARGET": "Não foram encontrados resultados para o destino",
 // routing
 "ROUTE_DESCRIPTION": "Descrição da rota",
 "GET_LINK_TO_ROUTE": "gerar ligação",
@@ -112,23 +112,23 @@ OSRM.Localization["pt"] = {
 									"<br/><br/>" + 
 									"Entretanto poderá sair e mapear um bairro neighborhood perto de si..." + 
 									"<br/><br/><br/>[OSRM]",
-"NOTIFICATION_LOCALIZATION_HEADER":	"Você sabe? Pode alterar o idioma do ecran de exibição.",
+"NOTIFICATION_LOCALIZATION_HEADER":	"Você sabia? Você pode alterar o idioma do ecrã de exibição.",
 "NOTIFICATION_LOCALIZATION_BODY":	"Pode usar o menu suspenso no canto superior esquerdo para selecionar o seu idioma preferido. " +
 									"<br/><br/>" +
 									"Não desespere se não consegue encontrar o idioma de sua escolha. " +
 									"Se quiser, você pode ajudar a fornecer traduções adicionais! " +
 									"Visite <a href='https://github.com/DennisSchiefer/Project-OSRM-Web'>aqui</a> para mais informações.",
-"NOTIFICATION_CLICKING_HEADER":		"Você sabe? Pode clicar no mapa para definir marcadores de rota.",
-"NOTIFICATION_CLICKING_BODY":		"Clique no mapa com o botão esquerdo do rato para definir um marcador fonte (verde) ou um marcador de destino (vermelho), " +
-									"se o marcador de origem já existe. " +
+"NOTIFICATION_CLICKING_HEADER":		"Você sabia? Você pode clicar no mapa para definir pontos da rota.",
+"NOTIFICATION_CLICKING_BODY":		"Clique no mapa com o botão esquerdo do rato para definir o ponto de origem (verde) ou o ponto de destino (vermelho), " +
+									"se o ponto de origem já existe. " +
 									"O endereço do local selecionado será exibido nas caixas à esquerda. " + 
 									"<br/><br/>" +
-									"Pode excluir um marcador, com um clique sobre ele novamente com o botão esquerdo do rato.",
-"NOTIFICATION_DRAGGING_HEADER":		"Você sabe? Pode arrastar cada marcador de rota no mapa.",
-"NOTIFICATION_DRAGGING_BODY":		"Pode arrastar um marcador, com um clique sobre ele com o botão esquerdo do rato e mantendo o botão pressionado. " +
-									"Então pode mover o marcador ao redor do mapa e a rota será atualizada instantaneamente. " +
+									"Pode excluir um ponto com um clique sobre ele novamente com o botão esquerdo do rato.",
+"NOTIFICATION_DRAGGING_HEADER":		"Você sabia? Você pode arrastar cada ponto da rota no mapa.",
+"NOTIFICATION_DRAGGING_BODY":		"Pode arrastar um ponto com um clique sobre ele com o botão esquerdo do rato e mantendo o botão pressionado. " +
+									"Então pode mover o ponto ao redor do mapa e a rota será atualizada instantaneamente. " +
 									"<br/><br/>" +
-									"Até pode criar marcadores intermédios, arrastando-os para fora da rota principal! "
+									"Até pode criar pontos intermediários, arrastando-os para fora da rota principal! "
 };
 
 // set GUI language on load
