@@ -125,20 +125,35 @@ reverseDescriptions: function() {
 reverseMarkers: function() {
 	var size = this.route.length;
 	
-	// switch positions in nodes
-	var temp_position = this.route[0].getPosition();
-	this.route[0].setPosition( this.route[size-1].getPosition() );
-	this.route[size-1].setPosition( temp_position );
-	// switch nodes in array
-	var temp_node = this.route[0];
-	this.route[0] = this.route[size-1];
-	this.route[size-1] = temp_node;
-	// reverse route
-	this.route.reverse();
-	// clear information (both delete markers stay visible)
+	// take care of special case of only one marker
+	if( size == 1) {
+		var description = this.route[0].description;
+		var hint = this.route[0].hint;
+		this.route[0].hide();		
+		if( this.route[0].label == OSRM.C.SOURCE_LABEL ) {
+			this.route[0] = new OSRM.RouteMarker(OSRM.C.TARGET_LABEL, {draggable:true,icon:OSRM.G.icons['marker-target'],dragicon:OSRM.G.icons['marker-target-drag']}, this.route[0].getPosition() );
+		} else {
+			this.route[0] = new OSRM.RouteMarker(OSRM.C.SOURCE_LABEL, {draggable:true,icon:OSRM.G.icons['marker-source'],dragicon:OSRM.G.icons['marker-source-drag']}, this.route[0].getPosition() );
+		}
+		this.route[0].show();
+		this.route[0].description = description;
+		this.route[0].hint = hint;
+	} else {
+		// switch positions in nodes
+		var temp_position = this.route[0].getPosition();
+		this.route[0].setPosition( this.route[size-1].getPosition() );
+		this.route[size-1].setPosition( temp_position );
+		// switch nodes in array
+		var temp_node = this.route[0];
+		this.route[0] = this.route[size-1];
+		this.route[size-1] = temp_node;
+		// reverse route
+		this.route.reverse();
+	}
+	
+	// clear information
 	OSRM.GUI.clearResults();
-
-	// remove initial vias	
+	// reverse initial vias	
 	this.reverseInitialVias();
 },
 hasSource: function() {
@@ -161,7 +176,13 @@ reverseInitialVias: function() {
 
 //relabel all via markers
 relabelViaMarkers: function() {
-	for(var i=1, size=this.route.length-1; i<size; i++)
+	var last = this.route.length-1;
+	
+	if( this.route[0].label == OSRM.C.SOURCE_LABEL )
+		this.route[0].marker.setLabel("A");
+	for(var i=1; i<last; i++)
 		this.route[i].marker.setLabel(i);
+	if( this.route[last].label == OSRM.C.TARGET_LABEL )
+		this.route[last].marker.setLabel("B");
 }
 });

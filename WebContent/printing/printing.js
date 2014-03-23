@@ -89,17 +89,19 @@ OSRM.drawMap = function(tile_server, bounds) {
 };
 
 
-// manage makers
+// manage makers (needs more logic, once we allow printing of non routes to check if only a target marker is visible)
 OSRM.drawMarkers = function( markers ) {
 	// need to rebuild objects for instanceof to work correctly	
-	OSRM.G.map.addLayer( new L.LabelMarker( [markers[0].getPosition().lat,markers[0].getPosition().lng] , {draggable:false,clickable:false,icon:OSRM.G.icons['marker-source']} ) );
+	var source_marker = OSRM.G.map.addLayer( new L.LabelMarker( [markers[0].getPosition().lat,markers[0].getPosition().lng] , {draggable:false,clickable:false,icon:OSRM.G.icons['marker-source']} ) );
+	source_marker.setLabel("A");
 	var last = markers.length-1;
 	for(var i=1; i<last; i++) {
 		var via_marker = new L.LabelMarker( [markers[i].getPosition().lat,markers[i].getPosition().lng], {draggable:false,clickable:false,icon:OSRM.G.icons['marker-via']} );
 		OSRM.G.map.addLayer( via_marker );
 		via_marker.setLabel(i);
 	}
-	OSRM.G.map.addLayer( new L.LabelMarker( [markers[last].getPosition().lat,markers[last].getPosition().lng], {draggable:false,clickable:false,icon:OSRM.G.icons['marker-target']} ) );
+	var target_marker = OSRM.G.map.addLayer( new L.LabelMarker( [markers[last].getPosition().lat,markers[last].getPosition().lng], {draggable:false,clickable:false,icon:OSRM.G.icons['marker-target']} ) );
+	target_marker.setLabel("B");
 };
 
 

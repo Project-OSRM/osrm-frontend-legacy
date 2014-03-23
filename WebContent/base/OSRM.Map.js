@@ -59,8 +59,7 @@ init: function() {
 	    zoomAnimation: false,								// animations have to be inactive during initialization (leaflet issue #918)
 	    fadeAnimation: false,
 	    zoomControl: false,									// use OSRM zoom buttons
-	    attributionControl: false,							// use OSRM attribution control
-	    worldCopyJump: true									// keep in same world
+	    attributionControl: false							// use OSRM attribution control
 	});
 	
 	// add attribution control
@@ -129,12 +128,14 @@ click: function(e) {
 	if( !OSRM.G.markers.hasSource() ) {
 		var index = OSRM.G.markers.setSource( e.latlng );
 		OSRM.Geocoder.updateAddress( OSRM.C.SOURCE_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
-		OSRM.G.markers.route[index].show();		
+		OSRM.G.markers.route[index].show();
+		OSRM.G.markers.relabelViaMarkers();
 		OSRM.Routing.getRoute( {recenter:OSRM.G.markers.route.length == 2} );	// allow recentering when the route is first shown 
 	} else if( !OSRM.G.markers.hasTarget() ) {
 		var index = OSRM.G.markers.setTarget( e.latlng );
 		OSRM.Geocoder.updateAddress( OSRM.C.TARGET_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
 		OSRM.G.markers.route[index].show();
+		OSRM.G.markers.relabelViaMarkers();
 		OSRM.Routing.getRoute( {recenter:OSRM.G.markers.route.length == 2} );	// allow recentering when the route is first shown
 	}
 },

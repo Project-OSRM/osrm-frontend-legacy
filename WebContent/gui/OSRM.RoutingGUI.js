@@ -76,6 +76,10 @@ reverseRouting: function() {
 	document.getElementById("gui-input-source").value = document.getElementById("gui-input-target").value;
 	document.getElementById("gui-input-target").value = tmp;
 	
+	var tmp2 = document.getElementById('gui-delete-source').style.visibility; 
+	document.getElementById('gui-delete-source').style.visibility = document.getElementById('gui-delete-target').style.visibility;
+	document.getElementById('gui-delete-target').style.visibility = tmp2;
+	
 	// recompute route if needed
 	if( OSRM.G.route.isShown() ) {
 		OSRM.G.markers.route.reverse();

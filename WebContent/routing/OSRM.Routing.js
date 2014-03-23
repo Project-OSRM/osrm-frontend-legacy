@@ -67,7 +67,7 @@ showRoute: function(response, parameters) {
 		OSRM.G.active_alternative = 0;
 
 	OSRM.G.response = response;	// needed for printing & history routes!
-	OSRM.Routing._snapRoute();
+	OSRM.Routing._snapRoute();	// TODO: does not work anymore; OSRM does not return coordinates when no route was found!
 	if(response.status == 207) {
 		OSRM.RoutingGeometry.showNA();
 		OSRM.RoutingNoNames.showNA();

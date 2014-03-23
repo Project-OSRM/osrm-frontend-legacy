@@ -24,6 +24,8 @@ OSRM.Marker = function( label, style, position ) {
 	this.label = label ? label : "marker";
 	this.position = position ? position : new L.LatLng(0,0);
 	this.description = null;
+	
+	this.position.lon = this.position.lon-360*Math.floor(this.position.lon/360+0.5);	// keep values in [-180,180] TODO: do we really want that?
 
 	this.marker = new L.LabelMarker( this.position, style );
 	this.marker.parent = this;
@@ -35,6 +37,12 @@ OSRM.extend( OSRM.Marker,{
 show: function() {
 	OSRM.G.map.addLayer(this.marker);
 	this.shown = true;
+	// rough hack to get marker labels!
+	if( this.label == OSRM.C.TARGET_LABEL ) {
+		this.marker.setLabel("B");
+	} else if( this.label == OSRM.C.SOURCE_LABEL ) {
+		this.marker.setLabel("A");
+	}
 },
 hide: function() {
 	OSRM.G.map.removeLayer(this.marker);
@@ -49,6 +57,8 @@ hide: function() {
 	}
 },
 setPosition: function( position ) {
+	position.lon = position.lon-360*Math.floor(position.lon/360+0.5);	// keep values in [-180,180]
+	
 	this.position = position;
 	this.marker.setLatLng( position );
 	this.hint = null;	
