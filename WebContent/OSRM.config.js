@@ -20,42 +20,42 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.DEFAULTS = {
 		ROUTING_ENGINES: [
-			{	url: 'http://router.project-osrm.org/viaroute',
-				timestamp: 'http://router.project-osrm.org/timestamp',
+			{	url: 'https://router.project-osrm.org/viaroute',
+				timestamp: 'https://router.project-osrm.org/timestamp',
 				metric: 0,
 				label: 'ENGINE_0',
 			}
 		],
 
-	
+
 	WEBSITE_URL: document.URL.replace(/#*(\?.*|$)/i,""),					// truncates URL before first ?, and removes tailing #
-	HOST_GEOCODER_URL: 'http://nominatim.openstreetmap.org/search',
-	HOST_REVERSE_GEOCODER_URL: 'http://nominatim.openstreetmap.org/reverse',
+	HOST_GEOCODER_URL: 'https://nominatim.openstreetmap.org/search',
+	HOST_REVERSE_GEOCODER_URL: 'https://nominatim.openstreetmap.org/reverse',
 	HOST_SHORTENER_URL: 'http://map.project-osrm.org/shorten/',				// use '' to not use url shortener service
-	
+
 	SHORTENER_PARAMETERS: '%url&jsonp=%jsonp',
 	SHORTENER_REPLY_PARAMETER: 'ShortURL',									// keep set, even if not using url shortener service!
-	
+
 	ROUTING_ENGINE: 0,
 	DISTANCE_FORMAT: 0,														// 0: km, 1: miles
-	GEOCODER_BOUNDS: '',	
+	GEOCODER_BOUNDS: '',
 	ZOOM_LEVEL: 14,
 	HIGHLIGHT_ZOOM_LEVEL: 16,
 	JSONP_TIMEOUT: 10000,
 	EDITOR_MIN_ZOOM_LEVEL: 16,
-	JOSM_MIN_ZOOM_LEVEL: 16,	
+	JOSM_MIN_ZOOM_LEVEL: 16,
 	NOTES_MIN_ZOOM_LEVEL: 8,
-	
+
 	ONLOAD_ZOOM_LEVEL: 5,
 	ONLOAD_LATITUDE: 48.84,
 	ONLOAD_LONGITUDE: 10.10,
 	ONLOAD_SOURCE: "",
 	ONLOAD_TARGET: "",
-	
+
 	LANGUAGE: "en",
 	LANGUAGE_USE_BROWSER_SETTING: true,
 	LANUGAGE_ONDEMAND_RELOADING: true,
-	LANGUAGE_SUPPORTED: [ 
+	LANGUAGE_SUPPORTED: [
 		{encoding:"en", name:"English"},
 		{encoding:"bg", name:"Български"},
 		{encoding:"ca", name:"Català"},
@@ -83,27 +83,27 @@ OSRM.DEFAULTS = {
 		{encoding:"tr", name:"Türkçe"},
 		{encoding:"uk", name:"Українська"}
 	],
-		
+
 	TILE_SERVERS: [
 		{	display_name: 'Mapbox Terrain',
-			url:'http://{s}.tiles.mapbox.com/v3/dennisl.map-dfbkqsr2/{z}/{x}/{y}.png',
+			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-dfbkqsr2/{z}/{x}/{y}.png',
 			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://mapbox.com/">MapBox</a>',
 			options:{maxZoom: 18}
 		},
 		{
 			display_name: 'Mapbox Labelled Satellite',
-			url:'http://{s}.tiles.mapbox.com/v3/dennisl.map-6g3jtnzm/{z}/{x}/{y}.png',
+			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-6g3jtnzm/{z}/{x}/{y}.png',
 			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://mapbox.com/">MapBox</a>',
 			options:{maxZoom: 18}
 		},
 		{
 			display_name: 'Mapbox Satellite',
-			url:'http://{s}.tiles.mapbox.com/v3/dennisl.map-inp5al1s/{z}/{x}/{y}.png',
+			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-inp5al1s/{z}/{x}/{y}.png',
 			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://mapbox.com/">MapBox</a>',
 			options:{maxZoom: 18}
 		},
 		{	display_name: 'osm.org',
-			url:'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (CC-BY-SA)',
 			options:{maxZoom: 18}
 		},
@@ -118,7 +118,7 @@ OSRM.DEFAULTS = {
 			options:{maxZoom: 18, subdomains: '1234'}
 		}
 	],
-	
+
 	OVERLAY_SERVERS: [
   		{	display_name: 'Small Components',
 			url:'http://tools.geofabrik.de/osmi/tiles/routing_i/{z}/{x}/{y}.png',
@@ -130,7 +130,7 @@ OSRM.DEFAULTS = {
 	NOTIFICATIONS: {
 		LOCALIZATION:	1800000,	// 30min
 		CLICKING: 		60000,		// 1min
-		DRAGGING: 		120000,		// 2min 
+		DRAGGING: 		120000,		// 2min
 		MAINTENANCE:	false
 	},
 	OVERRIDE_MAINTENANCE_NOTIFICATION_HEADER: undefined,
