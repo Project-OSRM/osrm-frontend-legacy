@@ -87,34 +87,34 @@ OSRM.DEFAULTS = {
 	TILE_SERVERS: [
 		{	display_name: 'Mapbox Terrain',
 			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-dfbkqsr2/{z}/{x}/{y}.png',
-			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://mapbox.com/">MapBox</a>',
+			attribution:'<a href="https://www.mapbox.com/about/maps">© Mapbox</a> <a href="http://openstreetmap.org/copyright">© OpenStreetMap</a> | <a href="http://mapbox.com/map-feedback/">Improve this map</a>',
 			options:{maxZoom: 18}
 		},
 		{
 			display_name: 'Mapbox Labelled Satellite',
 			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-6g3jtnzm/{z}/{x}/{y}.png',
-			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://mapbox.com/">MapBox</a>',
+			attribution:'<a href="https://www.mapbox.com/about/maps">© Mapbox</a> <a href="http://openstreetmap.org/copyright">© OpenStreetMap</a> | <a href="http://mapbox.com/map-feedback/">Improve this map</a>',
 			options:{maxZoom: 18}
 		},
 		{
 			display_name: 'Mapbox Satellite',
 			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-inp5al1s/{z}/{x}/{y}.png',
-			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://mapbox.com/">MapBox</a>',
+			attribution:'<a href="https://www.mapbox.com/about/maps">© Mapbox</a> <a href="http://openstreetmap.org/copyright">© OpenStreetMap</a> | <a href="http://mapbox.com/map-feedback/">Improve this map</a>',
 			options:{maxZoom: 18}
 		},
 		{	display_name: 'osm.org',
 			url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (CC-BY-SA)',
+			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors',
 			options:{maxZoom: 18}
 		},
 		{	display_name: 'osm.de',
 			url:'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
-			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (CC-BY-SA)',
+			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors',
 			options:{maxZoom: 18}
 		},
 		{	display_name: 'MapQuest',
 			url:'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-			attribution:'Data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors (ODbL), Imagery © <a href="http://www.mapquest.de/">MapQuest</a>',
+			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors, Imagery © <a href="http://www.mapquest.de/">MapQuest</a>',
 			options:{maxZoom: 18, subdomains: '1234'}
 		}
 	],
