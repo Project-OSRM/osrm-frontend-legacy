@@ -73,7 +73,7 @@ showRoute: function(response, parameters) {
 		OSRM.RoutingNoNames.showNA();
 		OSRM.RoutingDescription.showNA( OSRM.loc("NO_ROUTE_FOUND") );
 	} else {
-		if((typeof response.found_alternative !== "undefined") && response.found_alternative) {
+		if((typeof response.found_alternative == "undefined") || response.found_alternative) {
 			OSRM.RoutingAlternatives.prepare(OSRM.G.response);
 		}
 		OSRM.RoutingGeometry.show(OSRM.G.response);
@@ -113,7 +113,7 @@ showRoute_Redraw: function(response, parameters) {
 
 	OSRM.G.response = response;	// not needed, even harmful as important information is not stored! ==> really ????
 	if(response.status != 207) {
-		if((typeof response.found_alternative !== "undefined") && response.found_alternative) {
+		if((typeof response.found_alternative == "undefined") || response.found_alternative) {
 			OSRM.RoutingAlternatives.prepare(OSRM.G.response);
 		}
 		OSRM.RoutingGeometry.show(OSRM.G.response);
