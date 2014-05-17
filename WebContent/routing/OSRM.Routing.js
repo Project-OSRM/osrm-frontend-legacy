@@ -28,29 +28,29 @@ OSRM.GLOBALS.pending = false;
 
 
 OSRM.Routing = {
-		
+
 // init routing data structures
 init: function() {
-	// init variables	
+	// init variables
 	OSRM.GUI.setRoutingEngine( OSRM.DEFAULTS.ROUTING_ENGINE );
 
-	OSRM.G.markers = new OSRM.Markers();	
+	OSRM.G.markers = new OSRM.Markers();
 	OSRM.G.route = new OSRM.Route();
 	OSRM.G.response = { via_points:[] };
-	
+
 	OSRM.RoutingDescription.init();
 },
 
 
-// -- JSONP processing -- 
+// -- JSONP processing --
 
 // process JSONP response of routing server
 timeoutRoute: function() {
-	OSRM.G.response = { via_points:[] }; 
+	OSRM.G.response = { via_points:[] };
 	OSRM.RoutingGeometry.showNA();
 	OSRM.RoutingNoNames.showNA();
 	OSRM.RoutingDescription.showNA( OSRM.loc("TIMED_OUT") );
-	OSRM.Routing._snapRoute();	
+	OSRM.Routing._snapRoute();
 },
 timeoutRoute_Dragging: function() {
 	OSRM.RoutingGeometry.showNA();
@@ -65,7 +65,7 @@ showRoute: function(response, parameters) {
 		return;
 	if( parameters.keepAlternative != true )
 		OSRM.G.active_alternative = 0;
-	
+
 	OSRM.G.response = response;	// needed for printing & history routes!
 	OSRM.Routing._snapRoute();
 	if(response.status == 207) {
@@ -73,7 +73,9 @@ showRoute: function(response, parameters) {
 		OSRM.RoutingNoNames.showNA();
 		OSRM.RoutingDescription.showNA( OSRM.loc("NO_ROUTE_FOUND") );
 	} else {
-		OSRM.RoutingAlternatives.prepare(OSRM.G.response);
+		if((typeof response.found_alternative == "undefined") || response.found_alternative) {
+			OSRM.RoutingAlternatives.prepare(OSRM.G.response);
+		}
 		OSRM.RoutingGeometry.show(OSRM.G.response);
 		OSRM.RoutingNoNames.show(OSRM.G.response);
 		OSRM.RoutingDescription.show(OSRM.G.response);
@@ -101,19 +103,21 @@ showRoute_Dragging: function(response) {
 	OSRM.Routing._updateHints(response);
 
 	if(OSRM.G.pending)
-		setTimeout(OSRM.Routing.draggingTimeout,1);		
+		setTimeout(OSRM.Routing.draggingTimeout,1);
 },
 showRoute_Redraw: function(response, parameters) {
 	if(!response)
 		return;
 	if( parameters.keepAlternative == false )
-		OSRM.G.active_alternative = 0;	
-	
+		OSRM.G.active_alternative = 0;
+
 	OSRM.G.response = response;	// not needed, even harmful as important information is not stored! ==> really ????
 	if(response.status != 207) {
-		OSRM.RoutingAlternatives.prepare(OSRM.G.response);
+		if((typeof response.found_alternative == "undefined") || response.found_alternative) {
+			OSRM.RoutingAlternatives.prepare(OSRM.G.response);
+		}
 		OSRM.RoutingGeometry.show(OSRM.G.response);
-		OSRM.RoutingNoNames.show(OSRM.G.response);		
+		OSRM.RoutingNoNames.show(OSRM.G.response);
 	}
 	OSRM.Routing._updateHints(response);
 },
@@ -128,9 +132,9 @@ getRoute: function(parameters) {
 		OSRM.G.route.hideRoute();
 		return;
 	}
-	
+
 	parameters = parameters || {};
-	
+
 	OSRM.JSONP.clear('dragging');
 	OSRM.JSONP.clear('redraw');
 	OSRM.JSONP.clear('route');
@@ -139,18 +143,18 @@ getRoute: function(parameters) {
 getRoute_Reversed: function() {
 	if( OSRM.G.markers.route.length < 2 )
 		return;
-	
+
 	OSRM.JSONP.clear('dragging');
 	OSRM.JSONP.clear('redraw');
 	OSRM.JSONP.clear('route');
-	OSRM.JSONP.call(OSRM.Routing._buildCall()+'&instructions=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute_Reversed, OSRM.DEFAULTS.JSONP_TIMEOUT, 'route', {});	
+	OSRM.JSONP.call(OSRM.Routing._buildCall()+'&instructions=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute_Reversed, OSRM.DEFAULTS.JSONP_TIMEOUT, 'route', {});
 },
 getRoute_Redraw: function(parameters) {
 	if( OSRM.G.markers.route.length < 2 )
 		return;
-	
+
 	parameters = parameters || {};
-	
+
 	OSRM.JSONP.clear('dragging');
 	OSRM.JSONP.clear('redraw');
 	OSRM.JSONP.call(OSRM.Routing._buildCall()+'&instructions=true', OSRM.Routing.showRoute_Redraw, OSRM.Routing.timeoutRoute, OSRM.DEFAULTS.JSONP_TIMEOUT, 'redraw',parameters);
@@ -165,7 +169,7 @@ draggingTimeout: function() {
 
 _buildCall: function() {
 	var source = OSRM.G.active_routing_server_url;
-	source += '?z=' + OSRM.G.map.getZoom() + '&output=json&jsonp=%jsonp';	
+	source += '?z=' + OSRM.G.map.getZoom() + '&output=json&jsonp=%jsonp';
 	if(OSRM.G.markers.checksum)
 		source += '&checksum=' + OSRM.G.markers.checksum;
 	var markers = OSRM.G.markers.route;
@@ -193,9 +197,9 @@ _updateHints: function(response) {
 _snapRoute: function() {
 	var markers = OSRM.G.markers.route;
 	var via_points = OSRM.G.response.via_points;
-	
+
  	for(var i=0; i<via_points.length; i++)
-		markers[i].setPosition( new L.LatLng(via_points[i][0], via_points[i][1]) );	
+		markers[i].setPosition( new L.LatLng(via_points[i][0], via_points[i][1]) );
 
  	OSRM.Geocoder.updateAddress(OSRM.C.SOURCE_LABEL);
  	OSRM.Geocoder.updateAddress(OSRM.C.TARGET_LABEL);
