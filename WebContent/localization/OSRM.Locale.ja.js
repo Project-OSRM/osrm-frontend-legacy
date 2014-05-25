@@ -22,7 +22,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 OSRM.Localization["ja"] = {
 // own language
 "CULTURE": "ja-JP",
-"LANGUAGE": "日本人",
+"LANGUAGE": "日本語",
 // gui
 "GUI_START": "開始",
 "GUI_END": "終了",
