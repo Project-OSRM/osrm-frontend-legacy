@@ -89,8 +89,8 @@ hide: function() {
 isShown: function() {
 	return this.shown;
 },
-addRoute: function(positions) {
-	var line = new L.Polyline( positions );
+addRoute: function(positions, style) {
+	var line = new L.Polyline( positions, style);
 	line.on('click', function(e) { OSRM.G.route.fire('click',e); });
 	this.route.addLayer( line );
 },

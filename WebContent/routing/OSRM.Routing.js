@@ -36,6 +36,7 @@ init: function() {
 
 	OSRM.G.markers = new OSRM.Markers();
 	OSRM.G.route = new OSRM.Route();
+	OSRM.G.sketch = new OSRM.Sketch();
 	OSRM.G.response = { via_points:[] };
 
 	OSRM.RoutingDescription.init();
@@ -84,6 +85,16 @@ showRoute: function(response, parameters) {
 	if( parameters.recenter == true ) {		// allow recentering when the route is first shown
 		var bounds = new L.LatLngBounds( OSRM.G.route._current_route.getPositions() );
 		OSRM.G.map.setViewBoundsUI(bounds);
+	}
+},
+showSketch: function(response, parameters) {
+	if(!response)
+		return;
+
+	if(response.status == 207) {
+		OSRM.SketchGeometry.showNA();
+	} else {
+		OSRM.SketchGeometry.show(response);
 	}
 },
 showRoute_Dragging: function(response) {
@@ -139,6 +150,7 @@ getRoute: function(parameters) {
 	OSRM.JSONP.clear('redraw');
 	OSRM.JSONP.clear('route');
 	OSRM.JSONP.call(OSRM.Routing._buildCall()+'&instructions=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute, OSRM.DEFAULTS.JSONP_TIMEOUT, 'route', parameters);
+	OSRM.JSONP.call(OSRM.Routing._buildSketchCall(), OSRM.Routing.showSketch, OSRM.Routing.timeoutSketch, OSRM.DEFAULTS.JSONP_TIMEOUT, 'sketch', parameters);
 },
 getRoute_Reversed: function() {
 	if( OSRM.G.markers.route.length < 2 )
@@ -178,6 +190,17 @@ _buildCall: function() {
 		source += '&loc='  + markers[i].getLat().toFixed(pr) + ',' + markers[i].getLng().toFixed(pr);
 		if( markers[i].hint)
 			source += '&hint=' + markers[i].hint;
+	}
+	return source;
+},
+
+_buildSketchCall: function() {
+	var source = OSRM.G.active_sketch_server_url;
+	source += '?z=' + OSRM.G.map.getZoom() + '&output=json&jsonp=%jsonp';
+	var markers = OSRM.G.markers.route;
+	var pr = OSRM.C.PRECISION;
+	for(var i=0,size=markers.length; i<size; i++) {
+		source += '&loc='  + markers[i].getLat().toFixed(pr) + ',' + markers[i].getLng().toFixed(pr);
 	}
 	return source;
 },

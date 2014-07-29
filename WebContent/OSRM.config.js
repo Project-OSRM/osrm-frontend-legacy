@@ -20,8 +20,9 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 OSRM.DEFAULTS = {
 		ROUTING_ENGINES: [
-			{	url: 'https://router.project-osrm.org/viaroute',
-				timestamp: 'https://router.project-osrm.org/timestamp',
+			{	url: 'http://127.0.0.1:5000/viaroute',
+				timestamp: 'http://127.0.0.1:5000/timestamp',
+				sketch: 'http://127.0.0.1:5000/sketch',
 				metric: 0,
 				label: 'ENGINE_0',
 			}
