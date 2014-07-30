@@ -24,15 +24,18 @@ OSRM.Sketch = function() {
 
 	this._simplified_geometry_style	= {color:'#FF3300', weight:5, dashArray:""};
 	this._bounding_boxes = new L.LayerGroup();
+	this._stripes = new L.LayerGroup();
 	OSRM.G.map.addLayer(this._bounding_boxes);
+	OSRM.G.map.addLayer(this._stripes);
 
 	this._nosketch = OSRM.Sketch.SKETCH;
 	this._zoomlevel = 0;
 	this._color_table = [
-		"#ff0000",
-		"#ffff00",
-		"#00ff00",
-		"#0000ff"
+		"#dd0000",
+		"#00dd00",
+		"#dddd00",
+		"#00dddd",
+		"#0000dd"
 	];
 };
 OSRM.Sketch.NOSKETCH = true;
@@ -43,18 +46,43 @@ OSRM.extend( OSRM.Sketch,{
 		this._nosketch = nosketch;
 
 		this._bounding_boxes.clearLayers();
+		this._stripes.clearLayers();
 		this._simplified_geometry.clearRoutes();
 
 		for (var i = 0; i < subpaths.length; i++)
 		{
 			var s = subpaths[i];
 			var color_idx = i % this._color_table.length;
+			var coords = positions.slice(s.node_range[0], s.node_range[1]+1);
 			this._simplified_geometry.addRoute(
-				positions.slice(s.node_range[0], s.node_range[1]+1),
-				{color: this._color_table[color_idx], weight: 2}
+				coords,
+				{color: this._color_table[color_idx], weight: 4}
 				);
-			var rect = L.rectangle(s.bounding_box, {color: "#000", weight: 1});
+			var rect = L.rectangle(s.bounding_box, {color: "#000", weight: 1, fillOpacity: 0.0});
 			this._bounding_boxes.addLayer(rect);
+			for (var j = 0; j < s.stripes.length; j++)
+			{
+				var stripe = s.stripes[j];
+				var first_idx = stripe[0];
+				// horizontal stripes
+				if (s.monoticity & 1 == 1)
+				{
+					var min_lon = s.bounding_box[0][1];
+					var max_lon = s.bounding_box[1][1];
+					var lat = coords[first_idx][0];
+					var stripe_line = L.polyline([[lat, min_lon], [lat, max_lon]], {color: "#ff0000", weight: 1});
+					this._stripes.addLayer(stripe_line);
+				}
+				// vertical stripes
+				else
+				{
+					var min_lat = s.bounding_box[0][0];
+					var max_lat = s.bounding_box[1][0];
+					var lon = coords[first_idx][1];
+					var stripe_line = L.polyline([[min_lat, lon], [max_lat, lon]], {color: "#ff0000", weight: 1});
+					this._stripes.addLayer(stripe_line);
+				}
+			}
 		}
 
 		this._simplified_geometry.show();
