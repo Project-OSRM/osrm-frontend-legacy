@@ -25,8 +25,10 @@ OSRM.Sketch = function() {
 	this._simplified_geometry_style	= {color:'#FF3300', weight:5, dashArray:""};
 	this._bounding_boxes = new L.LayerGroup();
 	this._stripes = new L.LayerGroup();
+	this._nodes = new L.LayerGroup();
 	OSRM.G.map.addLayer(this._bounding_boxes);
 	OSRM.G.map.addLayer(this._stripes);
+	OSRM.G.map.addLayer(this._nodes);
 
 	this._nosketch = OSRM.Sketch.SKETCH;
 	this._zoomlevel = 0;
@@ -47,6 +49,7 @@ OSRM.extend( OSRM.Sketch,{
 
 		this._bounding_boxes.clearLayers();
 		this._stripes.clearLayers();
+		this._nodes.clearLayers();
 		this._simplified_geometry.clearRoutes();
 
 		for (var i = 0; i < subpaths.length; i++)
@@ -58,6 +61,11 @@ OSRM.extend( OSRM.Sketch,{
 				coords,
 				{color: this._color_table[color_idx], weight: 4}
 				);
+			for (var j = 0; j < coords.length; j++)
+			{
+				var node = L.circle(coords[j], 30, {color: "#000", weight: 0, opacity: 1.0});
+				this._nodes.addLayer(node);
+			}
 			var rect = L.rectangle(s.bounding_box, {color: "#000", weight: 1, fillOpacity: 0.0});
 			this._bounding_boxes.addLayer(rect);
 			for (var j = 0; j < s.stripes.length; j++)
@@ -70,7 +78,7 @@ OSRM.extend( OSRM.Sketch,{
 					var min_lon = s.bounding_box[0][1];
 					var max_lon = s.bounding_box[1][1];
 					var lat = coords[first_idx][0];
-					var stripe_line = L.polyline([[lat, min_lon], [lat, max_lon]], {color: "#ff0000", weight: 1});
+					var stripe_line = L.polyline([[lat, min_lon], [lat, max_lon]], {color: "#aa0000", weight: 0.5, opacity: 0.2});
 					this._stripes.addLayer(stripe_line);
 				}
 				// vertical stripes
