@@ -149,7 +149,7 @@ getRoute: function(parameters) {
 	OSRM.JSONP.clear('dragging');
 	OSRM.JSONP.clear('redraw');
 	OSRM.JSONP.clear('route');
-	OSRM.JSONP.call(OSRM.Routing._buildCall()+'&instructions=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute, OSRM.DEFAULTS.JSONP_TIMEOUT, 'route', parameters);
+	//OSRM.JSONP.call(OSRM.Routing._buildCall()+'&instructions=true', OSRM.Routing.showRoute, OSRM.Routing.timeoutRoute, OSRM.DEFAULTS.JSONP_TIMEOUT, 'route', parameters);
 	OSRM.JSONP.call(OSRM.Routing._buildSketchCall(), OSRM.Routing.showSketch, OSRM.Routing.timeoutSketch, OSRM.DEFAULTS.JSONP_TIMEOUT, 'sketch', parameters);
 },
 getRoute_Reversed: function() {

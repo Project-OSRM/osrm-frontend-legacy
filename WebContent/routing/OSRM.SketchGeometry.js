@@ -25,15 +25,16 @@ OSRM.SketchGeometry = {
 // show route geometry - if there is a route
 show: function(response) {
 	var geometry = OSRM.SketchGeometry._decode(response.simplified_geometry, OSRM.C.PRECISION );
+	var original_geometry = OSRM.SketchGeometry._decode(response.route_geometry, OSRM.C.PRECISION );
 
-	OSRM.G.sketch.showSketch(geometry, response.subpath_info, OSRM.Sketch.SKETCH);
+	OSRM.G.sketch.showSketch(original_geometry, geometry, response.subpath_info, OSRM.Sketch.SKETCH);
 },
 
 //show route geometry - if there is no route
 showNA: function() {
 	var positions = [];
 
-	OSRM.G.sketch.showSketch(positions, [], OSRM.Sketch.NOSKETCH);
+	OSRM.G.sketch.showSketch([], [], [], OSRM.Sketch.NOSKETCH);
 },
 
 //decode compressed route geometry

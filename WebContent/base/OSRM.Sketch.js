@@ -20,15 +20,15 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 
 OSRM.Sketch = function() {
-	this._simplified_geometry	= new OSRM.MultiRoute("simplified" , {dashArray:""} );
-
-	this._simplified_geometry_style	= {color:'#FF3300', weight:5, dashArray:""};
 	this._bounding_boxes = new L.LayerGroup();
 	this._stripes = new L.LayerGroup();
 	this._nodes = new L.LayerGroup();
 	OSRM.G.map.addLayer(this._bounding_boxes);
 	OSRM.G.map.addLayer(this._stripes);
 	OSRM.G.map.addLayer(this._nodes);
+
+	this._simplified_geometry	= new OSRM.MultiRoute("simplified" , {dashArray:""} );
+	this._original_geometry	= new OSRM.MultiRoute("original" , {dashArray:""} );
 
 	this._nosketch = OSRM.Sketch.SKETCH;
 	this._zoomlevel = 0;
@@ -44,29 +44,35 @@ OSRM.Sketch.NOSKETCH = true;
 OSRM.Sketch.SKETCH = false;
 OSRM.extend( OSRM.Sketch,{
 	// show/hide sketch
-	showSketch: function(positions, subpaths, nosketch) {
+	showSketch: function(original_positions, positions, subpaths, nosketch) {
 		this._nosketch = nosketch;
 
 		this._bounding_boxes.clearLayers();
 		this._stripes.clearLayers();
 		this._nodes.clearLayers();
 		this._simplified_geometry.clearRoutes();
+		this._original_geometry.clearRoutes();
 
 		for (var i = 0; i < subpaths.length; i++)
 		{
 			var s = subpaths[i];
 			var color_idx = i % this._color_table.length;
 			var coords = positions.slice(s.node_range[0], s.node_range[1]+1);
+			var original_coords = original_positions.slice(s.original_node_range[0], s.original_node_range[1]+1);
 			this._simplified_geometry.addRoute(
 				coords,
-				{color: this._color_table[color_idx], weight: 4}
+				{color: this._color_table[color_idx], weight: 4, opacity: 1.0}
+				);
+			this._original_geometry.addRoute(
+				original_coords,
+				{color: this._color_table[color_idx], weight: 4, opacity: 1.0}
 				);
 			for (var j = 0; j < coords.length; j++)
 			{
 				var node = L.circle(coords[j], 30, {color: "#000", weight: 0, opacity: 1.0});
 				this._nodes.addLayer(node);
 			}
-			var rect = L.rectangle(s.bounding_box, {color: "#000", weight: 1, fillOpacity: 0.0});
+			var rect = L.rectangle(s.bounding_box, {color: "#000", weight: 1, fillOpacity: 0.1});
 			this._bounding_boxes.addLayer(rect);
 			for (var j = 0; j < s.stripes.length; j++)
 			{
@@ -94,6 +100,7 @@ OSRM.extend( OSRM.Sketch,{
 		}
 
 		this._simplified_geometry.show();
+		this._original_geometry.show();
 
 		this._zoomlevel = OSRM.G.map.getZoom();
 	},
