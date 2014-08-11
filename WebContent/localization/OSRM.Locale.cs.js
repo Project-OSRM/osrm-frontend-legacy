@@ -22,7 +22,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 OSRM.Localization["cs"] = {
 // own language
 "CULTURE": "cs-CZ",
-"LANGUAGE": "česky", 		
+"LANGUAGE": "česky",
 // gui
 "GUI_START": "Odkud",
 "GUI_END": "Kam",
@@ -90,6 +90,7 @@ OSRM.Localization["cs"] = {
 "DIRECTION_6":"Zahněte ostře doleva[ na silnici <b>%s</b>]",
 "DIRECTION_7":"Zahněte vlevo[ na silnici <b>%s</b>]",
 "DIRECTION_8":"Zahněte mírně vlevo[ na silnici <b>%s</b>]",
+"DIRECTION_9":"Dílčí cíl <b>%s</b>",
 "DIRECTION_10":"Jeďte na <b>%d</b>[ silnicí <b>%s</b>]",
 "DIRECTION_11-1":"Najeďte na kruhový objezd a opusťte jej prvním výjezdem[ na silnici <b>%s</b>]",
 "DIRECTION_11-2":"Najeďte na kruhový objezd a opusťte jej druhým výjezdem[ na silnici <b>%s</b>]",

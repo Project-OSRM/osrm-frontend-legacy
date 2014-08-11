@@ -92,6 +92,7 @@ OSRM.Localization["fi"] = {
 "DIRECTION_6":"Käänny jyrkästi vasemmalle [ tielle <b>%s</b>]",
 "DIRECTION_7":"Käänny vasemmalle[ tielle <b>%s</b>]",
 "DIRECTION_8":"Käänny loivasti vasemmalle[ tielle <b>%s</b>]",
+"DIRECTION_9":"Välimääränpää[ tielle <b>%s</b>]",
 "DIRECTION_10":"Aja <b>%d</b> [ tielle <b>%s</b>]",
 "DIRECTION_11-1":"Aja liikenneympyrään ja poistu ensimmäisestä haarasta[ tielle <b>%s</b>]",
 "DIRECTION_11-2":"Aja liikenneympyrään ja poistu toisesta haarasta[ tielle <b>%s</b>]",
@@ -106,11 +107,11 @@ OSRM.Localization["fi"] = {
 "DIRECTION_15":"Saavuit määränpäähän",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Huoltotauko",
-"NOTIFICATION_MAINTENANCE_BODY":	"OSRM-sivusto on väliaikaisesti pois käytöstä huoltotauon takia. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"OSRM-sivusto on väliaikaisesti pois käytöstä huoltotauon takia. " +
 									"Ole hyvä ja odota kunnes huoltotoimet ovat valmistuneet. " +
 									"Sivusto tulee takaisin käyttöön pian." +
-									"<br/><br/>" + 
-									"Sillä välin voit halutessasi mennä ulos kartoittamaan naapurustoasi..." + 
+									"<br/><br/>" +
+									"Sillä välin voit halutessasi mennä ulos kartoittamaan naapurustoasi..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Tiesitkö että voit vaihtaa käyttöliittymän kieltä?",
 "NOTIFICATION_LOCALIZATION_BODY":	"Voit valita kielen ruudun vasemmasta yläkulmasta löytyvästä pudotusvalikosta." +
@@ -121,7 +122,7 @@ OSRM.Localization["fi"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Tiesitkö että voit klikata karttaa lisätäksesi reittipisteen?",
 "NOTIFICATION_CLICKING_BODY":		"Voit klikatat karttaa hiiren vasemmalla painikkeella asettaaksesi lähtöpaikan (vihreä) tai määränpään (punainen), " +
 									"jos lähtpöpaikka on jo asetettu. " +
-									"Valittujen paikkojen osoiteet näytetään vasemmassa reunassa olevissa laatikoissa.. " + 
+									"Valittujen paikkojen osoiteet näytetään vasemmassa reunassa olevissa laatikoissa.. " +
 									"<br/><br/>" +
 									"Voit poistaa paikat kartalta klikkaamalla niitä uudestaan.",
 "NOTIFICATION_DRAGGING_HEADER":		"Tiesitkö että voit raahata jokaista reittipistettä kartalla?",

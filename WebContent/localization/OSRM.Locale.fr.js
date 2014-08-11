@@ -91,6 +91,7 @@ OSRM.Localization["fr"] = {
 "DIRECTION_6":"Tournez fortement à gauche[ sur <b>%s</b>]",
 "DIRECTION_7":"Tournez à gauche[ sur <b>%s</b>]",
 "DIRECTION_8":"Tournez légèrement à gauche[ sur <b>%s</b>]",
+"DIRECTION_9":"Destination intermédiaire[ sur <b>%s</b>]",
 "DIRECTION_10":"Direction <b>%d</b>[ sur <b>%s</b>]",
 "DIRECTION_11-1":"Au rond-point, prenez la première sortie[ sur <b>%s</b>]",
 "DIRECTION_11-2":"Au rond-point, prenez la deuxième sortie[ sur <b>%s</b>]",

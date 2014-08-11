@@ -111,6 +111,7 @@ OSRM.Localization["ca"] = {
 "DIRECTION_6":"Feu un gir tanct a l'esquerra (per <b>%s</b>)",
 "DIRECTION_7":"Gireu a l'esquerra (per <b>%s</b>)",
 "DIRECTION_8":"Feu un gir suau a l'esquerra (per <b>%s</b>)",
+"DIRECTION_9":"Destí intermedi(per <b>%s</b>)",
 "DIRECTION_10":"Aneu cap <b>%d</b> (per <b>%s</b>)",
 "DIRECTION_11-1":"Entreu a la rotonda i sortiu a la primera sortida (per <b>%s</b>)",
 "DIRECTION_11-2":"Entreu a la rotonda i sortiu a la segona sortida (per <b>%s</b>)",
@@ -125,11 +126,11 @@ OSRM.Localization["ca"] = {
 "DIRECTION_15":"Heu arribat a la destinació",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Aturada per manteniment programada",
-"NOTIFICATION_MAINTENANCE_BODY":	"El lloc web de l'OSRM és fora de servei per a fer-ne manteniment. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"El lloc web de l'OSRM és fora de servei per a fer-ne manteniment. " +
 									"Tingueu paciència mentre es realitzen les actualitzacions. " +
 									"El web tornarà a ser funcional ben aviat." +
-									"<br/><br/>" + 
-									"Mentrestant, si voleu podeu sortir fora i mapar un barri proper..." + 
+									"<br/><br/>" +
+									"Mentrestant, si voleu podeu sortir fora i mapar un barri proper..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Sabíeu que... podeu canviar la llengua?",
 "NOTIFICATION_LOCALIZATION_BODY":	"You can use the pulldown menu in the upper left corner to select your favorite language. " +
@@ -140,7 +141,7 @@ OSRM.Localization["ca"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Sabíeu que... podeu clicar al mapa per posar-hi punts de ruta?",
 "NOTIFICATION_CLICKING_BODY":		"Podeu clicar al mapa amb el botó primari del ratolí per establir el punt d'inici (verd) o un punt final (vermell), " +
 									"si el punt d'inici ja existeix. " +
-									"L'adreça de l'ubicació seleccionada es mostrarà en les caixes de l'esquerra. " + 
+									"L'adreça de l'ubicació seleccionada es mostrarà en les caixes de l'esquerra. " +
 									"<br/><br/>" +
 									"Podeu suprimir un punt clicant-hi altra vegada amb el botó primari del ratolí.",
 "NOTIFICATION_DRAGGING_HEADER":		"Sabíeu que... podeu arrossegar cada punt de ruta del mapa?",

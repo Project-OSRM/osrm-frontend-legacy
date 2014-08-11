@@ -117,6 +117,7 @@ OSRM.Localization["eo"] = {
 "DIRECTION_6":"Turniĝu abrupte maldekstren[ sur la straton <b>%s</b>]",
 "DIRECTION_7":"Turniĝu maldekstren[ sur la straton <b>%s</b>]",
 "DIRECTION_8":"Turniĝu iomete maldekstren[ sur la straton <b>%s</b>]",
+"DIRECTION_9":"Intera celloko[ sur la straton <b>%s</b>]",
 "DIRECTION_10":"Iru <b>%d</b>[ sur la straton <b>%s</b>]",
 "DIRECTION_11-1":"Ĉe la trafikcirklo, prenu la unuan eliron[ sur la straton <b>%s</b>]",
 "DIRECTION_11-2":"Ĉe la trafikcirklo, prenu la duan eliron[ sur la straton <b>%s</b>]",
@@ -131,11 +132,11 @@ OSRM.Localization["eo"] = {
 "DIRECTION_15":"Vi ĵus alvenis",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Planita Riparado",
-"NOTIFICATION_MAINTENANCE_BODY":	"Ni faras planitan riparadon ĉe la retejo OSRM. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"Ni faras planitan riparadon ĉe la retejo OSRM. " +
 									"Bonvolu atendi dum kiam ni ĝisdatigas la servilon. " +
 									"La retejo baldaŭ denove ekfunkcios." +
-									"<br/><br/>" + 
-									"Intertempe vi povus preni vian GPS-ilon kaj krajonon kaj plibonigi la mapon de via kvartalo..." + 
+									"<br/><br/>" +
+									"Intertempe vi povus preni vian GPS-ilon kaj krajonon kaj plibonigi la mapon de via kvartalo..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Ĉu vi sciis? Vi povas ŝanĝi la lingvon de la retejo.",
 "NOTIFICATION_LOCALIZATION_BODY":	"Uzu la falmenuon supre-maldekstre por elekti alian lingvon. " +
@@ -146,7 +147,7 @@ OSRM.Localization["eo"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Ĉu vi sciis? Vi povas alklaki la mapon por aldoni vojpunktojn.",
 "NOTIFICATION_CLICKING_BODY":		"Vi povas alklaki la mapon por aldoni forirpunkton (verdan), aŭ alvenpunkton (ruĝan) " +
 									"se la forirpunkto jam estas sur la mapo. " +
-									"La adreso de la elektita loko montriĝos en la maldekstra kolumno. " + 
+									"La adreso de la elektita loko montriĝos en la maldekstra kolumno. " +
 									"<br/><br/>" +
 									"Vi povas foriri markilon per dua klako sur ĝi.",
 "NOTIFICATION_DRAGGING_HEADER":		"Ĉu vi sciis? Vi povas treni la vojmarkilojn sur la mapo.",

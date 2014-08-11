@@ -92,6 +92,7 @@ OSRM.Localization["lv"] = {
 "DIRECTION_6":"Pagriezieties strauji pa kreisi[ uz <b>%s</b>]",
 "DIRECTION_7":"Pagriezieties pa kreisi[ uz <b>%s</b>]",
 "DIRECTION_8":"Pagriezieties nedaudz pa kreisi[ uz <b>%s</b>]",
+"DIRECTION_9":"Starpposma galapunkts[ uz <b>%s</b>]",
 "DIRECTION_10":"Dotieties <b>%d</b> virzienā[ uz <b>%s</b>]",
 "DIRECTION_11-1":"Iebrauciet aplī, brauciet pa pirmo izeju[ uz <b>%s</b>]",
 "DIRECTION_11-2":"Iebrauciet aplī, brauciet pa otro izeju[ uz <b>%s</b>]",
