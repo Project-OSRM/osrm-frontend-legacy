@@ -118,6 +118,7 @@ OSRM.Localization["nl"] = {
 "DIRECTION_6":"Ga scherp naar links[ naar <b>%s</b>]",
 "DIRECTION_7":"Ga linksaf[ naar <b>%s</b>]",
 "DIRECTION_8":"Ga iets naar links[ naar <b>%s</b>]",
+"DIRECTION_9":"Tussenliggende bestemming[ naar <b>%s</b>]",
 "DIRECTION_10":"Ga naar <b>%d</b>[ op <b>%s</b>]",
 "DIRECTION_11-1":"Ga de rotonde op en verlaat die bij de eerste afslag[ naar <b>%s</b>]",
 "DIRECTION_11-2":"Ga de rotonde op en verlaat die bij de tweede afslag[ naar <b>%s</b>]",
@@ -157,11 +158,11 @@ OSRM.Localization["nl"] = {
 "HIGHWAY_road": "weg",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Gepland onderhoud",
-"NOTIFICATION_MAINTENANCE_BODY":	"De website van OSRM Website is gesloten wegens gepland onderhoud. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"De website van OSRM Website is gesloten wegens gepland onderhoud. " +
 									"Even geduld aub terwijl de vereiste updates worde uitgevoerd. " +
 									"De site zal op korte termijn weer beschikbaar zijn." +
-									"<br/><br/>" + 
-									"In de tussentijd wilt u misschien naar buiten gaan en een nabije vriendelijke buurt in kaart brengen..." + 
+									"<br/><br/>" +
+									"In de tussentijd wilt u misschien naar buiten gaan en een nabije vriendelijke buurt in kaart brengen..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Wist u dat...? U de taal voor de weergave kunt wijzigen.",
 "NOTIFICATION_LOCALIZATION_BODY":	"U kunt het openklapmenu in de linker bovenhoek gebruiken om uw favoriete taal te kiezen. " +
@@ -172,7 +173,7 @@ OSRM.Localization["nl"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Wist u dat...? U op de kaart kunt klikken om markeringen voor de route te plaatsen.",
 "NOTIFICATION_CLICKING_BODY":		"Klik met de linker muisknop op de kaart om een markering voor het beginpunt (groen) of bestemming (rood) te plaatsen, " +
 									"ald de marking voor het beginpunt al bestaat. " +
-									"Het adres van de geselecteerde locatie zal worden weergegeven in fe vakken aan de linkerkant. " + 
+									"Het adres van de geselecteerde locatie zal worden weergegeven in fe vakken aan de linkerkant. " +
 									"<br/><br/>" +
 									"U kunt eenmarkering verwijderen door er nogmaals op te klikken met de linker muisknop.",
 "NOTIFICATION_DRAGGING_HEADER":		"Wist u dat...? U elke markering voor de route op de kaart kunt slepen.",

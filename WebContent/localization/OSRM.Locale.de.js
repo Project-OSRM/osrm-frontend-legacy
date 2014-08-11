@@ -110,6 +110,7 @@ OSRM.Localization["de"] = {
 "DIRECTION_6":"Scharf links abbiegen[ auf <b>%s</b>]",
 "DIRECTION_7":"Links abbiegen[ auf <b>%s</b>]",
 "DIRECTION_8":"Leicht links abbiegen[ auf <b>%s</b>]",
+"DIRECTION_9":"Sie erreichen Ihr Zwischenziel [ auf <b>%s</b>]",
 "DIRECTION_10":"Fahren Sie Richtung <b>%d</b>[ auf <b>%s</b>]",
 "DIRECTION_11-1":"In den Kreisverkehr einfahren und bei erster Möglichkeit[ in Richtung <b>%s</b>] verlassen",
 "DIRECTION_11-2":"In den Kreisverkehr einfahren und bei zweiter Möglichkeit[ in Richtung <b>%s</b>] verlassen",

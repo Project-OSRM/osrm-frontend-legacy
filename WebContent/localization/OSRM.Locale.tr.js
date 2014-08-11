@@ -92,6 +92,7 @@ OSRM.Localization["tr"] = {
 "DIRECTION_6":"Sola keskin dönün[ onto <b>%s</b>]",
 "DIRECTION_7":"Sola dönün[ onto <b>%s</b>]",
 "DIRECTION_8":"Hafif sola dönün[ onto <b>%s</b>]",
+"DIRECTION_9":"Ara hedef[ on <b>%s</b>]",
 "DIRECTION_10":"Yön <b>%d</b>[ onto <b>%s</b>]",
 "DIRECTION_11-1":"Kavşağa girin ve ilk çıkıştan çıkın[ onto <b>%s</b>]",
 "DIRECTION_11-2":"Kavşağa girin ve ikinci çıkıştan çıkın[ onto <b>%s</b>]",
@@ -106,11 +107,11 @@ OSRM.Localization["tr"] = {
 "DIRECTION_15":"Hedefinize ulaştınız",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Programlı Bakım",
-"NOTIFICATION_MAINTENANCE_BODY":	"OSRM Web sayfası planlı bakımla yazılmıştır. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"OSRM Web sayfası planlı bakımla yazılmıştır. " +
 									"Lütfen güncellenmeler yapılırken sabırlı olun. " +
 									"Site kısa bir süre sonra çevrimiçi olacaktır." +
-									"<br/><br/>" + 
-									"Aynı zamanda dışarıya çıkıp komşunuzu haritalamayı isteyebilirsiniz..." + 
+									"<br/><br/>" +
+									"Aynı zamanda dışarıya çıkıp komşunuzu haritalamayı isteyebilirsiniz..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Biliyor muydunuz? Dil görünümünü değiştirebilirsiniz.",
 "NOTIFICATION_LOCALIZATION_BODY":	"Favori dilinizi seçmek için üst sol köşedeki aşağı açılna menüye tıklayabilirsiniz. " +
@@ -121,7 +122,7 @@ OSRM.Localization["tr"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Biliyor muydunuz? Rota işaretleyicilerini ayarlamak için haritaya tıklayabilirsiniz.",
 "NOTIFICATION_CLICKING_BODY":		"İşaretleyici kaynağını (yeşil) yada hedef işaretleyici (kırmızı)ayarlamak için farenin sol tarafıyla haritanın üzerine tıklayabilirsiniz. " +
 									"Eğer kaynak işaretleyici zaten varsa. " +
-									"Seçilen bölgenin adresi sola doğru kutularda gözükecek. " + 
+									"Seçilen bölgenin adresi sola doğru kutularda gözükecek. " +
 									"<br/><br/>" +
 									"Farenin sol tarafına tıklayarak işaretleyiciyi silebilirsiniz.",
 "NOTIFICATION_DRAGGING_HEADER":		"Biliyor muydunuz? Rota işaretleyicisini harita üzerinde sürükleyebilirsiniz.",

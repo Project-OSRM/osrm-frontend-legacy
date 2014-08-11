@@ -92,6 +92,7 @@ OSRM.Localization["sv"] = {
 "DIRECTION_6":"Sväng skarpt till vänster[ in på <b>%s</b>]",
 "DIRECTION_7":"Sväng till vänster[ in på <b>%s</b>]",
 "DIRECTION_8":"Sväng svagt till vänster[ in på <b>%s</b>]",
+"DIRECTION_9":"Mellanliggande destination[ in på <b>%s</b>]",
 "DIRECTION_10":"Kör mot <b>%d</b>[ på <b>%s</b>]",
 "DIRECTION_11-1":"Kör in i rondellen och tag första avfarten[ in på <b>%s</b>]",
 "DIRECTION_11-2":"Kör in i rondellen och tag andra avfarten[ in på <b>%s</b>]",
@@ -106,11 +107,11 @@ OSRM.Localization["sv"] = {
 "DIRECTION_15":"Du är framme",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Schemalagt underhåll",
-"NOTIFICATION_MAINTENANCE_BODY":	"OSRM Websida ligger nere pga. schemalagt underhåll. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"OSRM Websida ligger nere pga. schemalagt underhåll. " +
 									"Var god djöj till de nödvändiga uppdateringarna är slutförda. " +
 									"Sidan kommer vara upp snart." +
-									"<br/><br/>" + 
-									"Under tiden kanske du vill kartlägga ditt närområde..." + 
+									"<br/><br/>" +
+									"Under tiden kanske du vill kartlägga ditt närområde..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Visste du att? Du kan ändra språk.",
 "NOTIFICATION_LOCALIZATION_BODY":	"Du kan använda menyn uppe till vänster för att välja ditt språk. " +
@@ -121,7 +122,7 @@ OSRM.Localization["sv"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Visste du att? Du kan klicka på kartan för att lägga till ruttmarkörer.",
 "NOTIFICATION_CLICKING_BODY":		"Du kan klicka på kartan med vänster musknapp för att sätta startpunkt (grön) eller målpunkt (röd), " +
 									"om det redan finns en startpunkt. " +
-									"Addressen för den tillagda punkten kommer finnas i sökfälter till vänster. " + 
+									"Addressen för den tillagda punkten kommer finnas i sökfälter till vänster. " +
 									"<br/><br/>" +
 									"Du kan ta bort en markör genom att återigen klicka på den.",
 "NOTIFICATION_DRAGGING_HEADER":		"Visste du att? Du kan dra i varje ruttmarkör på kartan.",

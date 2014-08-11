@@ -118,6 +118,7 @@ OSRM.Localization["en"] = {
 "DIRECTION_6":"Turn sharp left[ onto <b>%s</b>]",
 "DIRECTION_7":"Turn left[ onto <b>%s</b>]",
 "DIRECTION_8":"Turn slight left[ onto <b>%s</b>]",
+"DIRECTION_9":"Reaching intermediate destination[ on <b>%s</b>]",
 "DIRECTION_10":"Head <b>%d</b>[ onto <b>%s</b>]",
 "DIRECTION_11-1":"Enter roundabout and leave at first exit[ onto <b>%s</b>]",
 "DIRECTION_11-2":"Enter roundabout and leave at second exit[ onto <b>%s</b>]",
@@ -157,11 +158,11 @@ OSRM.Localization["en"] = {
 "HIGHWAY_road": "road",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Scheduled Maintenance",
-"NOTIFICATION_MAINTENANCE_BODY":	"The OSRM Website is down for a scheduled maintenance. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"The OSRM Website is down for a scheduled maintenance. " +
 									"Please be patient while required updates are performed. " +
 									"The site will be back online shortly." +
-									"<br/><br/>" + 
-									"In the meantime you may want to go out an map a friendly neighborhood near you..." + 
+									"<br/><br/>" +
+									"In the meantime you may want to go out an map a friendly neighborhood near you..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Did you know? You can change the display language.",
 "NOTIFICATION_LOCALIZATION_BODY":	"You can use the pulldown menu in the upper left corner to select your favorite language. " +
@@ -172,7 +173,7 @@ OSRM.Localization["en"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Did you know? You can click on the map to set route markers.",
 "NOTIFICATION_CLICKING_BODY":		"You can click on the map with the left mouse button to set a source marker (green) or a target marker (red), " +
 									"if the source marker already exists. " +
-									"The address of the selected location will be displayed in the boxes to the left. " + 
+									"The address of the selected location will be displayed in the boxes to the left. " +
 									"<br/><br/>" +
 									"You can delete a marker by clicking on it again with the left mouse button.",
 "NOTIFICATION_DRAGGING_HEADER":		"Did you know? You can drag each route marker on the map.",

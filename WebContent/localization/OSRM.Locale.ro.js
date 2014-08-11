@@ -92,6 +92,7 @@ OSRM.Localization["ro"] = {
 "DIRECTION_6":"Faceti brusc stanga[ spre <b>%s</b>]",
 "DIRECTION_7":"Faceti stanga[ spre <b>%s</b>]",
 "DIRECTION_8":"Faceti usor stanga[ spre <b>%s</b>]",
+"DIRECTION_9":"Destinație intermediară[ spre <b>%s</b>]",
 "DIRECTION_10":"Indreptati-va <b>%d</b>[ spre <b>%s</b>]",
 "DIRECTION_11-1":"Intrati in sensul giratoriu si alegeti prima iesire[ spre <b>%s</b>]",
 "DIRECTION_11-2":"Intrati in sensul giratoriu si alegeti a doua iesire[ spre <b>%s</b>]",

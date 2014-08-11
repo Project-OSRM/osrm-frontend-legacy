@@ -22,7 +22,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 OSRM.Localization["pl"] = {
 // own language
 "CULTURE": "pl-PL",
-"LANGUAGE": "Polski",		
+"LANGUAGE": "Polski",
 // gui
 "GUI_START": "Początek",
 "GUI_END": "Koniec",
@@ -91,6 +91,7 @@ OSRM.Localization["pl"] = {
 "DIRECTION_6":"Skręć ostro w lewo[ na drogę <b>%s</b>]",
 "DIRECTION_7":"Skręć w lewo[ na drogę <b>%s</b>]",
 "DIRECTION_8":"Skręć lekko w lewo[ na drogę <b>%s</b>]",
+"DIRECTION_9":"Pośredni docelowy[ na drogę <b>%s</b>]",
 "DIRECTION_10":"Podążaj na <b>%d</b>[ drogą <b>%s</b>]",
 "DIRECTION_11-1":"Wjedź na rondo, zjedź pierwszym zjazdem[ na drogę <b>%s</b>]",
 "DIRECTION_11-2":"Wjedź na rondo, zjedź drugim zjazdem[ na drogę <b>%s</b>]",

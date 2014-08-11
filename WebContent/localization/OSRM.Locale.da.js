@@ -92,6 +92,7 @@ OSRM.Localization["da"] = {
 "DIRECTION_6":"Drej skarpt til venstre[ ad <b>%s</b>]",
 "DIRECTION_7":"Drej til venstre[ ad <b>%s</b>]",
 "DIRECTION_8":"Drej svagt til venstre[ ad <b>%s</b>]",
+"DIRECTION_9":"Mellemliggende destination[ ad <b>%s</b>]",
 "DIRECTION_10":"Kør mod <b>%d</b>[ ad <b>%s</b>]",
 "DIRECTION_11-1":"Kør ind i rundkørslen og tag første udkørsel[ ad <b>%s</b>]",
 "DIRECTION_11-2":"Kør ind i rundkørslen og tag anden udkørsel[ ad <b>%s</b>]",

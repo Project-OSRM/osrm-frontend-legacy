@@ -118,6 +118,7 @@ OSRM.Localization["pt"] = {
 "DIRECTION_6":"Virar à esquerda apertada[ para <b>%s</b>]",
 "DIRECTION_7":"Virar à esquerda[ para <b>%s</b>]",
 "DIRECTION_8":"Virar ligeiramente à esquerda[ para <b>%s</b>]",
+"DIRECTION_9":"Destino intermédio[ para <b>%s</b>]",
 "DIRECTION_10":"Em direção a <b>%d</b>[ para <b>%s</b>]",
 "DIRECTION_11-1":"Entrar na rotunda e sair na primeira saída[ para <b>%s</b>]",
 "DIRECTION_11-2":"Entrar na rotunda e sair na segunda saída[ para <b>%s</b>]",
@@ -157,11 +158,11 @@ OSRM.Localization["pt"] = {
 "HIGHWAY_road": "estrada",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Manutenção Programada",
-"NOTIFICATION_MAINTENANCE_BODY":	"O site do OSRM está desligado devido a uma manutenção programada. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"O site do OSRM está desligado devido a uma manutenção programada. " +
 									"Por favor, seja paciente enquanto as atualizações necessárias são realizadas. " +
 									"O site estará de volta online em breve." +
-									"<br/><br/>" + 
-									"Entretanto poderá sair e mapear um bairro neighborhood perto de si..." + 
+									"<br/><br/>" +
+									"Entretanto poderá sair e mapear um bairro neighborhood perto de si..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Você sabia? Você pode alterar o idioma do ecrã de exibição.",
 "NOTIFICATION_LOCALIZATION_BODY":	"Pode usar o menu suspenso no canto superior esquerdo para selecionar o seu idioma preferido. " +
@@ -172,7 +173,7 @@ OSRM.Localization["pt"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Você sabia? Você pode clicar no mapa para definir pontos da rota.",
 "NOTIFICATION_CLICKING_BODY":		"Clique no mapa com o botão esquerdo do rato para definir o ponto de origem (verde) ou o ponto de destino (vermelho), " +
 									"se o ponto de origem já existe. " +
-									"O endereço do local selecionado será exibido nas caixas à esquerda. " + 
+									"O endereço do local selecionado será exibido nas caixas à esquerda. " +
 									"<br/><br/>" +
 									"Pode excluir um ponto com um clique sobre ele novamente com o botão esquerdo do rato.",
 "NOTIFICATION_DRAGGING_HEADER":		"Você sabia? Você pode arrastar cada ponto da rota no mapa.",

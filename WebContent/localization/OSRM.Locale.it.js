@@ -111,6 +111,7 @@ OSRM.Localization["it"] = {
 "DIRECTION_6":"Girare decisamente a sinistra[ su <b>%s</b>]",
 "DIRECTION_7":"Girare a sinistra[ su <b>%s</b>]",
 "DIRECTION_8":"Girare leggermente a sinistra[ su <b>%s</b>]",
+"DIRECTION_9":"Destinazione intermedia[ su <b>%s</b>]",
 "DIRECTION_10":"Dirigersi a <b>%d</b>[ su <b>%s</b>]",
 "DIRECTION_11-1":"Immettersi nella rotonda ed abbandonarla alla prima uscita[ su <b>%s</b>]",
 "DIRECTION_11-2":"Immettersi nella rotonda ed abbandonarla alla seconda uscita[ su <b>%s</b>]",
@@ -125,11 +126,11 @@ OSRM.Localization["it"] = {
 "DIRECTION_15":"Hai raggiunto la tua destinazione",
 // notifications
 "NOTIFICATION_MAINTENANCE_HEADER":	"Manutenzione programmata",
-"NOTIFICATION_MAINTENANCE_BODY":	"Il sito di OSRM è offline per una manutenzione programmata. " + 
+"NOTIFICATION_MAINTENANCE_BODY":	"Il sito di OSRM è offline per una manutenzione programmata. " +
 									"Ti preghiamo di pazientare mentre vengono svolti gli aggiornamenti richiesti. " +
 									"Il sito tornerà a breve online." +
-									"<br/><br/>" + 
-									"Nel frattempo potresti voler andare fuori a mappare un quartiere che conosci vicino a te..." + 
+									"<br/><br/>" +
+									"Nel frattempo potresti voler andare fuori a mappare un quartiere che conosci vicino a te..." +
 									"<br/><br/><br/>[OSRM]",
 "NOTIFICATION_LOCALIZATION_HEADER":	"Lo sapevi? Puoi cambiare la lingua dei messaggi.",
 "NOTIFICATION_LOCALIZATION_BODY":	"Puoi usare il menù a tendina nell'angolo in alto a sinistra per selezionare la tua lingua preferita. " +
@@ -140,7 +141,7 @@ OSRM.Localization["it"] = {
 "NOTIFICATION_CLICKING_HEADER":		"Lo sapevi? Puoi cliccare sulla mappa per impostare i marcatori del percorso.",
 "NOTIFICATION_CLICKING_BODY":		"Puoi cliccare sulla mappa con il bottone sinistro del mouse per impostare un marcatore sorgente (verde) o un marcatore destinatario (rosso), " +
 									"se il marcatore sorgente esiste già. " +
-									"L'indirizzo del luogo selezionato sarà mostrato nei box sulla sinistra. " + 
+									"L'indirizzo del luogo selezionato sarà mostrato nei box sulla sinistra. " +
 									"<br/><br/>" +
 									"Puoi cancellare un marcatore cliccandolo nuovamente con il tasto sinistro.",
 "NOTIFICATION_DRAGGING_HEADER":		"Lo sapevi? Puoi trascinare ogni marcatore di percorso sulla mappa.",
