@@ -20,15 +20,14 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 
 OSRM.Sketch = function() {
-    this._bounding_boxes = new L.LayerGroup();
-    this._stripes = new L.LayerGroup();
-    this._nodes = new L.LayerGroup();
-    OSRM.G.map.addLayer(this._bounding_boxes);
-    OSRM.G.map.addLayer(this._stripes);
+    this._nodes = new L.featureGroup();
     OSRM.G.map.addLayer(this._nodes);
 
     this._schematized_geometry    = L.featureGroup();
     this._schematized_geometry.on('mouseover', this.onMouseOver);
+    this._schematized_geometry.on('mouseout', this.onMouseOut);
+    this._nodes.on('mouseover', this.onMouseOver);
+    this._nodes.on('mouseout', this.onMouseOut);
     this._schematized_geometry.addTo(OSRM.G.map);
     this._original_geometry    = new OSRM.MultiRoute("original" , {dashArray:""} );
 
@@ -53,13 +52,31 @@ OSRM.Sketch.SKETCH = false;
 OSRM.extend( OSRM.Sketch,{
     onMouseOver: function(e)
     {
+        var p;
         if (e.layer.streetname)
         {
-            var p = L.popup().setLatLng(e.latlng).setContent(e.layer.streetname);
+            p = L.popup().setLatLng(e.latlng).setContent(e.layer.streetname);
             p.className = "StreetNames";
             p.closeButton = false;
             OSRM.G.map.openPopup(p);
         }
+        else if (e.layer.instruction)
+        {
+            var content = "";
+            content += '<img class="description-body-direction" src="';
+            content += OSRM.RoutingDescription._getDrivingInstructionIcon(e.layer.instruction);
+            content += '" alt=""/>';
+
+            p = L.popup().setLatLng(e.latlng).setContent(content);
+            p.className = "TurnInstruction";
+            p.closeButton = false;
+            OSRM.G.map.openPopup(p);
+        }
+    },
+
+    onMouseOut: function(e)
+    {
+        OSRM.G.map.closePopup();
     },
 
     showSketchIntervals: function(intervals, coords, color_map, group) {
@@ -103,12 +120,25 @@ OSRM.extend( OSRM.Sketch,{
         return color_map;
     },
 
+    showTurnMarkers: function(instructions, coords, group) {
+        var marker, content, instruction;
+        for (var i = 0; i < instructions.length; i++)
+        {
+            instruction = instructions[i][0];
+            if (instruction == 0)
+            {
+                continue;
+            }
+            marker = L.circleMarker(coords[i], {color: '#000'});
+            marker.instruction = instruction;
+            group.addLayer(marker);
+        }
+    },
+
     // show/hide sketch
-    showSketch: function(original_positions, positions, street_intervals, schematized_street_intervals, nosketch) {
+    showSketch: function(original_positions, positions, street_intervals, schematized_street_intervals, instructions, nosketch) {
         this._nosketch = nosketch;
 
-        this._bounding_boxes.clearLayers();
-        this._stripes.clearLayers();
         this._nodes.clearLayers();
         this._schematized_geometry.clearLayers();
         this._original_geometry.clearRoutes();
@@ -116,6 +146,7 @@ OSRM.extend( OSRM.Sketch,{
         var color_map = this.mapColors(street_intervals);
         this.showStreetIntervals(street_intervals, original_positions, color_map, this._original_geometry);
         this.showSketchIntervals(schematized_street_intervals, positions, color_map, this._schematized_geometry);
+        this.showTurnMarkers(instructions, positions, this._nodes);
 
         this._original_geometry.show();
         this._zoomlevel = OSRM.G.map.getZoom();

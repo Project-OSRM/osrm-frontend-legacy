@@ -27,7 +27,12 @@ show: function(response) {
     var geometry = OSRM.SketchGeometry._decode(response.schematized_geometry, OSRM.C.PRECISION );
     var original_geometry = OSRM.SketchGeometry._decode(response.route_geometry, OSRM.C.PRECISION );
 
-    OSRM.G.sketch.showSketch(original_geometry, geometry, response.street_intervals, response.schematized_street_intervals, OSRM.Sketch.SKETCH);
+    OSRM.G.sketch.showSketch(original_geometry,
+                             geometry,
+                             response.street_intervals,
+                             response.schematized_street_intervals,
+                             response.schematized_instructions,
+                             OSRM.Sketch.SKETCH);
 },
 
 //show route geometry - if there is no route
