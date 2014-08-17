@@ -24,45 +24,45 @@ OSRM.SketchGeometry = {
 
 // show route geometry - if there is a route
 show: function(response) {
-	var geometry = OSRM.SketchGeometry._decode(response.simplified_geometry, OSRM.C.PRECISION );
-	var original_geometry = OSRM.SketchGeometry._decode(response.route_geometry, OSRM.C.PRECISION );
+    var geometry = OSRM.SketchGeometry._decode(response.schematized_geometry, OSRM.C.PRECISION );
+    var original_geometry = OSRM.SketchGeometry._decode(response.route_geometry, OSRM.C.PRECISION );
 
-	OSRM.G.sketch.showSketch(original_geometry, geometry, response.subpath_info, OSRM.Sketch.SKETCH);
+    OSRM.G.sketch.showSketch(original_geometry, geometry, response.street_intervals, response.schematized_street_intervals, OSRM.Sketch.SKETCH);
 },
 
 //show route geometry - if there is no route
 showNA: function() {
-	var positions = [];
+    var positions = [];
 
-	OSRM.G.sketch.showSketch([], [], [], OSRM.Sketch.NOSKETCH);
+    OSRM.G.sketch.showSketch([], [], [], OSRM.Sketch.NOSKETCH);
 },
 
 //decode compressed route geometry
 _decode: function(encoded, precision) {
-	precision = Math.pow(10, -precision);
-	var len = encoded.length, index=0, lat=0, lng = 0, array = [];
-	while (index < len) {
-		var b, shift = 0, result = 0;
-		do {
-			b = encoded.charCodeAt(index++) - 63;
-			result |= (b & 0x1f) << shift;
-			shift += 5;
-		} while (b >= 0x20);
-		var dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
-		lat += dlat;
-		shift = 0;
-		result = 0;
-		do {
-			b = encoded.charCodeAt(index++) - 63;
-			result |= (b & 0x1f) << shift;
-			shift += 5;
-		} while (b >= 0x20);
-		var dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
-		lng += dlng;
-		//array.push( {lat: lat * precision, lng: lng * precision} );
-		array.push( [lat * precision, lng * precision] );
-	}
-	return array;
+    precision = Math.pow(10, -precision);
+    var len = encoded.length, index=0, lat=0, lng = 0, array = [];
+    while (index < len) {
+        var b, shift = 0, result = 0;
+        do {
+            b = encoded.charCodeAt(index++) - 63;
+            result |= (b & 0x1f) << shift;
+            shift += 5;
+        } while (b >= 0x20);
+        var dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
+        lat += dlat;
+        shift = 0;
+        result = 0;
+        do {
+            b = encoded.charCodeAt(index++) - 63;
+            result |= (b & 0x1f) << shift;
+            shift += 5;
+        } while (b >= 0x20);
+        var dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
+        lng += dlng;
+        //array.push( {lat: lat * precision, lng: lng * precision} );
+        array.push( [lat * precision, lng * precision] );
+    }
+    return array;
 }
 
 };

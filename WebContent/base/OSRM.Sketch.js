@@ -20,115 +20,131 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 
 OSRM.Sketch = function() {
-	this._bounding_boxes = new L.LayerGroup();
-	this._stripes = new L.LayerGroup();
-	this._nodes = new L.LayerGroup();
-	OSRM.G.map.addLayer(this._bounding_boxes);
-	OSRM.G.map.addLayer(this._stripes);
-	OSRM.G.map.addLayer(this._nodes);
+    this._bounding_boxes = new L.LayerGroup();
+    this._stripes = new L.LayerGroup();
+    this._nodes = new L.LayerGroup();
+    OSRM.G.map.addLayer(this._bounding_boxes);
+    OSRM.G.map.addLayer(this._stripes);
+    OSRM.G.map.addLayer(this._nodes);
 
-	this._simplified_geometry	= new OSRM.MultiRoute("simplified" , {dashArray:""} );
-	this._original_geometry	= new OSRM.MultiRoute("original" , {dashArray:""} );
+    this._schematized_geometry    = L.featureGroup();
+    this._schematized_geometry.on('mouseover', this.onMouseOver);
+    this._schematized_geometry.addTo(OSRM.G.map);
+    this._original_geometry    = new OSRM.MultiRoute("original" , {dashArray:""} );
 
-	this._nosketch = OSRM.Sketch.SKETCH;
-	this._zoomlevel = 0;
-	this._color_table = [
-		"#dd0000",
-		"#00dd00",
-		"#dddd00",
-		"#00dddd",
-		"#0000dd"
-	];
+    this._nosketch = OSRM.Sketch.SKETCH;
+    this._zoomlevel = 0;
+    this._color_table = [
+        "#ff4136",
+        "#2ecc40",
+        "#0074d9",
+        "#ff851b",
+        "#b10dc9",
+        "#ffdc00"
+    ];
+
+    this._hover_state = {
+        layer: null,
+        popup: null
+    };
 };
 OSRM.Sketch.NOSKETCH = true;
 OSRM.Sketch.SKETCH = false;
 OSRM.extend( OSRM.Sketch,{
-	// show/hide sketch
-	showSketch: function(original_positions, positions, subpaths, nosketch) {
-		this._nosketch = nosketch;
+    onMouseOver: function(e)
+    {
+        if (e.layer.streetname)
+        {
+            var p = L.popup().setLatLng(e.latlng).setContent(e.layer.streetname);
+            p.className = "StreetNames";
+            p.closeButton = false;
+            OSRM.G.map.openPopup(p);
+        }
+    },
 
-		this._bounding_boxes.clearLayers();
-		this._stripes.clearLayers();
-		this._nodes.clearLayers();
-		this._simplified_geometry.clearRoutes();
-		this._original_geometry.clearRoutes();
+    showSketchIntervals: function(intervals, coords, color_map, group) {
+        var line, i, interval, color_idx;
+        for (i = 0; i < intervals.length; i++)
+        {
+            interval = intervals[i];
+            color_idx = color_map[interval[2]];
+            sub_coords = coords.slice(interval[0], interval[1]+1);
+            line = L.polyline(sub_coords,
+                {color: this._color_table[color_idx], weight: 8, opacity: 1.0});
+            line.streetname = interval[2];
+            group.addLayer(line);
+        }
+    },
 
-		for (var i = 0; i < subpaths.length; i++)
-		{
-			var s = subpaths[i];
-			var color_idx = i % this._color_table.length;
-			var coords = positions.slice(s.node_range[0], s.node_range[1]+1);
-			var original_coords = original_positions.slice(s.original_node_range[0], s.original_node_range[1]+1);
-			this._simplified_geometry.addRoute(
-				coords,
-				{color: this._color_table[color_idx], weight: 4, opacity: 1.0}
-				);
-			this._original_geometry.addRoute(
-				original_coords,
-				{color: this._color_table[color_idx], weight: 4, opacity: 1.0}
-				);
-			for (var j = 0; j < coords.length; j++)
-			{
-				var node = L.circle(coords[j], 30, {color: "#000", weight: 0, opacity: 1.0});
-				this._nodes.addLayer(node);
-			}
-			var rect = L.rectangle(s.bounding_box, {color: "#000", weight: 1, fillOpacity: 0.1});
-			this._bounding_boxes.addLayer(rect);
-			for (var j = 0; j < s.stripes.length; j++)
-			{
-				var stripe = s.stripes[j];
-				var first_idx = stripe[0];
-				// horizontal stripes
-				if (s.monoticity & 1 == 1)
-				{
-					var min_lon = s.bounding_box[0][1];
-					var max_lon = s.bounding_box[1][1];
-					var lat = coords[first_idx][0];
-					var stripe_line = L.polyline([[lat, min_lon], [lat, max_lon]], {color: "#aa0000", weight: 0.5, opacity: 0.2});
-					this._stripes.addLayer(stripe_line);
-				}
-				// vertical stripes
-				else
-				{
-					var min_lat = s.bounding_box[0][0];
-					var max_lat = s.bounding_box[1][0];
-					var lon = coords[first_idx][1];
-					var stripe_line = L.polyline([[min_lat, lon], [max_lat, lon]], {color: "#ff0000", weight: 1});
-					this._stripes.addLayer(stripe_line);
-				}
-			}
-		}
+    showStreetIntervals: function(intervals, coords, color_map, group) {
+        var line, i, interval, color_idx;
+        for (i = 0; i < intervals.length; i++)
+        {
+            interval = intervals[i];
+            color_idx = color_map[interval[2]];
+            sub_coords = coords.slice(interval[0], interval[1]+1);
+            group.addRoute(sub_coords,
+                {color: this._color_table[color_idx], weight: 3, opacity: 1.0});
+        }
+    },
 
-		this._simplified_geometry.show();
-		this._original_geometry.show();
+    mapColors: function(intervals) {
+        var color_map = {};
+        for (var i = 0; i < intervals.length; i++)
+        {
+            if (intervals[i][2] in color_map)
+            {
+                continue;
+            }
 
-		this._zoomlevel = OSRM.G.map.getZoom();
-	},
-	hideSketch: function() {
-		this._simplified_geometry.hide();
-	},
-	// query routines
-	isShown: function() {
-		return this._simplified_geometry.isShown();
-	},
-	isSketch: function() {
-		return !(this._nosketch);
-	},
-	getPositions: function() {
-		return this._simplified_geometry.getPositions();
-	},
-	getPoints: function() {
-		return this._simplified_geometry.getPoints();
-	},
-	getZoomLevel: function() {
-		return this._zoomlevel;
-	},
+            color_map[intervals[i][2]] = i % this._color_table.length;
+        }
 
-	// helper routines
-	reset: function() {
-		this._nosketch = OSRM.Sketch.SKETCH;
-	},
-	fire: function(type,event) {
-		this._simplified_geometry.route.fire(type,event);
-	},
+        return color_map;
+    },
+
+    // show/hide sketch
+    showSketch: function(original_positions, positions, street_intervals, schematized_street_intervals, nosketch) {
+        this._nosketch = nosketch;
+
+        this._bounding_boxes.clearLayers();
+        this._stripes.clearLayers();
+        this._nodes.clearLayers();
+        this._schematized_geometry.clearLayers();
+        this._original_geometry.clearRoutes();
+
+        var color_map = this.mapColors(street_intervals);
+        this.showStreetIntervals(street_intervals, original_positions, color_map, this._original_geometry);
+        this.showSketchIntervals(schematized_street_intervals, positions, color_map, this._schematized_geometry);
+
+        this._original_geometry.show();
+        this._zoomlevel = OSRM.G.map.getZoom();
+    },
+    hideSketch: function() {
+        this._schematized_geometry.hide();
+    },
+    // query routines
+    isShown: function() {
+        return this._schematized_geometry.isShown();
+    },
+    isSketch: function() {
+        return !(this._nosketch);
+    },
+    getPositions: function() {
+        return this._schematized_geometry.getPositions();
+    },
+    getPoints: function() {
+        return this._schematized_geometry.getPoints();
+    },
+    getZoomLevel: function() {
+        return this._zoomlevel;
+    },
+
+    // helper routines
+    reset: function() {
+        this._nosketch = OSRM.Sketch.SKETCH;
+    },
+    fire: function(type,event) {
+        this._schematized_geometry.route.fire(type,event);
+    },
 });
