@@ -89,7 +89,7 @@ OSRM.drawMap = function(tile_server, bounds) {
 };
 
 
-// manage makers (needs more logic, once we allow printing of non routes to check if only a target marker is visible)
+// manage markers (TODO: needs more logic when allowing to print views without a route to check if only a target marker is visible)
 OSRM.drawMarkers = function( markers ) {
 	// need to rebuild objects for instanceof to work correctly	
 	var source_marker = OSRM.G.map.addLayer( new L.LabelMarker( [markers[0].getPosition().lat,markers[0].getPosition().lng] , {draggable:false,clickable:false,icon:OSRM.G.icons['marker-source']} ) );
