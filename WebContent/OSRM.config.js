@@ -68,7 +68,7 @@ OSRM.DEFAULTS = {
 		{encoding:"fi", name:"Suomi"},
 		{encoding:"fr", name:"Français"},
 		{encoding:"it", name:"Italiano"},
-		{encoding:"ja", name:"日本人"},
+		{encoding:"ja", name:"日本語"},
 		{encoding:"ka", name:"ქართული"},
 		{encoding:"lv", name:"Latviešu"},
 		{encoding:"nb", name:"Bokmål"},
