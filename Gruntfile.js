@@ -81,7 +81,6 @@ module.exports = function(grunt) {
     copy: {
       images: {
         files: [
-          // includes files within path and its sub-directories
           {
             expand: true,
             flatten: true,
@@ -93,6 +92,16 @@ module.exports = function(grunt) {
             flatten: true,
             src: ['Webcontent/images/*'],
             dest: 'dist/images/'
+          }
+        ]
+      },
+      cname: {
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['CNAME'],
+            dest: 'dist/'
           }
         ]
       },
