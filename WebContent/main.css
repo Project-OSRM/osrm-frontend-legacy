@@ -170,6 +170,34 @@ html, body
 
 /* ------------------------------------------------------------------------ */
 
+#sketch-wrapper
+{
+	width:400px;
+	height: 500px;
+	top:5px;
+	bottom:25px;
+	right: 10px;
+	background-color: rgba(1.0, 1.0, 1.0, 0.5);
+}
+
+#sketch-map
+{
+  width:100%;
+  height:470px;
+  background: rgba(0, 0, 0, 0.0);
+}
+
+#sketch-street-name
+{
+  padding: 5px;
+  height:20px;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 12pt;
+  color: #FFF;
+}
+
 /* styles for main gui boxes */
 #main-wrapper
 {

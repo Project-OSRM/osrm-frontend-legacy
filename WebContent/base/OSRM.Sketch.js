@@ -20,15 +20,17 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 
 OSRM.Sketch = function() {
+    this._sketch_map = L.map('sketch-map');
+
     this._nodes = new L.featureGroup();
-    OSRM.G.map.addLayer(this._nodes);
+    this._sketch_map.addLayer(this._nodes);
 
     this._schematized_geometry    = L.featureGroup();
-    this._schematized_geometry.on('mouseover', this.onMouseOver);
-    this._schematized_geometry.on('mouseout', this.onMouseOut);
-    this._nodes.on('mouseover', this.onMouseOver);
-    this._nodes.on('mouseout', this.onMouseOut);
-    this._schematized_geometry.addTo(OSRM.G.map);
+    this._schematized_geometry.addEventListener('mouseover', this.onMouseOver, this);
+    this._schematized_geometry.addEventListener('mouseout', this.onMouseOut, this);
+    this._nodes.on('mouseover', this.onMouseOver, this);
+    this._nodes.on('mouseout', this.onMouseOut, this);
+    this._schematized_geometry.addTo(this._sketch_map);
     this._original_geometry    = new OSRM.MultiRoute("original" , {dashArray:""} );
 
     this._nosketch = OSRM.Sketch.SKETCH;
@@ -39,26 +41,21 @@ OSRM.Sketch = function() {
         "#0074d9",
         "#ff851b",
         "#b10dc9",
-        "#ffdc00"
+        "#ffdc00",
+        "#aaaaaa"
     ];
 
-    this._hover_state = {
-        layer: null,
-        popup: null
-    };
 };
 OSRM.Sketch.NOSKETCH = true;
 OSRM.Sketch.SKETCH = false;
 OSRM.extend( OSRM.Sketch,{
     onMouseOver: function(e)
     {
-        var p;
+        var p, name_div;
         if (e.layer.streetname)
         {
-            p = L.popup().setLatLng(e.latlng).setContent(e.layer.streetname);
-            p.className = "StreetNames";
-            p.closeButton = false;
-            OSRM.G.map.openPopup(p);
+            name_div = document.getElementById("sketch-street-name");
+            name_div.innerHTML = e.layer.streetname;
         }
         else if (e.layer.instruction)
         {
@@ -70,13 +67,13 @@ OSRM.extend( OSRM.Sketch,{
             p = L.popup().setLatLng(e.latlng).setContent(content);
             p.className = "TurnInstruction";
             p.closeButton = false;
-            OSRM.G.map.openPopup(p);
+            this._sketch_map.openPopup(p);
         }
     },
 
-    onMouseOut: function(e)
+    onMouseOut: function(e, map)
     {
-        OSRM.G.map.closePopup();
+        this._sketch_map.closePopup();
     },
 
     showSketchIntervals: function(intervals, coords, color_map, group) {
@@ -87,7 +84,7 @@ OSRM.extend( OSRM.Sketch,{
             color_idx = color_map[interval[2]];
             sub_coords = coords.slice(interval[0], interval[1]+1);
             line = L.polyline(sub_coords,
-                {color: this._color_table[color_idx], weight: 8, opacity: 1.0});
+                {color: this._color_table[color_idx], weight: 5, opacity: 1.0});
             line.streetname = interval[2];
             group.addLayer(line);
         }
@@ -101,20 +98,25 @@ OSRM.extend( OSRM.Sketch,{
             color_idx = color_map[interval[2]];
             sub_coords = coords.slice(interval[0], interval[1]+1);
             group.addRoute(sub_coords,
-                {color: this._color_table[color_idx], weight: 3, opacity: 1.0});
+                {color: this._color_table[color_idx], weight: 5, opacity: 1.0});
         }
     },
 
     mapColors: function(intervals) {
-        var color_map = {};
+        var color_map = {"": this._color_table.length-1};
+        var counter = 0;
+        var name;
+
         for (var i = 0; i < intervals.length; i++)
         {
-            if (intervals[i][2] in color_map)
+            name = intervals[i][2];
+            if (name in color_map)
             {
                 continue;
             }
 
-            color_map[intervals[i][2]] = i % this._color_table.length;
+            color_map[name] = counter % (this._color_table.length-1);
+            counter++;
         }
 
         return color_map;
@@ -147,6 +149,7 @@ OSRM.extend( OSRM.Sketch,{
         this.showStreetIntervals(street_intervals, original_positions, color_map, this._original_geometry);
         this.showSketchIntervals(schematized_street_intervals, positions, color_map, this._schematized_geometry);
         this.showTurnMarkers(instructions, positions, this._nodes);
+        this._sketch_map.fitBounds(this._schematized_geometry.getBounds());
 
         this._original_geometry.show();
         this._zoomlevel = OSRM.G.map.getZoom();
