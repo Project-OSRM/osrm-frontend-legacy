@@ -35,7 +35,11 @@ or see http://www.gnu.org/licenses/agpl.txt.
 <link rel="stylesheet" href="main.css" type="text/css"/>
 
 <!-- scripts -->
+<!-- build:js leaflet/leaflet.js -->
 <script src="leaflet/leaflet-src.js" type="text/javascript"></script>
+<!-- /build -->
+
+<!-- build:js OSRM.js -->
 <script src="base/leaflet/L.Additions.js" type="text/javascript"></script>
 <script src="base/leaflet/L.Bugfixes.js" type="text/javascript"></script>
 <script src="base/leaflet/L.LabelMarker.js" type="text/javascript"></script>
@@ -82,6 +86,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 <script src="localization/OSRM.Localization.js" type="text/javascript"></script>
 <script src="printing/OSRM.Printing.js" type="text/javascript"></script>
 <script src="utils/OSRM.Utils.js" type="text/javascript"></script>
+<!-- /build -->
 </head>
 
 
@@ -155,7 +160,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	<div class="left stretch"><select id="gui-units-toggle" class="config-select"></select></div>
 	</div>
 	</div>
-	
+
 	<!-- gui & data timestamps -->
 	<div id="config-timestamps">
 	<div class="row">
@@ -165,7 +170,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	<div class="row">
 	<div class="right small-font"><span id="gui-data-timestamp-label">data:</span></div>
 	<div class="right small-font"><span id="gui-data-timestamp">n/a</span></div>
-	</div>	
+	</div>
 	</div>
 </div>
 </div>
@@ -176,7 +181,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	<!-- header -->
 	<div id="mapping-toggle" class="iconic-button cancel-marker top-right-button"></div>
 	<div id="gui-mapping-label" class="box-label">Mapping Tools</div>
-	
+
 	<!-- mapping options -->
 	<form id="mapping-checkboxes" class="small-font">
 	<div>
@@ -190,7 +195,7 @@ or see http://www.gnu.org/licenses/agpl.txt.
 		</label>
 	</div>
 	</form>
-	
+
 	<!-- off-site links -->
 	<a class="button mapping-button" id="open-osmbugs">OSM Bugs</a>
 	<span class="quad mapping-button"></span>
@@ -211,10 +216,10 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	<select id="gui-language-toggle" class="top-left-button"></select>
 	<div id="main-toggle" class="iconic-button cancel-marker top-right-button"></div>
 	</div>
-	
+
 	<!--  input mask -->
 	<div id="input-mask">
-	
+
 	<!-- source/target input -->
 	<div class="full">
 	<div id="input-source" class="input-marker">
@@ -225,14 +230,14 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	</div>
 	<div id="input-target" class="input-marker">
 	<div class="left"><span id="gui-search-target-label" class="input-label nowrap">End:</span></div>
-	<div class="center stretch"><input id="gui-input-target" class="input-box" type="text" maxlength="200" value="" title="Enter destination" /></div>	
+	<div class="center stretch"><input id="gui-input-target" class="input-box" type="text" maxlength="200" value="" title="Enter destination" /></div>
 	<div class="left"><div id="gui-delete-target" class="iconic-button cancel-marker input-delete"></div></div>
-	<div class="right"><a class="button" id="gui-search-target">Show</a></div>	
+	<div class="right"><a class="button" id="gui-search-target">Show</a></div>
 	</div>
 	</div>
-	
-    <div class="quad"></div>	
-	
+
+    <div class="quad"></div>
+
 	<!-- action buttons -->
     <div class="full">
     <div class="row">
