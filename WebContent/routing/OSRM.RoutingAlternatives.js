@@ -20,9 +20,9 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 
 OSRM.RoutingAlternatives = {
-		
+
 // data of gui buttons for alternativess
-_buttons: [ 
+_buttons: [
 	{id:"gui-a", label:"A"},
 	{id:"gui-b", label:"B"}
 ],
@@ -33,34 +33,36 @@ init: function() {
 	OSRM.G.alternative_count = 0;
 },
 
-// restructure response data  
+// restructure response data
 prepare: function(response) {
 	// move best route to alternative array
 	var the_response = OSRM.G.response;
 	the_response.route_name = the_response.route_name || [];							// delete when fully implemented in routing engine
 	the_response.alternative_names = the_response.alternative_names || [ [] ];			// delete when fully implemented in routing engine
-	the_response.alternative_geometries.unshift( response.route_geometry );
-	the_response.alternative_instructions.unshift( response.route_instructions );
-	the_response.alternative_summaries.unshift( response.route_summary );
-	the_response.alternative_names.unshift( response.route_name );
-	
-	// update basic information
-	OSRM.G.alternative_count = response.alternative_geometries.length;
-	if( OSRM.G.active_alternative >= OSRM.G.alternative_count )	// reset if the selected alternative cannot be found 
-		OSRM.G.active_alternative = 0;
-	
-	// switch data
-	the_response.route_geometry = the_response.alternative_geometries[OSRM.G.active_alternative];
-	the_response.route_instructions = the_response.alternative_instructions[OSRM.G.active_alternative];
-	the_response.route_summary = the_response.alternative_summaries[OSRM.G.active_alternative];
-	the_response.route_name = the_response.alternative_names[OSRM.G.active_alternative];
+	if (the_response.alternative_geometries) {
+		the_response.alternative_geometries.unshift( response.route_geometry );
+		the_response.alternative_instructions.unshift( response.route_instructions );
+		the_response.alternative_summaries.unshift( response.route_summary );
+		the_response.alternative_names.unshift( response.route_name );
+
+		// update basic information
+		OSRM.G.alternative_count = response.alternative_geometries.length;
+		if( OSRM.G.active_alternative >= OSRM.G.alternative_count )	// reset if the selected alternative cannot be found
+			OSRM.G.active_alternative = 0;
+
+		// switch data
+		the_response.route_geometry = the_response.alternative_geometries[OSRM.G.active_alternative];
+		the_response.route_instructions = the_response.alternative_instructions[OSRM.G.active_alternative];
+		the_response.route_summary = the_response.alternative_summaries[OSRM.G.active_alternative];
+		the_response.route_name = the_response.alternative_names[OSRM.G.active_alternative];
+	}
 },
 
 // switch active alternative and redraw buttons accordingly
 setActive: function(button_id) {
 	// switch active alternative
 	OSRM.G.active_alternative = button_id;
-	
+
 	// redraw clickable buttons
 	var buttons = OSRM.RoutingAlternatives._buttons;
 	for(var i=0, size=OSRM.G.alternative_count; i<size; i++) {
@@ -74,7 +76,7 @@ show: function() {
 	var buttons = OSRM.RoutingAlternatives._buttons;
 	var data = "";
 	// draw clickable buttons
-	for(var i=0, size=OSRM.G.alternative_count; i<size; i++) {
+	for(var i=0, size=OSRM.G.alternative_count; i<size && OSRM.G.response.alternative_summaries; i++) {
 		var distance = OSRM.Utils.toHumanDistance(OSRM.G.response.alternative_summaries[i].total_distance);
 		var time = OSRM.Utils.toHumanTime(OSRM.G.response.alternative_summaries[i].total_time);
 		var route_name = " &#10;(";
@@ -91,7 +93,7 @@ show: function() {
 	}
 	// add buttons to DOM
 	document.getElementById('information-box-header').innerHTML = data + document.getElementById('information-box-header').innerHTML;
-	
+
 	// add events
 	for(var i=0, size=OSRM.G.alternative_count; i<size; i++) {
 		document.getElementById(buttons[i].id).onclick = function (button_id) { return function() {OSRM.RoutingAlternatives._click(button_id); }; }(i) ;
@@ -106,14 +108,14 @@ _click: function(button_id) {
 		return;
 	OSRM.RoutingAlternatives.setActive(button_id);
 	OSRM.G.route.hideAlternativeRoute();
-	
+
 	// switch data
 	var the_response = OSRM.G.response;
 	the_response.route_geometry = the_response.alternative_geometries[button_id];
 	the_response.route_instructions = the_response.alternative_instructions[button_id];
 	the_response.route_summary = the_response.alternative_summaries[button_id];
 	the_response.route_name = the_response.alternative_names[button_id];
-	
+
 	// redraw route & data
 	OSRM.RoutingGeometry.show(the_response);
 	OSRM.RoutingNoNames.show(the_response);
@@ -130,8 +132,8 @@ _mouseover: function(button_id) {
 _mouseout: function(button_id) {
 	if( OSRM.G.active_alternative == button_id )
 		return;
-	
-	OSRM.G.route.hideAlternativeRoute();		
+
+	OSRM.G.route.hideAlternativeRoute();
 }
 
 };
