@@ -127,11 +127,11 @@ OSRM.extend( OSRM.Sketch,{
         for (var i = 0; i < instructions.length; i++)
         {
             instruction = instructions[i][0];
-            if (instruction == 0)
+            if (instruction === 0)
             {
                 continue;
             }
-            marker = L.circleMarker(coords[i], {color: '#000'});
+            marker = L.circleMarker(coords[i], {color: '#000', radius: 5});
             marker.instruction = instruction;
             group.addLayer(marker);
         }
@@ -148,7 +148,7 @@ OSRM.extend( OSRM.Sketch,{
         var color_map = this.mapColors(street_intervals);
         this.showStreetIntervals(street_intervals, original_positions, color_map, this._original_geometry);
         this.showSketchIntervals(schematized_street_intervals, positions, color_map, this._schematized_geometry);
-        this.showTurnMarkers(instructions, positions, this._nodes);
+        //this.showTurnMarkers(instructions, positions, this._nodes);
         this._sketch_map.fitBounds(this._schematized_geometry.getBounds());
 
         this._original_geometry.show();
