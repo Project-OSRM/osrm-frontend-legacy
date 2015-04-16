@@ -85,23 +85,6 @@ OSRM.DEFAULTS = {
 	],
 
 	TILE_SERVERS: [
-		{	display_name: 'Mapbox Terrain',
-			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-dfbkqsr2/{z}/{x}/{y}.png',
-			attribution:'<a href="https://www.mapbox.com/about/maps">© Mapbox</a> <a href="http://openstreetmap.org/copyright">© OpenStreetMap</a> | <a href="http://mapbox.com/map-feedback/">Improve this map</a>',
-			options:{maxZoom: 18}
-		},
-		{
-			display_name: 'Mapbox Labelled Satellite',
-			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-6g3jtnzm/{z}/{x}/{y}.png',
-			attribution:'<a href="https://www.mapbox.com/about/maps">© Mapbox</a> <a href="http://openstreetmap.org/copyright">© OpenStreetMap</a> | <a href="http://mapbox.com/map-feedback/">Improve this map</a>',
-			options:{maxZoom: 18}
-		},
-		{
-			display_name: 'Mapbox Satellite',
-			url:'https://{s}.tiles.mapbox.com/v3/dennisl.map-inp5al1s/{z}/{x}/{y}.png',
-			attribution:'<a href="https://www.mapbox.com/about/maps">© Mapbox</a> <a href="http://openstreetmap.org/copyright">© OpenStreetMap</a> | <a href="http://mapbox.com/map-feedback/">Improve this map</a>',
-			options:{maxZoom: 18}
-		},
 		{	display_name: 'osm.org',
 			url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors',
