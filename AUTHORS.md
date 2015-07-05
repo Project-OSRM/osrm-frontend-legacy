@@ -37,3 +37,4 @@ alexeionin
 Tim Morley
 João G. Packer (corrections to Portuguese localization)
 DiGro (Dutch localization)
+Minh Nguyễn
