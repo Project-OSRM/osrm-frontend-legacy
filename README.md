@@ -4,7 +4,7 @@ The repository provides a Leaflet [(1)] based web frontend to the Open Source Ro
 The frontend is implemented in Javascript.
 Data is fetched from routing and geocoding servers using JSONP queries.
 The website is XHTML 1.0 Strict compliant.
-A deployed version of the the web frontend can be seen at [(3)].
+A deployed version of the web frontend can be seen at [(3)].
 
 
 Setup
